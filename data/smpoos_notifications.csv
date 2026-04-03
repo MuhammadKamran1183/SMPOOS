@@ -1,0 +1,501 @@
+notification_id,alert_type,location_id,severity,message,timestamp
+N0001,Equipment Failure,L0403,Medium,Automated alert: Hazardous Cargo Warning issued.,2026-02-09 03:54:40.253551
+N0002,Hazardous Cargo Warning,L0224,High,Automated alert: Congestion Alert issued.,2026-02-11 00:00:11.254124
+N0003,Hazardous Cargo Warning,L0376,High,Automated alert: Security Notice issued.,2026-02-10 00:04:46.254158
+N0004,Security Notice,L0184,High,Automated alert: Security Notice issued.,2026-02-09 17:36:41.254177
+N0005,Weather Warning,L0090,Low,Automated alert: Congestion Alert issued.,2026-02-10 23:35:18.254194
+N0006,Berth Closure,L0101,High,Automated alert: Hazardous Cargo Warning issued.,2026-02-09 12:09:14.254210
+N0007,Weather Warning,L0373,Low,Automated alert: Weather Warning issued.,2026-02-09 20:51:05.254226
+N0008,Hazardous Cargo Warning,L0016,Critical,Automated alert: Berth Closure issued.,2026-02-10 18:17:25.254241
+N0009,Weather Warning,L0283,High,Automated alert: Berth Closure issued.,2026-02-09 18:29:05.254255
+N0010,Security Notice,L0335,Medium,Automated alert: Congestion Alert issued.,2026-02-10 05:12:07.254270
+N0011,Equipment Failure,L0457,High,Automated alert: Equipment Failure issued.,2026-02-09 23:56:40.254283
+N0012,Berth Closure,L0262,Low,Automated alert: Security Notice issued.,2026-02-10 07:17:13.254297
+N0013,Berth Closure,L0006,Medium,Automated alert: Berth Closure issued.,2026-02-09 07:57:50.254310
+N0014,Equipment Failure,L0388,Medium,Automated alert: Security Notice issued.,2026-02-10 22:11:19.254324
+N0015,Equipment Failure,L0290,Medium,Automated alert: Hazardous Cargo Warning issued.,2026-02-09 04:28:48.254337
+N0016,Security Notice,L0481,High,Automated alert: Weather Warning issued.,2026-02-10 17:50:56.254350
+N0017,Security Notice,L0119,Low,Automated alert: Congestion Alert issued.,2026-02-10 06:52:53.254363
+N0018,Equipment Failure,L0022,Medium,Automated alert: Berth Closure issued.,2026-02-10 07:28:39.254377
+N0019,Security Notice,L0241,Critical,Automated alert: Weather Warning issued.,2026-02-11 06:52:38.254391
+N0020,Hazardous Cargo Warning,L0166,Low,Automated alert: Hazardous Cargo Warning issued.,2026-02-09 19:49:04.254404
+N0021,Hazardous Cargo Warning,L0425,High,Automated alert: Hazardous Cargo Warning issued.,2026-02-10 14:36:32.254417
+N0022,Berth Closure,L0279,Medium,Automated alert: Security Notice issued.,2026-02-09 10:11:01.254430
+N0023,Security Notice,L0188,Low,Automated alert: Berth Closure issued.,2026-02-10 15:27:47.254443
+N0024,Security Notice,L0499,Medium,Automated alert: Berth Closure issued.,2026-02-10 04:13:49.254456
+N0025,Congestion Alert,L0419,High,Automated alert: Security Notice issued.,2026-02-09 22:40:36.254490
+N0026,Berth Closure,L0004,Medium,Automated alert: Security Notice issued.,2026-02-10 21:43:26.254508
+N0027,Equipment Failure,L0040,High,Automated alert: Equipment Failure issued.,2026-02-10 22:50:34.254522
+N0028,Equipment Failure,L0081,High,Automated alert: Berth Closure issued.,2026-02-09 05:33:02.254536
+N0029,Weather Warning,L0339,Medium,Automated alert: Security Notice issued.,2026-02-10 09:44:12.254549
+N0030,Hazardous Cargo Warning,L0059,Critical,Automated alert: Hazardous Cargo Warning issued.,2026-02-09 22:55:00.254563
+N0031,Security Notice,L0108,Medium,Automated alert: Hazardous Cargo Warning issued.,2026-02-10 03:51:44.254576
+N0032,Weather Warning,L0125,Low,Automated alert: Equipment Failure issued.,2026-02-09 16:01:22.254589
+N0033,Berth Closure,L0083,Medium,Automated alert: Hazardous Cargo Warning issued.,2026-02-09 20:27:12.254601
+N0034,Weather Warning,L0457,Medium,Automated alert: Weather Warning issued.,2026-02-10 21:40:13.254616
+N0035,Congestion Alert,L0473,Medium,Automated alert: Berth Closure issued.,2026-02-10 04:15:31.254630
+N0036,Berth Closure,L0497,Low,Automated alert: Hazardous Cargo Warning issued.,2026-02-09 04:46:24.254644
+N0037,Hazardous Cargo Warning,L0421,High,Automated alert: Weather Warning issued.,2026-02-10 18:00:40.254659
+N0038,Security Notice,L0311,Critical,Automated alert: Security Notice issued.,2026-02-10 21:21:45.254673
+N0039,Equipment Failure,L0426,Critical,Automated alert: Berth Closure issued.,2026-02-10 23:23:27.254687
+N0040,Berth Closure,L0421,Medium,Automated alert: Berth Closure issued.,2026-02-09 09:44:56.254700
+N0041,Berth Closure,L0136,Medium,Automated alert: Hazardous Cargo Warning issued.,2026-02-09 07:51:35.254713
+N0042,Congestion Alert,L0473,Critical,Automated alert: Berth Closure issued.,2026-02-09 14:46:37.254727
+N0043,Weather Warning,L0118,Critical,Automated alert: Security Notice issued.,2026-02-11 00:09:20.254740
+N0044,Weather Warning,L0009,Medium,Automated alert: Berth Closure issued.,2026-02-09 21:03:24.254753
+N0045,Hazardous Cargo Warning,L0215,Medium,Automated alert: Berth Closure issued.,2026-02-11 02:46:14.254767
+N0046,Equipment Failure,L0244,Low,Automated alert: Berth Closure issued.,2026-02-09 21:07:54.254781
+N0047,Weather Warning,L0048,Critical,Automated alert: Hazardous Cargo Warning issued.,2026-02-11 00:17:34.254794
+N0048,Berth Closure,L0277,Low,Automated alert: Hazardous Cargo Warning issued.,2026-02-09 10:30:26.254807
+N0049,Security Notice,L0268,Critical,Automated alert: Congestion Alert issued.,2026-02-11 06:37:11.254820
+N0050,Hazardous Cargo Warning,L0272,Critical,Automated alert: Equipment Failure issued.,2026-02-09 22:40:33.254833
+N0051,Security Notice,L0180,Low,Automated alert: Security Notice issued.,2026-02-11 00:02:02.254846
+N0052,Congestion Alert,L0245,Medium,Automated alert: Weather Warning issued.,2026-02-10 13:09:22.254858
+N0053,Berth Closure,L0449,Critical,Automated alert: Congestion Alert issued.,2026-02-10 20:01:08.254872
+N0054,Weather Warning,L0364,Low,Automated alert: Berth Closure issued.,2026-02-09 19:43:58.254885
+N0055,Weather Warning,L0267,Low,Automated alert: Security Notice issued.,2026-02-09 10:07:13.254898
+N0056,Equipment Failure,L0353,High,Automated alert: Security Notice issued.,2026-02-10 07:24:12.254912
+N0057,Weather Warning,L0080,Critical,Automated alert: Hazardous Cargo Warning issued.,2026-02-09 15:09:27.254926
+N0058,Congestion Alert,L0134,Critical,Automated alert: Berth Closure issued.,2026-02-10 07:09:27.254939
+N0059,Berth Closure,L0142,Critical,Automated alert: Equipment Failure issued.,2026-02-10 03:41:33.254954
+N0060,Berth Closure,L0402,Critical,Automated alert: Equipment Failure issued.,2026-02-10 06:49:29.254967
+N0061,Berth Closure,L0285,Critical,Automated alert: Congestion Alert issued.,2026-02-10 11:27:11.254981
+N0062,Berth Closure,L0177,Critical,Automated alert: Hazardous Cargo Warning issued.,2026-02-10 23:43:45.254995
+N0063,Hazardous Cargo Warning,L0061,Medium,Automated alert: Security Notice issued.,2026-02-09 06:51:38.255008
+N0064,Equipment Failure,L0052,Medium,Automated alert: Berth Closure issued.,2026-02-10 04:36:54.255021
+N0065,Congestion Alert,L0411,Low,Automated alert: Equipment Failure issued.,2026-02-10 05:26:57.255033
+N0066,Hazardous Cargo Warning,L0003,Low,Automated alert: Equipment Failure issued.,2026-02-09 23:26:13.255046
+N0067,Berth Closure,L0223,Low,Automated alert: Weather Warning issued.,2026-02-10 14:37:31.255059
+N0068,Equipment Failure,L0190,Low,Automated alert: Berth Closure issued.,2026-02-11 07:02:01.255071
+N0069,Hazardous Cargo Warning,L0197,Critical,Automated alert: Berth Closure issued.,2026-02-09 10:00:06.255084
+N0070,Berth Closure,L0147,Low,Automated alert: Equipment Failure issued.,2026-02-09 11:09:30.255097
+N0071,Security Notice,L0225,Low,Automated alert: Equipment Failure issued.,2026-02-09 09:57:00.255111
+N0072,Berth Closure,L0147,Medium,Automated alert: Weather Warning issued.,2026-02-09 14:07:39.255124
+N0073,Berth Closure,L0265,Medium,Automated alert: Berth Closure issued.,2026-02-10 21:26:30.255137
+N0074,Hazardous Cargo Warning,L0019,High,Automated alert: Equipment Failure issued.,2026-02-09 10:05:09.255150
+N0075,Weather Warning,L0500,Medium,Automated alert: Weather Warning issued.,2026-02-10 13:41:23.255163
+N0076,Security Notice,L0181,Critical,Automated alert: Security Notice issued.,2026-02-09 15:06:21.255176
+N0077,Equipment Failure,L0266,Low,Automated alert: Hazardous Cargo Warning issued.,2026-02-09 06:32:48.255189
+N0078,Weather Warning,L0471,Low,Automated alert: Berth Closure issued.,2026-02-10 13:04:00.255202
+N0079,Hazardous Cargo Warning,L0425,High,Automated alert: Congestion Alert issued.,2026-02-10 13:38:54.255215
+N0080,Equipment Failure,L0311,Medium,Automated alert: Security Notice issued.,2026-02-10 04:22:04.255228
+N0081,Berth Closure,L0003,High,Automated alert: Equipment Failure issued.,2026-02-10 04:08:11.255240
+N0082,Berth Closure,L0055,Low,Automated alert: Berth Closure issued.,2026-02-10 12:21:22.255253
+N0083,Congestion Alert,L0485,Low,Automated alert: Berth Closure issued.,2026-02-10 15:01:06.255265
+N0084,Berth Closure,L0417,High,Automated alert: Hazardous Cargo Warning issued.,2026-02-10 01:32:29.255278
+N0085,Security Notice,L0289,Critical,Automated alert: Equipment Failure issued.,2026-02-09 02:37:31.255290
+N0086,Congestion Alert,L0493,Critical,Automated alert: Hazardous Cargo Warning issued.,2026-02-10 00:14:03.255302
+N0087,Berth Closure,L0442,Low,Automated alert: Security Notice issued.,2026-02-11 01:18:59.255314
+N0088,Congestion Alert,L0035,Critical,Automated alert: Hazardous Cargo Warning issued.,2026-02-10 17:44:07.255329
+N0089,Hazardous Cargo Warning,L0360,Medium,Automated alert: Congestion Alert issued.,2026-02-10 03:45:04.255342
+N0090,Congestion Alert,L0265,Low,Automated alert: Hazardous Cargo Warning issued.,2026-02-10 14:36:23.255356
+N0091,Equipment Failure,L0148,Low,Automated alert: Security Notice issued.,2026-02-09 08:43:33.255370
+N0092,Hazardous Cargo Warning,L0421,High,Automated alert: Weather Warning issued.,2026-02-09 17:24:06.255383
+N0093,Equipment Failure,L0244,High,Automated alert: Congestion Alert issued.,2026-02-10 17:52:03.255396
+N0094,Berth Closure,L0138,Medium,Automated alert: Hazardous Cargo Warning issued.,2026-02-09 08:02:26.255410
+N0095,Equipment Failure,L0256,Medium,Automated alert: Equipment Failure issued.,2026-02-09 04:13:50.255423
+N0096,Equipment Failure,L0447,High,Automated alert: Equipment Failure issued.,2026-02-10 17:05:33.255436
+N0097,Equipment Failure,L0428,Medium,Automated alert: Berth Closure issued.,2026-02-10 07:51:28.255449
+N0098,Equipment Failure,L0399,Low,Automated alert: Weather Warning issued.,2026-02-11 04:04:03.255462
+N0099,Hazardous Cargo Warning,L0490,Critical,Automated alert: Berth Closure issued.,2026-02-11 09:18:02.255476
+N0100,Berth Closure,L0491,Low,Automated alert: Security Notice issued.,2026-02-10 06:45:12.255488
+N0101,Berth Closure,L0162,Critical,Automated alert: Berth Closure issued.,2026-02-10 13:46:39.255501
+N0102,Security Notice,L0094,High,Automated alert: Security Notice issued.,2026-02-10 17:36:38.255514
+N0103,Berth Closure,L0066,Low,Automated alert: Berth Closure issued.,2026-02-10 02:58:05.255528
+N0104,Security Notice,L0482,Low,Automated alert: Berth Closure issued.,2026-02-10 08:29:39.255541
+N0105,Security Notice,L0441,Medium,Automated alert: Security Notice issued.,2026-02-11 01:01:05.255553
+N0106,Hazardous Cargo Warning,L0266,Critical,Automated alert: Congestion Alert issued.,2026-02-09 07:35:46.255567
+N0107,Weather Warning,L0007,Medium,Automated alert: Security Notice issued.,2026-02-09 15:28:31.255582
+N0108,Weather Warning,L0167,High,Automated alert: Berth Closure issued.,2026-02-10 14:52:20.255596
+N0109,Equipment Failure,L0281,High,Automated alert: Equipment Failure issued.,2026-02-10 14:09:55.255609
+N0110,Security Notice,L0491,High,Automated alert: Congestion Alert issued.,2026-02-10 20:23:27.255623
+N0111,Security Notice,L0218,Medium,Automated alert: Security Notice issued.,2026-02-09 06:45:31.255637
+N0112,Congestion Alert,L0187,Critical,Automated alert: Congestion Alert issued.,2026-02-10 00:57:43.255650
+N0113,Equipment Failure,L0293,Medium,Automated alert: Berth Closure issued.,2026-02-09 07:49:45.255663
+N0114,Equipment Failure,L0417,Low,Automated alert: Hazardous Cargo Warning issued.,2026-02-10 14:07:33.255677
+N0115,Equipment Failure,L0285,Critical,Automated alert: Security Notice issued.,2026-02-10 19:30:22.255690
+N0116,Equipment Failure,L0410,Medium,Automated alert: Security Notice issued.,2026-02-11 09:04:25.255703
+N0117,Equipment Failure,L0216,Critical,Automated alert: Equipment Failure issued.,2026-02-09 11:51:37.255717
+N0118,Berth Closure,L0274,High,Automated alert: Security Notice issued.,2026-02-10 11:56:06.255730
+N0119,Congestion Alert,L0288,Low,Automated alert: Security Notice issued.,2026-02-11 02:34:33.255743
+N0120,Hazardous Cargo Warning,L0084,Low,Automated alert: Equipment Failure issued.,2026-02-10 15:15:58.255756
+N0121,Security Notice,L0430,Low,Automated alert: Security Notice issued.,2026-02-09 03:33:48.255769
+N0122,Congestion Alert,L0134,High,Automated alert: Congestion Alert issued.,2026-02-09 16:58:46.255783
+N0123,Berth Closure,L0478,High,Automated alert: Congestion Alert issued.,2026-02-11 08:20:19.255796
+N0124,Security Notice,L0063,High,Automated alert: Hazardous Cargo Warning issued.,2026-02-09 13:41:10.255810
+N0125,Equipment Failure,L0296,Medium,Automated alert: Congestion Alert issued.,2026-02-10 07:55:29.255823
+N0126,Congestion Alert,L0345,Critical,Automated alert: Hazardous Cargo Warning issued.,2026-02-10 01:14:18.255836
+N0127,Weather Warning,L0196,High,Automated alert: Security Notice issued.,2026-02-09 11:46:59.255850
+N0128,Equipment Failure,L0445,Medium,Automated alert: Hazardous Cargo Warning issued.,2026-02-10 09:12:54.255863
+N0129,Security Notice,L0324,Critical,Automated alert: Weather Warning issued.,2026-02-11 04:01:20.255876
+N0130,Equipment Failure,L0176,Medium,Automated alert: Congestion Alert issued.,2026-02-10 10:42:31.255889
+N0131,Hazardous Cargo Warning,L0150,High,Automated alert: Berth Closure issued.,2026-02-09 10:50:29.255903
+N0132,Security Notice,L0139,Critical,Automated alert: Congestion Alert issued.,2026-02-09 03:19:22.255915
+N0133,Berth Closure,L0267,Critical,Automated alert: Security Notice issued.,2026-02-10 21:35:57.255928
+N0134,Equipment Failure,L0438,Low,Automated alert: Equipment Failure issued.,2026-02-09 04:47:17.255941
+N0135,Equipment Failure,L0339,High,Automated alert: Hazardous Cargo Warning issued.,2026-02-09 06:45:35.255953
+N0136,Hazardous Cargo Warning,L0041,Medium,Automated alert: Equipment Failure issued.,2026-02-10 04:52:15.255965
+N0137,Weather Warning,L0049,Low,Automated alert: Security Notice issued.,2026-02-09 17:50:50.255978
+N0138,Weather Warning,L0014,Critical,Automated alert: Berth Closure issued.,2026-02-11 03:43:15.255990
+N0139,Weather Warning,L0135,Medium,Automated alert: Weather Warning issued.,2026-02-09 10:05:58.256003
+N0140,Security Notice,L0159,Medium,Automated alert: Equipment Failure issued.,2026-02-09 04:04:23.256016
+N0141,Congestion Alert,L0227,Medium,Automated alert: Equipment Failure issued.,2026-02-09 19:25:36.256028
+N0142,Equipment Failure,L0015,Low,Automated alert: Hazardous Cargo Warning issued.,2026-02-10 07:47:55.256041
+N0143,Congestion Alert,L0443,Critical,Automated alert: Security Notice issued.,2026-02-09 18:25:08.256053
+N0144,Congestion Alert,L0281,Critical,Automated alert: Equipment Failure issued.,2026-02-09 06:59:01.256066
+N0145,Berth Closure,L0091,Critical,Automated alert: Hazardous Cargo Warning issued.,2026-02-09 03:14:56.256078
+N0146,Hazardous Cargo Warning,L0450,Critical,Automated alert: Berth Closure issued.,2026-02-09 11:11:42.256091
+N0147,Hazardous Cargo Warning,L0274,High,Automated alert: Congestion Alert issued.,2026-02-09 22:42:36.256103
+N0148,Berth Closure,L0117,Low,Automated alert: Security Notice issued.,2026-02-10 11:21:53.256115
+N0149,Congestion Alert,L0212,High,Automated alert: Equipment Failure issued.,2026-02-10 11:40:39.256127
+N0150,Weather Warning,L0001,Medium,Automated alert: Congestion Alert issued.,2026-02-10 12:54:05.256140
+N0151,Security Notice,L0274,Low,Automated alert: Hazardous Cargo Warning issued.,2026-02-09 21:57:42.256152
+N0152,Security Notice,L0154,Low,Automated alert: Security Notice issued.,2026-02-10 12:27:11.256165
+N0153,Berth Closure,L0119,Low,Automated alert: Berth Closure issued.,2026-02-10 06:34:30.256177
+N0154,Equipment Failure,L0211,Critical,Automated alert: Security Notice issued.,2026-02-10 15:35:10.256189
+N0155,Equipment Failure,L0367,Critical,Automated alert: Security Notice issued.,2026-02-10 17:43:12.256202
+N0156,Congestion Alert,L0041,Critical,Automated alert: Hazardous Cargo Warning issued.,2026-02-10 16:20:19.256214
+N0157,Berth Closure,L0392,High,Automated alert: Congestion Alert issued.,2026-02-09 10:33:49.256226
+N0158,Hazardous Cargo Warning,L0273,High,Automated alert: Security Notice issued.,2026-02-10 20:05:35.256239
+N0159,Weather Warning,L0094,Medium,Automated alert: Congestion Alert issued.,2026-02-11 01:44:49.256251
+N0160,Hazardous Cargo Warning,L0234,Critical,Automated alert: Congestion Alert issued.,2026-02-09 06:46:34.256263
+N0161,Berth Closure,L0252,Medium,Automated alert: Congestion Alert issued.,2026-02-11 08:22:14.256275
+N0162,Equipment Failure,L0026,Low,Automated alert: Equipment Failure issued.,2026-02-11 02:20:08.256288
+N0163,Congestion Alert,L0138,Medium,Automated alert: Hazardous Cargo Warning issued.,2026-02-10 01:51:30.256300
+N0164,Hazardous Cargo Warning,L0005,Medium,Automated alert: Weather Warning issued.,2026-02-10 22:48:38.256312
+N0165,Weather Warning,L0253,Medium,Automated alert: Congestion Alert issued.,2026-02-10 03:10:54.256324
+N0166,Congestion Alert,L0403,Critical,Automated alert: Congestion Alert issued.,2026-02-10 00:01:06.256336
+N0167,Hazardous Cargo Warning,L0406,Low,Automated alert: Congestion Alert issued.,2026-02-11 03:56:28.256348
+N0168,Equipment Failure,L0029,High,Automated alert: Security Notice issued.,2026-02-11 04:35:05.256361
+N0169,Berth Closure,L0241,Medium,Automated alert: Equipment Failure issued.,2026-02-10 15:34:22.256374
+N0170,Security Notice,L0425,Low,Automated alert: Weather Warning issued.,2026-02-09 05:44:29.256386
+N0171,Equipment Failure,L0198,Critical,Automated alert: Equipment Failure issued.,2026-02-09 04:04:16.256399
+N0172,Weather Warning,L0102,Critical,Automated alert: Hazardous Cargo Warning issued.,2026-02-11 02:56:27.256411
+N0173,Berth Closure,L0341,Medium,Automated alert: Security Notice issued.,2026-02-10 05:26:52.256423
+N0174,Hazardous Cargo Warning,L0493,High,Automated alert: Congestion Alert issued.,2026-02-10 22:13:59.256436
+N0175,Hazardous Cargo Warning,L0373,Low,Automated alert: Hazardous Cargo Warning issued.,2026-02-09 17:45:49.256448
+N0176,Berth Closure,L0063,High,Automated alert: Security Notice issued.,2026-02-09 11:17:14.256460
+N0177,Congestion Alert,L0102,High,Automated alert: Weather Warning issued.,2026-02-09 09:14:08.256473
+N0178,Equipment Failure,L0499,Low,Automated alert: Equipment Failure issued.,2026-02-09 11:41:45.256485
+N0179,Security Notice,L0167,Low,Automated alert: Equipment Failure issued.,2026-02-10 13:40:41.256497
+N0180,Berth Closure,L0062,Critical,Automated alert: Equipment Failure issued.,2026-02-11 09:07:58.256510
+N0181,Weather Warning,L0298,Critical,Automated alert: Hazardous Cargo Warning issued.,2026-02-09 14:22:05.256522
+N0182,Equipment Failure,L0191,Low,Automated alert: Equipment Failure issued.,2026-02-10 22:17:59.256534
+N0183,Security Notice,L0047,High,Automated alert: Hazardous Cargo Warning issued.,2026-02-11 05:24:36.256546
+N0184,Weather Warning,L0183,Medium,Automated alert: Hazardous Cargo Warning issued.,2026-02-09 18:43:37.256559
+N0185,Weather Warning,L0065,Critical,Automated alert: Equipment Failure issued.,2026-02-10 10:43:07.256571
+N0186,Berth Closure,L0404,High,Automated alert: Security Notice issued.,2026-02-09 04:23:37.256584
+N0187,Equipment Failure,L0011,Critical,Automated alert: Congestion Alert issued.,2026-02-09 05:02:02.256597
+N0188,Equipment Failure,L0129,Low,Automated alert: Security Notice issued.,2026-02-09 06:19:41.256610
+N0189,Security Notice,L0287,High,Automated alert: Berth Closure issued.,2026-02-09 07:01:34.256622
+N0190,Security Notice,L0098,Medium,Automated alert: Berth Closure issued.,2026-02-10 08:28:00.256634
+N0191,Congestion Alert,L0375,Critical,Automated alert: Congestion Alert issued.,2026-02-09 14:11:18.256646
+N0192,Berth Closure,L0083,Low,Automated alert: Berth Closure issued.,2026-02-10 22:29:40.256659
+N0193,Security Notice,L0152,High,Automated alert: Berth Closure issued.,2026-02-10 07:03:02.256671
+N0194,Security Notice,L0001,Critical,Automated alert: Hazardous Cargo Warning issued.,2026-02-10 20:16:22.256683
+N0195,Weather Warning,L0318,High,Automated alert: Berth Closure issued.,2026-02-10 16:23:42.256696
+N0196,Congestion Alert,L0370,Low,Automated alert: Hazardous Cargo Warning issued.,2026-02-09 18:32:14.256708
+N0197,Security Notice,L0098,Critical,Automated alert: Berth Closure issued.,2026-02-10 22:33:34.256720
+N0198,Berth Closure,L0145,High,Automated alert: Security Notice issued.,2026-02-09 11:06:49.256733
+N0199,Congestion Alert,L0057,Low,Automated alert: Berth Closure issued.,2026-02-09 09:48:14.256746
+N0200,Weather Warning,L0023,Medium,Automated alert: Equipment Failure issued.,2026-02-11 07:30:20.256759
+N0201,Equipment Failure,L0055,Critical,Automated alert: Equipment Failure issued.,2026-02-11 02:35:31.256772
+N0202,Weather Warning,L0293,Critical,Automated alert: Hazardous Cargo Warning issued.,2026-02-09 22:06:32.256786
+N0203,Berth Closure,L0320,High,Automated alert: Weather Warning issued.,2026-02-10 07:06:21.256799
+N0204,Equipment Failure,L0311,Low,Automated alert: Weather Warning issued.,2026-02-10 18:34:59.256812
+N0205,Hazardous Cargo Warning,L0252,Low,Automated alert: Security Notice issued.,2026-02-09 11:15:30.256825
+N0206,Weather Warning,L0185,Critical,Automated alert: Congestion Alert issued.,2026-02-09 06:11:47.256837
+N0207,Weather Warning,L0422,High,Automated alert: Berth Closure issued.,2026-02-11 06:49:22.256850
+N0208,Hazardous Cargo Warning,L0037,High,Automated alert: Weather Warning issued.,2026-02-10 18:03:42.256862
+N0209,Berth Closure,L0050,Low,Automated alert: Hazardous Cargo Warning issued.,2026-02-10 16:57:39.256875
+N0210,Berth Closure,L0198,Medium,Automated alert: Equipment Failure issued.,2026-02-09 19:28:00.256887
+N0211,Hazardous Cargo Warning,L0128,Medium,Automated alert: Berth Closure issued.,2026-02-09 03:13:42.256899
+N0212,Berth Closure,L0213,Low,Automated alert: Hazardous Cargo Warning issued.,2026-02-09 15:47:56.256912
+N0213,Congestion Alert,L0346,Critical,Automated alert: Hazardous Cargo Warning issued.,2026-02-09 09:20:29.256924
+N0214,Security Notice,L0453,Low,Automated alert: Equipment Failure issued.,2026-02-10 20:38:49.256936
+N0215,Berth Closure,L0206,High,Automated alert: Hazardous Cargo Warning issued.,2026-02-10 22:15:53.256949
+N0216,Berth Closure,L0308,Critical,Automated alert: Congestion Alert issued.,2026-02-10 10:50:03.256961
+N0217,Berth Closure,L0167,High,Automated alert: Security Notice issued.,2026-02-09 11:40:18.256974
+N0218,Security Notice,L0423,High,Automated alert: Berth Closure issued.,2026-02-10 16:15:15.256987
+N0219,Berth Closure,L0280,Medium,Automated alert: Security Notice issued.,2026-02-09 17:42:57.256999
+N0220,Hazardous Cargo Warning,L0131,High,Automated alert: Security Notice issued.,2026-02-10 01:11:49.257011
+N0221,Security Notice,L0001,Low,Automated alert: Congestion Alert issued.,2026-02-09 14:24:03.257023
+N0222,Weather Warning,L0266,Medium,Automated alert: Congestion Alert issued.,2026-02-11 09:18:17.257036
+N0223,Congestion Alert,L0114,Medium,Automated alert: Congestion Alert issued.,2026-02-11 08:12:10.257048
+N0224,Hazardous Cargo Warning,L0422,High,Automated alert: Berth Closure issued.,2026-02-09 20:33:12.257060
+N0225,Berth Closure,L0293,Medium,Automated alert: Weather Warning issued.,2026-02-11 07:02:06.257073
+N0226,Security Notice,L0183,Medium,Automated alert: Equipment Failure issued.,2026-02-10 14:29:13.257085
+N0227,Congestion Alert,L0456,Medium,Automated alert: Equipment Failure issued.,2026-02-10 15:07:26.257097
+N0228,Congestion Alert,L0048,Critical,Automated alert: Berth Closure issued.,2026-02-10 17:56:59.257109
+N0229,Hazardous Cargo Warning,L0040,High,Automated alert: Security Notice issued.,2026-02-10 21:11:33.257122
+N0230,Security Notice,L0423,Low,Automated alert: Berth Closure issued.,2026-02-09 11:00:55.257134
+N0231,Congestion Alert,L0020,Critical,Automated alert: Weather Warning issued.,2026-02-11 05:42:39.257146
+N0232,Congestion Alert,L0179,Critical,Automated alert: Security Notice issued.,2026-02-11 01:00:20.257158
+N0233,Equipment Failure,L0383,Low,Automated alert: Hazardous Cargo Warning issued.,2026-02-09 11:44:53.257171
+N0234,Security Notice,L0028,High,Automated alert: Berth Closure issued.,2026-02-11 06:47:03.257183
+N0235,Congestion Alert,L0277,Medium,Automated alert: Congestion Alert issued.,2026-02-09 21:11:57.257196
+N0236,Hazardous Cargo Warning,L0114,Medium,Automated alert: Weather Warning issued.,2026-02-09 08:43:49.257208
+N0237,Hazardous Cargo Warning,L0202,Critical,Automated alert: Berth Closure issued.,2026-02-09 15:53:39.257220
+N0238,Berth Closure,L0047,Medium,Automated alert: Security Notice issued.,2026-02-10 12:40:54.257232
+N0239,Security Notice,L0076,Medium,Automated alert: Congestion Alert issued.,2026-02-11 03:46:20.257244
+N0240,Security Notice,L0293,Low,Automated alert: Berth Closure issued.,2026-02-10 04:42:53.257257
+N0241,Congestion Alert,L0044,Critical,Automated alert: Berth Closure issued.,2026-02-10 02:08:39.257269
+N0242,Hazardous Cargo Warning,L0067,Medium,Automated alert: Security Notice issued.,2026-02-09 17:03:22.257282
+N0243,Equipment Failure,L0250,Critical,Automated alert: Hazardous Cargo Warning issued.,2026-02-09 16:10:48.257294
+N0244,Equipment Failure,L0288,Medium,Automated alert: Equipment Failure issued.,2026-02-11 04:33:57.257306
+N0245,Congestion Alert,L0398,Critical,Automated alert: Congestion Alert issued.,2026-02-09 07:55:19.257318
+N0246,Berth Closure,L0046,Low,Automated alert: Hazardous Cargo Warning issued.,2026-02-10 03:40:00.257331
+N0247,Security Notice,L0188,High,Automated alert: Equipment Failure issued.,2026-02-10 10:25:39.257343
+N0248,Congestion Alert,L0305,Low,Automated alert: Congestion Alert issued.,2026-02-10 21:27:29.257356
+N0249,Congestion Alert,L0316,Critical,Automated alert: Berth Closure issued.,2026-02-10 23:09:53.257369
+N0250,Security Notice,L0023,Medium,Automated alert: Equipment Failure issued.,2026-02-09 07:52:36.257381
+N0251,Congestion Alert,L0080,Low,Automated alert: Weather Warning issued.,2026-02-09 03:55:42.257393
+N0252,Weather Warning,L0125,Medium,Automated alert: Congestion Alert issued.,2026-02-11 08:46:58.257406
+N0253,Congestion Alert,L0356,Low,Automated alert: Congestion Alert issued.,2026-02-10 01:00:38.257418
+N0254,Security Notice,L0012,High,Automated alert: Equipment Failure issued.,2026-02-09 03:53:49.257431
+N0255,Berth Closure,L0109,Medium,Automated alert: Berth Closure issued.,2026-02-09 19:40:47.257443
+N0256,Congestion Alert,L0281,Critical,Automated alert: Berth Closure issued.,2026-02-09 04:37:53.257455
+N0257,Equipment Failure,L0356,Low,Automated alert: Security Notice issued.,2026-02-09 15:19:47.257468
+N0258,Hazardous Cargo Warning,L0270,Low,Automated alert: Congestion Alert issued.,2026-02-10 21:22:50.257480
+N0259,Weather Warning,L0146,Medium,Automated alert: Hazardous Cargo Warning issued.,2026-02-09 12:47:03.257492
+N0260,Congestion Alert,L0028,Critical,Automated alert: Hazardous Cargo Warning issued.,2026-02-11 09:10:34.257505
+N0261,Weather Warning,L0199,High,Automated alert: Hazardous Cargo Warning issued.,2026-02-09 09:42:57.257517
+N0262,Congestion Alert,L0443,Low,Automated alert: Weather Warning issued.,2026-02-10 12:29:03.257529
+N0263,Hazardous Cargo Warning,L0198,Medium,Automated alert: Security Notice issued.,2026-02-09 20:45:08.257542
+N0264,Hazardous Cargo Warning,L0051,High,Automated alert: Security Notice issued.,2026-02-09 14:18:11.257554
+N0265,Berth Closure,L0046,Medium,Automated alert: Equipment Failure issued.,2026-02-09 21:19:36.257567
+N0266,Security Notice,L0288,Low,Automated alert: Weather Warning issued.,2026-02-10 15:46:06.257640
+N0267,Berth Closure,L0157,High,Automated alert: Security Notice issued.,2026-02-10 05:08:11.257672
+N0268,Hazardous Cargo Warning,L0081,Low,Automated alert: Congestion Alert issued.,2026-02-09 07:57:10.257695
+N0269,Congestion Alert,L0182,High,Automated alert: Equipment Failure issued.,2026-02-09 21:16:58.257716
+N0270,Congestion Alert,L0416,Low,Automated alert: Hazardous Cargo Warning issued.,2026-02-10 15:01:09.257742
+N0271,Security Notice,L0456,Low,Automated alert: Berth Closure issued.,2026-02-10 13:22:47.257768
+N0272,Equipment Failure,L0078,High,Automated alert: Security Notice issued.,2026-02-09 09:56:48.257793
+N0273,Equipment Failure,L0045,Critical,Automated alert: Berth Closure issued.,2026-02-09 08:24:46.257808
+N0274,Berth Closure,L0447,Medium,Automated alert: Security Notice issued.,2026-02-10 16:16:49.257821
+N0275,Berth Closure,L0079,Critical,Automated alert: Congestion Alert issued.,2026-02-09 13:42:05.257835
+N0276,Congestion Alert,L0230,Medium,Automated alert: Equipment Failure issued.,2026-02-09 10:16:17.257849
+N0277,Equipment Failure,L0298,Medium,Automated alert: Equipment Failure issued.,2026-02-10 11:16:56.257862
+N0278,Hazardous Cargo Warning,L0362,Medium,Automated alert: Security Notice issued.,2026-02-10 23:12:48.257875
+N0279,Hazardous Cargo Warning,L0478,Medium,Automated alert: Congestion Alert issued.,2026-02-11 04:50:41.257888
+N0280,Berth Closure,L0273,Low,Automated alert: Equipment Failure issued.,2026-02-10 10:39:22.257901
+N0281,Equipment Failure,L0373,Low,Automated alert: Congestion Alert issued.,2026-02-10 03:38:00.257914
+N0282,Security Notice,L0156,Critical,Automated alert: Hazardous Cargo Warning issued.,2026-02-09 11:24:33.257927
+N0283,Hazardous Cargo Warning,L0141,Medium,Automated alert: Equipment Failure issued.,2026-02-11 02:00:29.257942
+N0284,Equipment Failure,L0095,Low,Automated alert: Berth Closure issued.,2026-02-09 12:51:30.257956
+N0285,Congestion Alert,L0311,Medium,Automated alert: Berth Closure issued.,2026-02-10 16:52:33.257970
+N0286,Equipment Failure,L0352,Low,Automated alert: Congestion Alert issued.,2026-02-11 03:59:44.257983
+N0287,Hazardous Cargo Warning,L0400,Critical,Automated alert: Equipment Failure issued.,2026-02-09 21:12:17.257996
+N0288,Berth Closure,L0241,High,Automated alert: Equipment Failure issued.,2026-02-10 05:34:08.258009
+N0289,Security Notice,L0243,Medium,Automated alert: Equipment Failure issued.,2026-02-10 19:42:37.258069
+N0290,Equipment Failure,L0017,Critical,Automated alert: Weather Warning issued.,2026-02-10 14:07:57.258085
+N0291,Security Notice,L0114,Medium,Automated alert: Equipment Failure issued.,2026-02-11 04:58:01.258100
+N0292,Equipment Failure,L0475,Critical,Automated alert: Berth Closure issued.,2026-02-09 22:06:23.258114
+N0293,Hazardous Cargo Warning,L0167,Critical,Automated alert: Equipment Failure issued.,2026-02-10 02:38:57.258127
+N0294,Security Notice,L0398,Low,Automated alert: Berth Closure issued.,2026-02-09 04:14:16.258140
+N0295,Security Notice,L0369,High,Automated alert: Security Notice issued.,2026-02-09 13:15:16.258154
+N0296,Hazardous Cargo Warning,L0293,Low,Automated alert: Berth Closure issued.,2026-02-11 01:49:22.258167
+N0297,Security Notice,L0234,Low,Automated alert: Equipment Failure issued.,2026-02-09 20:00:44.258180
+N0298,Berth Closure,L0203,Low,Automated alert: Berth Closure issued.,2026-02-10 05:34:24.258193
+N0299,Berth Closure,L0392,Low,Automated alert: Equipment Failure issued.,2026-02-10 12:34:48.258206
+N0300,Security Notice,L0204,High,Automated alert: Congestion Alert issued.,2026-02-10 00:11:19.258218
+N0301,Equipment Failure,L0217,High,Automated alert: Berth Closure issued.,2026-02-11 05:48:39.258232
+N0302,Hazardous Cargo Warning,L0265,Medium,Automated alert: Security Notice issued.,2026-02-09 10:44:07.258246
+N0303,Security Notice,L0047,Low,Automated alert: Equipment Failure issued.,2026-02-09 15:09:07.258258
+N0304,Hazardous Cargo Warning,L0280,Medium,Automated alert: Security Notice issued.,2026-02-10 03:40:06.258271
+N0305,Congestion Alert,L0231,Low,Automated alert: Equipment Failure issued.,2026-02-10 00:44:49.258283
+N0306,Berth Closure,L0460,Medium,Automated alert: Security Notice issued.,2026-02-11 03:12:58.258296
+N0307,Congestion Alert,L0166,Medium,Automated alert: Hazardous Cargo Warning issued.,2026-02-09 04:23:18.258308
+N0308,Weather Warning,L0047,Low,Automated alert: Hazardous Cargo Warning issued.,2026-02-10 01:03:31.258320
+N0309,Hazardous Cargo Warning,L0186,Low,Automated alert: Berth Closure issued.,2026-02-09 06:16:50.258333
+N0310,Security Notice,L0373,Medium,Automated alert: Security Notice issued.,2026-02-09 17:42:29.258346
+N0311,Security Notice,L0023,Medium,Automated alert: Congestion Alert issued.,2026-02-09 16:36:18.258358
+N0312,Hazardous Cargo Warning,L0442,Medium,Automated alert: Equipment Failure issued.,2026-02-10 23:15:11.258371
+N0313,Equipment Failure,L0394,Low,Automated alert: Security Notice issued.,2026-02-10 11:21:02.258383
+N0314,Congestion Alert,L0374,Critical,Automated alert: Congestion Alert issued.,2026-02-09 12:09:58.258396
+N0315,Equipment Failure,L0061,Medium,Automated alert: Equipment Failure issued.,2026-02-11 09:31:32.258408
+N0316,Berth Closure,L0392,High,Automated alert: Weather Warning issued.,2026-02-10 00:23:08.258421
+N0317,Security Notice,L0438,Critical,Automated alert: Berth Closure issued.,2026-02-11 09:21:51.258434
+N0318,Berth Closure,L0452,Critical,Automated alert: Equipment Failure issued.,2026-02-10 17:59:26.258447
+N0319,Berth Closure,L0338,Critical,Automated alert: Security Notice issued.,2026-02-10 03:55:00.258459
+N0320,Security Notice,L0041,Low,Automated alert: Equipment Failure issued.,2026-02-09 17:55:36.258472
+N0321,Congestion Alert,L0318,Medium,Automated alert: Weather Warning issued.,2026-02-10 20:19:24.258485
+N0322,Equipment Failure,L0029,High,Automated alert: Weather Warning issued.,2026-02-10 23:11:49.258498
+N0323,Weather Warning,L0342,High,Automated alert: Congestion Alert issued.,2026-02-11 03:23:48.258510
+N0324,Weather Warning,L0056,Critical,Automated alert: Equipment Failure issued.,2026-02-10 22:02:05.258522
+N0325,Hazardous Cargo Warning,L0146,Medium,Automated alert: Security Notice issued.,2026-02-09 03:13:05.258539
+N0326,Berth Closure,L0185,Low,Automated alert: Weather Warning issued.,2026-02-10 11:59:20.258553
+N0327,Congestion Alert,L0189,Critical,Automated alert: Weather Warning issued.,2026-02-09 02:33:17.258566
+N0328,Security Notice,L0432,Low,Automated alert: Congestion Alert issued.,2026-02-09 23:29:57.258579
+N0329,Equipment Failure,L0063,High,Automated alert: Congestion Alert issued.,2026-02-09 19:24:15.258591
+N0330,Security Notice,L0269,Medium,Automated alert: Hazardous Cargo Warning issued.,2026-02-10 18:33:37.258604
+N0331,Berth Closure,L0030,Low,Automated alert: Berth Closure issued.,2026-02-09 04:38:45.258616
+N0332,Hazardous Cargo Warning,L0271,Low,Automated alert: Security Notice issued.,2026-02-09 05:03:27.258629
+N0333,Hazardous Cargo Warning,L0310,High,Automated alert: Security Notice issued.,2026-02-09 13:26:54.258642
+N0334,Congestion Alert,L0133,High,Automated alert: Equipment Failure issued.,2026-02-09 13:03:06.258655
+N0335,Berth Closure,L0255,Critical,Automated alert: Security Notice issued.,2026-02-10 20:40:57.258668
+N0336,Berth Closure,L0120,High,Automated alert: Equipment Failure issued.,2026-02-11 09:40:04.258681
+N0337,Weather Warning,L0013,Critical,Automated alert: Hazardous Cargo Warning issued.,2026-02-11 01:11:45.258693
+N0338,Hazardous Cargo Warning,L0435,Medium,Automated alert: Berth Closure issued.,2026-02-10 03:35:25.258706
+N0339,Security Notice,L0024,High,Automated alert: Congestion Alert issued.,2026-02-09 16:58:29.258718
+N0340,Hazardous Cargo Warning,L0109,Low,Automated alert: Hazardous Cargo Warning issued.,2026-02-10 19:07:58.258731
+N0341,Hazardous Cargo Warning,L0145,High,Automated alert: Weather Warning issued.,2026-02-10 11:22:18.258743
+N0342,Congestion Alert,L0260,High,Automated alert: Weather Warning issued.,2026-02-11 01:29:37.258755
+N0343,Hazardous Cargo Warning,L0171,High,Automated alert: Security Notice issued.,2026-02-09 05:02:02.258768
+N0344,Berth Closure,L0316,Low,Automated alert: Equipment Failure issued.,2026-02-10 19:39:18.258780
+N0345,Congestion Alert,L0427,High,Automated alert: Hazardous Cargo Warning issued.,2026-02-09 22:53:43.258793
+N0346,Security Notice,L0409,Low,Automated alert: Hazardous Cargo Warning issued.,2026-02-10 23:53:51.258805
+N0347,Security Notice,L0080,Critical,Automated alert: Berth Closure issued.,2026-02-10 09:22:52.258818
+N0348,Security Notice,L0402,Critical,Automated alert: Hazardous Cargo Warning issued.,2026-02-11 05:42:13.258830
+N0349,Berth Closure,L0154,High,Automated alert: Berth Closure issued.,2026-02-09 18:45:39.258843
+N0350,Weather Warning,L0107,High,Automated alert: Congestion Alert issued.,2026-02-11 04:57:41.258855
+N0351,Equipment Failure,L0144,Low,Automated alert: Congestion Alert issued.,2026-02-10 06:27:31.258868
+N0352,Hazardous Cargo Warning,L0274,Medium,Automated alert: Berth Closure issued.,2026-02-09 13:40:41.258880
+N0353,Security Notice,L0096,Low,Automated alert: Congestion Alert issued.,2026-02-09 06:25:37.258893
+N0354,Congestion Alert,L0364,Low,Automated alert: Congestion Alert issued.,2026-02-10 03:38:45.258907
+N0355,Weather Warning,L0255,Medium,Automated alert: Congestion Alert issued.,2026-02-10 00:52:34.258920
+N0356,Congestion Alert,L0111,High,Automated alert: Equipment Failure issued.,2026-02-11 01:36:38.258932
+N0357,Congestion Alert,L0402,Low,Automated alert: Equipment Failure issued.,2026-02-11 03:02:23.258945
+N0358,Security Notice,L0260,Low,Automated alert: Security Notice issued.,2026-02-09 21:22:12.258958
+N0359,Equipment Failure,L0098,High,Automated alert: Security Notice issued.,2026-02-09 04:26:53.258970
+N0360,Berth Closure,L0159,High,Automated alert: Equipment Failure issued.,2026-02-11 02:37:42.258982
+N0361,Berth Closure,L0347,Medium,Automated alert: Equipment Failure issued.,2026-02-09 05:01:17.258995
+N0362,Weather Warning,L0236,Critical,Automated alert: Hazardous Cargo Warning issued.,2026-02-09 19:44:49.259008
+N0363,Weather Warning,L0003,High,Automated alert: Weather Warning issued.,2026-02-09 07:45:12.259020
+N0364,Berth Closure,L0447,Low,Automated alert: Congestion Alert issued.,2026-02-09 23:47:10.259033
+N0365,Weather Warning,L0053,High,Automated alert: Weather Warning issued.,2026-02-09 15:43:35.259045
+N0366,Congestion Alert,L0328,Medium,Automated alert: Congestion Alert issued.,2026-02-10 19:10:44.259057
+N0367,Equipment Failure,L0147,High,Automated alert: Berth Closure issued.,2026-02-10 10:32:35.259069
+N0368,Security Notice,L0344,Low,Automated alert: Congestion Alert issued.,2026-02-10 22:54:35.259082
+N0369,Equipment Failure,L0141,Low,Automated alert: Weather Warning issued.,2026-02-09 12:25:17.259094
+N0370,Berth Closure,L0264,Low,Automated alert: Equipment Failure issued.,2026-02-09 18:16:38.259106
+N0371,Congestion Alert,L0282,High,Automated alert: Congestion Alert issued.,2026-02-10 23:28:30.259119
+N0372,Hazardous Cargo Warning,L0412,High,Automated alert: Berth Closure issued.,2026-02-10 15:57:19.259131
+N0373,Equipment Failure,L0037,High,Automated alert: Berth Closure issued.,2026-02-10 09:07:00.259146
+N0374,Berth Closure,L0228,Low,Automated alert: Equipment Failure issued.,2026-02-11 07:40:18.259168
+N0375,Security Notice,L0463,Low,Automated alert: Weather Warning issued.,2026-02-10 05:51:00.259193
+N0376,Weather Warning,L0045,Critical,Automated alert: Security Notice issued.,2026-02-10 20:44:59.259216
+N0377,Hazardous Cargo Warning,L0306,Critical,Automated alert: Berth Closure issued.,2026-02-10 07:53:14.259248
+N0378,Congestion Alert,L0171,Medium,Automated alert: Hazardous Cargo Warning issued.,2026-02-09 02:33:28.259262
+N0379,Hazardous Cargo Warning,L0415,Low,Automated alert: Security Notice issued.,2026-02-09 16:26:16.259276
+N0380,Equipment Failure,L0048,Critical,Automated alert: Weather Warning issued.,2026-02-10 00:36:30.259289
+N0381,Congestion Alert,L0351,Critical,Automated alert: Security Notice issued.,2026-02-10 16:54:41.259302
+N0382,Equipment Failure,L0074,High,Automated alert: Congestion Alert issued.,2026-02-10 05:13:58.259315
+N0383,Equipment Failure,L0359,High,Automated alert: Congestion Alert issued.,2026-02-10 00:46:33.259328
+N0384,Security Notice,L0016,Low,Automated alert: Security Notice issued.,2026-02-11 01:33:46.259343
+N0385,Congestion Alert,L0246,Critical,Automated alert: Equipment Failure issued.,2026-02-10 13:13:46.259362
+N0386,Congestion Alert,L0310,Medium,Automated alert: Berth Closure issued.,2026-02-11 02:17:15.259375
+N0387,Security Notice,L0419,Low,Automated alert: Congestion Alert issued.,2026-02-09 17:17:07.259388
+N0388,Hazardous Cargo Warning,L0037,High,Automated alert: Berth Closure issued.,2026-02-10 00:12:57.259400
+N0389,Security Notice,L0303,Critical,Automated alert: Equipment Failure issued.,2026-02-09 12:34:20.259413
+N0390,Equipment Failure,L0281,Medium,Automated alert: Security Notice issued.,2026-02-10 05:50:03.259425
+N0391,Weather Warning,L0175,Medium,Automated alert: Hazardous Cargo Warning issued.,2026-02-09 14:44:59.259438
+N0392,Security Notice,L0402,Critical,Automated alert: Berth Closure issued.,2026-02-10 08:51:53.259450
+N0393,Berth Closure,L0356,Medium,Automated alert: Equipment Failure issued.,2026-02-09 09:31:59.259463
+N0394,Hazardous Cargo Warning,L0040,Critical,Automated alert: Weather Warning issued.,2026-02-09 14:39:46.259475
+N0395,Berth Closure,L0238,High,Automated alert: Berth Closure issued.,2026-02-11 02:40:19.259488
+N0396,Security Notice,L0091,High,Automated alert: Security Notice issued.,2026-02-11 04:42:51.259500
+N0397,Berth Closure,L0056,Critical,Automated alert: Congestion Alert issued.,2026-02-09 21:47:22.259513
+N0398,Hazardous Cargo Warning,L0339,Low,Automated alert: Weather Warning issued.,2026-02-10 17:56:13.259525
+N0399,Equipment Failure,L0455,Low,Automated alert: Equipment Failure issued.,2026-02-09 09:39:32.259538
+N0400,Equipment Failure,L0232,High,Automated alert: Security Notice issued.,2026-02-09 12:57:30.259550
+N0401,Berth Closure,L0229,Medium,Automated alert: Equipment Failure issued.,2026-02-09 08:09:23.259562
+N0402,Congestion Alert,L0154,High,Automated alert: Security Notice issued.,2026-02-09 05:30:54.259575
+N0403,Congestion Alert,L0046,Low,Automated alert: Berth Closure issued.,2026-02-09 20:36:54.259588
+N0404,Security Notice,L0434,Medium,Automated alert: Congestion Alert issued.,2026-02-11 05:14:18.259601
+N0405,Congestion Alert,L0462,Low,Automated alert: Weather Warning issued.,2026-02-09 06:33:58.259614
+N0406,Berth Closure,L0421,High,Automated alert: Weather Warning issued.,2026-02-10 13:13:59.259626
+N0407,Weather Warning,L0121,Critical,Automated alert: Hazardous Cargo Warning issued.,2026-02-09 14:48:31.259639
+N0408,Security Notice,L0321,High,Automated alert: Hazardous Cargo Warning issued.,2026-02-10 05:54:32.259652
+N0409,Security Notice,L0196,Critical,Automated alert: Berth Closure issued.,2026-02-10 18:24:09.259664
+N0410,Hazardous Cargo Warning,L0089,Critical,Automated alert: Equipment Failure issued.,2026-02-10 20:04:36.259677
+N0411,Berth Closure,L0197,High,Automated alert: Security Notice issued.,2026-02-10 22:32:58.259689
+N0412,Congestion Alert,L0447,Medium,Automated alert: Equipment Failure issued.,2026-02-11 08:56:17.259702
+N0413,Weather Warning,L0332,Low,Automated alert: Equipment Failure issued.,2026-02-09 05:15:24.259714
+N0414,Security Notice,L0337,Critical,Automated alert: Equipment Failure issued.,2026-02-11 03:37:04.259727
+N0415,Equipment Failure,L0329,Critical,Automated alert: Security Notice issued.,2026-02-09 07:08:46.259740
+N0416,Berth Closure,L0477,Critical,Automated alert: Berth Closure issued.,2026-02-10 20:41:26.259753
+N0417,Security Notice,L0261,Critical,Automated alert: Berth Closure issued.,2026-02-10 01:00:42.259765
+N0418,Security Notice,L0182,Medium,Automated alert: Equipment Failure issued.,2026-02-10 02:51:07.259778
+N0419,Berth Closure,L0004,Critical,Automated alert: Hazardous Cargo Warning issued.,2026-02-10 16:32:36.259791
+N0420,Hazardous Cargo Warning,L0257,High,Automated alert: Security Notice issued.,2026-02-09 18:00:44.259803
+N0421,Berth Closure,L0188,Low,Automated alert: Weather Warning issued.,2026-02-09 16:24:41.259816
+N0422,Security Notice,L0361,High,Automated alert: Weather Warning issued.,2026-02-09 15:31:45.259829
+N0423,Security Notice,L0493,Low,Automated alert: Equipment Failure issued.,2026-02-09 04:36:45.259841
+N0424,Hazardous Cargo Warning,L0270,High,Automated alert: Security Notice issued.,2026-02-09 20:08:23.259854
+N0425,Weather Warning,L0268,Low,Automated alert: Equipment Failure issued.,2026-02-09 23:22:48.259866
+N0426,Hazardous Cargo Warning,L0380,Low,Automated alert: Hazardous Cargo Warning issued.,2026-02-09 11:38:21.259879
+N0427,Berth Closure,L0409,High,Automated alert: Berth Closure issued.,2026-02-11 05:56:24.259892
+N0428,Congestion Alert,L0274,Low,Automated alert: Security Notice issued.,2026-02-10 00:43:16.259904
+N0429,Berth Closure,L0464,Critical,Automated alert: Berth Closure issued.,2026-02-09 04:20:53.259917
+N0430,Congestion Alert,L0216,High,Automated alert: Congestion Alert issued.,2026-02-10 12:43:24.259930
+N0431,Equipment Failure,L0019,High,Automated alert: Hazardous Cargo Warning issued.,2026-02-09 16:44:06.259943
+N0432,Congestion Alert,L0032,Critical,Automated alert: Berth Closure issued.,2026-02-10 21:28:15.259956
+N0433,Berth Closure,L0027,High,Automated alert: Hazardous Cargo Warning issued.,2026-02-09 12:19:18.259969
+N0434,Weather Warning,L0147,Critical,Automated alert: Weather Warning issued.,2026-02-11 00:32:53.259982
+N0435,Berth Closure,L0040,High,Automated alert: Congestion Alert issued.,2026-02-11 00:07:54.259995
+N0436,Berth Closure,L0144,High,Automated alert: Congestion Alert issued.,2026-02-11 08:44:55.260008
+N0437,Hazardous Cargo Warning,L0058,Medium,Automated alert: Berth Closure issued.,2026-02-09 03:58:23.260020
+N0438,Equipment Failure,L0338,Critical,Automated alert: Congestion Alert issued.,2026-02-10 21:00:39.260033
+N0439,Congestion Alert,L0401,Medium,Automated alert: Security Notice issued.,2026-02-10 20:37:00.260045
+N0440,Berth Closure,L0442,Low,Automated alert: Congestion Alert issued.,2026-02-11 03:38:13.260058
+N0441,Equipment Failure,L0305,Medium,Automated alert: Security Notice issued.,2026-02-09 02:58:07.260070
+N0442,Security Notice,L0395,Critical,Automated alert: Equipment Failure issued.,2026-02-09 09:40:29.260083
+N0443,Security Notice,L0372,Medium,Automated alert: Equipment Failure issued.,2026-02-09 15:42:43.260095
+N0444,Hazardous Cargo Warning,L0432,High,Automated alert: Weather Warning issued.,2026-02-09 11:00:54.260108
+N0445,Congestion Alert,L0387,Low,Automated alert: Weather Warning issued.,2026-02-10 21:34:43.260121
+N0446,Security Notice,L0205,Critical,Automated alert: Congestion Alert issued.,2026-02-09 23:06:08.260133
+N0447,Hazardous Cargo Warning,L0486,Medium,Automated alert: Security Notice issued.,2026-02-09 08:00:40.260146
+N0448,Hazardous Cargo Warning,L0200,Critical,Automated alert: Congestion Alert issued.,2026-02-10 23:12:48.260158
+N0449,Berth Closure,L0446,Critical,Automated alert: Weather Warning issued.,2026-02-10 12:45:13.260170
+N0450,Security Notice,L0196,High,Automated alert: Berth Closure issued.,2026-02-09 08:03:27.260182
+N0451,Weather Warning,L0050,High,Automated alert: Security Notice issued.,2026-02-09 13:19:43.260196
+N0452,Hazardous Cargo Warning,L0440,High,Automated alert: Congestion Alert issued.,2026-02-10 14:05:54.260208
+N0453,Congestion Alert,L0411,Low,Automated alert: Congestion Alert issued.,2026-02-09 10:08:06.260220
+N0454,Berth Closure,L0201,Critical,Automated alert: Hazardous Cargo Warning issued.,2026-02-09 03:14:09.260233
+N0455,Equipment Failure,L0376,Medium,Automated alert: Berth Closure issued.,2026-02-10 09:12:49.260245
+N0456,Hazardous Cargo Warning,L0354,Medium,Automated alert: Congestion Alert issued.,2026-02-09 17:54:25.260258
+N0457,Weather Warning,L0345,Low,Automated alert: Weather Warning issued.,2026-02-11 08:54:43.260270
+N0458,Security Notice,L0051,Low,Automated alert: Hazardous Cargo Warning issued.,2026-02-10 01:18:37.260284
+N0459,Congestion Alert,L0113,High,Automated alert: Congestion Alert issued.,2026-02-10 19:43:24.260297
+N0460,Weather Warning,L0013,Low,Automated alert: Weather Warning issued.,2026-02-09 14:31:09.260310
+N0461,Hazardous Cargo Warning,L0458,Medium,Automated alert: Berth Closure issued.,2026-02-09 11:19:09.260323
+N0462,Weather Warning,L0363,Low,Automated alert: Weather Warning issued.,2026-02-09 13:45:04.260336
+N0463,Equipment Failure,L0193,Medium,Automated alert: Weather Warning issued.,2026-02-09 07:07:37.260348
+N0464,Equipment Failure,L0130,High,Automated alert: Security Notice issued.,2026-02-09 09:41:18.260361
+N0465,Weather Warning,L0328,Critical,Automated alert: Congestion Alert issued.,2026-02-10 02:41:27.260374
+N0466,Hazardous Cargo Warning,L0463,High,Automated alert: Congestion Alert issued.,2026-02-10 21:59:20.260386
+N0467,Weather Warning,L0142,Low,Automated alert: Security Notice issued.,2026-02-10 05:29:12.260399
+N0468,Congestion Alert,L0031,High,Automated alert: Congestion Alert issued.,2026-02-10 20:49:35.260411
+N0469,Security Notice,L0036,Critical,Automated alert: Equipment Failure issued.,2026-02-09 13:20:32.260423
+N0470,Security Notice,L0092,Critical,Automated alert: Weather Warning issued.,2026-02-10 23:18:23.260436
+N0471,Berth Closure,L0394,Critical,Automated alert: Equipment Failure issued.,2026-02-09 13:04:31.260449
+N0472,Hazardous Cargo Warning,L0055,Critical,Automated alert: Hazardous Cargo Warning issued.,2026-02-10 14:55:24.260462
+N0473,Weather Warning,L0018,Low,Automated alert: Weather Warning issued.,2026-02-09 16:10:44.260475
+N0474,Hazardous Cargo Warning,L0129,Critical,Automated alert: Weather Warning issued.,2026-02-09 21:32:29.260487
+N0475,Equipment Failure,L0335,Low,Automated alert: Weather Warning issued.,2026-02-09 09:23:16.260500
+N0476,Security Notice,L0137,Medium,Automated alert: Hazardous Cargo Warning issued.,2026-02-10 09:45:55.260512
+N0477,Security Notice,L0295,Low,Automated alert: Berth Closure issued.,2026-02-09 06:15:24.260525
+N0478,Security Notice,L0245,Critical,Automated alert: Security Notice issued.,2026-02-09 04:47:19.260537
+N0479,Weather Warning,L0277,Medium,Automated alert: Weather Warning issued.,2026-02-10 05:47:24.260550
+N0480,Hazardous Cargo Warning,L0419,Critical,Automated alert: Weather Warning issued.,2026-02-09 16:28:39.260562
+N0481,Berth Closure,L0479,High,Automated alert: Congestion Alert issued.,2026-02-09 08:07:59.260574
+N0482,Congestion Alert,L0206,Low,Automated alert: Hazardous Cargo Warning issued.,2026-02-09 10:39:52.260587
+N0483,Weather Warning,L0188,High,Automated alert: Weather Warning issued.,2026-02-10 00:18:47.260599
+N0484,Congestion Alert,L0332,Medium,Automated alert: Equipment Failure issued.,2026-02-09 17:24:26.260612
+N0485,Weather Warning,L0496,Critical,Automated alert: Hazardous Cargo Warning issued.,2026-02-10 19:52:28.260624
+N0486,Congestion Alert,L0357,Critical,Automated alert: Weather Warning issued.,2026-02-09 11:51:46.260636
+N0487,Hazardous Cargo Warning,L0184,Critical,Automated alert: Weather Warning issued.,2026-02-09 11:42:16.260648
+N0488,Security Notice,L0377,Medium,Automated alert: Equipment Failure issued.,2026-02-11 07:11:00.260661
+N0489,Equipment Failure,L0013,Medium,Automated alert: Security Notice issued.,2026-02-10 05:28:25.260673
+N0490,Weather Warning,L0406,High,Automated alert: Security Notice issued.,2026-02-09 18:54:09.260686
+N0491,Security Notice,L0495,Low,Automated alert: Weather Warning issued.,2026-02-10 09:04:37.260698
+N0492,Weather Warning,L0173,Low,Automated alert: Security Notice issued.,2026-02-11 01:10:36.260710
+N0493,Equipment Failure,L0414,Critical,Automated alert: Hazardous Cargo Warning issued.,2026-02-09 18:42:42.260723
+N0494,Equipment Failure,L0380,Medium,Automated alert: Weather Warning issued.,2026-02-11 07:05:51.260735
+N0495,Hazardous Cargo Warning,L0073,Critical,Automated alert: Hazardous Cargo Warning issued.,2026-02-11 08:23:41.260748
+N0496,Security Notice,L0465,Low,Automated alert: Equipment Failure issued.,2026-02-09 06:42:58.260760
+N0497,Hazardous Cargo Warning,L0067,Low,Automated alert: Equipment Failure issued.,2026-02-09 11:42:50.260772
+N0498,Weather Warning,L0464,High,Automated alert: Weather Warning issued.,2026-02-10 00:33:52.260785
+N0499,Berth Closure,L0088,Low,Automated alert: Weather Warning issued.,2026-02-11 01:28:07.260797
+N0500,Security Notice,L0305,Medium,Automated alert: Weather Warning issued.,2026-02-10 19:01:37.260810

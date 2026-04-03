@@ -1,0 +1,501 @@
+location_id,name,type,status,capacity_tonnes
+L0001,Berth 41 Area A,Berth,Under Maintenance,10012
+L0002,Berth 16 Area B,Storage Yard,Under Maintenance,4358
+L0003,Berth 44 Area A,Maintenance Area,Inactive,2041
+L0004,Berth 2 Area A,Storage Yard,Active,17559
+L0005,Berth 39 Area A,Maintenance Area,Active,18856
+L0006,Berth 27 Area B,Customs Zone,Under Maintenance,10115
+L0007,Berth 1 Area B,Customs Zone,Inactive,10105
+L0008,Berth 10 Area B,Fuel Dock,Active,4039
+L0009,Berth 25 Area A,Fuel Dock,Inactive,9667
+L0010,Berth 3 Area D,Maintenance Area,Active,13403
+L0011,Berth 6 Area C,Maintenance Area,Inactive,19918
+L0012,Berth 13 Area A,Berth,Under Maintenance,8467
+L0013,Berth 50 Area C,Berth,Active,4309
+L0014,Berth 25 Area C,Customs Zone,Under Maintenance,12954
+L0015,Berth 11 Area C,Fuel Dock,Active,9748
+L0016,Berth 45 Area A,Maintenance Area,Under Maintenance,6607
+L0017,Berth 35 Area B,Storage Yard,Inactive,13433
+L0018,Berth 18 Area B,Fuel Dock,Active,8505
+L0019,Berth 3 Area C,Customs Zone,Inactive,3168
+L0020,Berth 14 Area C,Storage Yard,Under Maintenance,17358
+L0021,Berth 26 Area D,Storage Yard,Inactive,5575
+L0022,Berth 16 Area C,Maintenance Area,Inactive,14087
+L0023,Berth 24 Area B,Storage Yard,Under Maintenance,17171
+L0024,Berth 6 Area A,Berth,Active,6242
+L0025,Berth 44 Area D,Maintenance Area,Active,13608
+L0026,Berth 25 Area D,Maintenance Area,Inactive,19128
+L0027,Berth 1 Area A,Maintenance Area,Inactive,12146
+L0028,Berth 8 Area C,Customs Zone,Active,15867
+L0029,Berth 1 Area C,Maintenance Area,Active,17635
+L0030,Berth 7 Area C,Maintenance Area,Under Maintenance,7517
+L0031,Berth 10 Area C,Storage Yard,Under Maintenance,18378
+L0032,Berth 1 Area C,Customs Zone,Active,4665
+L0033,Berth 24 Area C,Storage Yard,Active,8892
+L0034,Berth 37 Area A,Berth,Under Maintenance,16924
+L0035,Berth 5 Area B,Storage Yard,Under Maintenance,16574
+L0036,Berth 36 Area B,Fuel Dock,Under Maintenance,14865
+L0037,Berth 14 Area B,Fuel Dock,Inactive,13236
+L0038,Berth 29 Area D,Berth,Active,8362
+L0039,Berth 5 Area C,Berth,Under Maintenance,19150
+L0040,Berth 15 Area B,Berth,Active,2929
+L0041,Berth 15 Area A,Berth,Inactive,3321
+L0042,Berth 33 Area B,Fuel Dock,Under Maintenance,16906
+L0043,Berth 14 Area B,Maintenance Area,Under Maintenance,16488
+L0044,Berth 16 Area D,Customs Zone,Active,4090
+L0045,Berth 7 Area D,Fuel Dock,Inactive,14470
+L0046,Berth 30 Area A,Berth,Active,14193
+L0047,Berth 47 Area C,Berth,Active,7278
+L0048,Berth 13 Area D,Storage Yard,Inactive,7012
+L0049,Berth 18 Area D,Storage Yard,Active,15520
+L0050,Berth 36 Area A,Berth,Under Maintenance,18713
+L0051,Berth 1 Area A,Storage Yard,Active,14317
+L0052,Berth 32 Area D,Storage Yard,Inactive,2921
+L0053,Berth 11 Area D,Berth,Inactive,9690
+L0054,Berth 30 Area C,Customs Zone,Under Maintenance,19211
+L0055,Berth 43 Area D,Storage Yard,Active,10722
+L0056,Berth 14 Area A,Maintenance Area,Under Maintenance,18766
+L0057,Berth 4 Area C,Berth,Active,16623
+L0058,Berth 33 Area B,Berth,Under Maintenance,3625
+L0059,Berth 12 Area A,Maintenance Area,Active,8707
+L0060,Berth 26 Area A,Maintenance Area,Active,19970
+L0061,Berth 39 Area A,Maintenance Area,Active,14737
+L0062,Berth 43 Area C,Fuel Dock,Active,11295
+L0063,Berth 16 Area C,Customs Zone,Active,10830
+L0064,Berth 30 Area C,Berth,Active,16017
+L0065,Berth 40 Area A,Berth,Under Maintenance,7984
+L0066,Berth 33 Area C,Storage Yard,Inactive,3254
+L0067,Berth 16 Area C,Fuel Dock,Active,15358
+L0068,Berth 35 Area C,Maintenance Area,Under Maintenance,18332
+L0069,Berth 1 Area C,Berth,Active,9666
+L0070,Berth 8 Area A,Maintenance Area,Active,9924
+L0071,Berth 19 Area B,Fuel Dock,Active,9650
+L0072,Berth 33 Area D,Fuel Dock,Active,4024
+L0073,Berth 41 Area D,Fuel Dock,Active,1116
+L0074,Berth 22 Area B,Fuel Dock,Active,15478
+L0075,Berth 36 Area D,Maintenance Area,Active,4665
+L0076,Berth 5 Area B,Maintenance Area,Active,13098
+L0077,Berth 38 Area B,Customs Zone,Active,2370
+L0078,Berth 20 Area C,Berth,Inactive,7883
+L0079,Berth 44 Area B,Berth,Inactive,19346
+L0080,Berth 27 Area B,Storage Yard,Active,6801
+L0081,Berth 27 Area A,Storage Yard,Under Maintenance,11885
+L0082,Berth 27 Area B,Fuel Dock,Active,4542
+L0083,Berth 25 Area A,Customs Zone,Active,7539
+L0084,Berth 30 Area C,Fuel Dock,Active,8304
+L0085,Berth 2 Area B,Customs Zone,Inactive,10129
+L0086,Berth 5 Area C,Fuel Dock,Under Maintenance,17692
+L0087,Berth 26 Area C,Berth,Active,9559
+L0088,Berth 12 Area C,Berth,Active,15239
+L0089,Berth 23 Area C,Customs Zone,Under Maintenance,17758
+L0090,Berth 8 Area D,Maintenance Area,Active,9346
+L0091,Berth 3 Area D,Berth,Under Maintenance,18643
+L0092,Berth 44 Area B,Fuel Dock,Inactive,3292
+L0093,Berth 43 Area C,Maintenance Area,Inactive,5083
+L0094,Berth 47 Area C,Maintenance Area,Inactive,14382
+L0095,Berth 21 Area D,Fuel Dock,Under Maintenance,5170
+L0096,Berth 13 Area D,Customs Zone,Under Maintenance,6702
+L0097,Berth 40 Area C,Customs Zone,Under Maintenance,1013
+L0098,Berth 20 Area C,Storage Yard,Inactive,11559
+L0099,Berth 30 Area D,Customs Zone,Under Maintenance,8002
+L0100,Berth 33 Area D,Storage Yard,Under Maintenance,3778
+L0101,Berth 19 Area C,Berth,Active,11171
+L0102,Berth 15 Area B,Storage Yard,Active,2514
+L0103,Berth 16 Area D,Maintenance Area,Active,15923
+L0104,Berth 27 Area B,Customs Zone,Inactive,14095
+L0105,Berth 16 Area B,Berth,Active,14931
+L0106,Berth 15 Area B,Maintenance Area,Inactive,2645
+L0107,Berth 36 Area B,Berth,Inactive,5369
+L0108,Berth 30 Area C,Customs Zone,Under Maintenance,17540
+L0109,Berth 28 Area D,Storage Yard,Under Maintenance,16554
+L0110,Berth 29 Area C,Storage Yard,Under Maintenance,10086
+L0111,Berth 50 Area D,Storage Yard,Inactive,15413
+L0112,Berth 5 Area C,Storage Yard,Inactive,12005
+L0113,Berth 21 Area A,Storage Yard,Active,8577
+L0114,Berth 25 Area B,Storage Yard,Active,14594
+L0115,Berth 27 Area C,Maintenance Area,Inactive,14624
+L0116,Berth 4 Area B,Customs Zone,Inactive,1640
+L0117,Berth 49 Area D,Customs Zone,Active,12526
+L0118,Berth 20 Area D,Customs Zone,Under Maintenance,18895
+L0119,Berth 39 Area B,Customs Zone,Active,9943
+L0120,Berth 28 Area D,Berth,Inactive,12014
+L0121,Berth 43 Area D,Storage Yard,Inactive,5182
+L0122,Berth 40 Area A,Customs Zone,Under Maintenance,19493
+L0123,Berth 43 Area A,Berth,Under Maintenance,15044
+L0124,Berth 9 Area D,Storage Yard,Active,9524
+L0125,Berth 25 Area C,Storage Yard,Inactive,11710
+L0126,Berth 22 Area D,Fuel Dock,Inactive,9266
+L0127,Berth 6 Area D,Berth,Under Maintenance,18675
+L0128,Berth 4 Area C,Storage Yard,Under Maintenance,3248
+L0129,Berth 50 Area A,Berth,Active,7532
+L0130,Berth 2 Area B,Storage Yard,Active,16517
+L0131,Berth 43 Area A,Maintenance Area,Active,16238
+L0132,Berth 45 Area C,Fuel Dock,Active,4753
+L0133,Berth 50 Area B,Fuel Dock,Active,19962
+L0134,Berth 2 Area C,Maintenance Area,Under Maintenance,13298
+L0135,Berth 26 Area B,Berth,Under Maintenance,8957
+L0136,Berth 7 Area C,Maintenance Area,Active,19544
+L0137,Berth 3 Area C,Maintenance Area,Inactive,13142
+L0138,Berth 5 Area C,Berth,Inactive,17062
+L0139,Berth 7 Area D,Fuel Dock,Under Maintenance,16064
+L0140,Berth 46 Area B,Customs Zone,Active,18096
+L0141,Berth 42 Area C,Maintenance Area,Under Maintenance,16843
+L0142,Berth 30 Area D,Maintenance Area,Inactive,11561
+L0143,Berth 16 Area A,Fuel Dock,Inactive,8990
+L0144,Berth 49 Area D,Maintenance Area,Under Maintenance,13418
+L0145,Berth 22 Area A,Customs Zone,Inactive,6958
+L0146,Berth 32 Area B,Fuel Dock,Inactive,12152
+L0147,Berth 18 Area C,Maintenance Area,Active,17928
+L0148,Berth 13 Area A,Storage Yard,Under Maintenance,14317
+L0149,Berth 32 Area B,Customs Zone,Under Maintenance,17083
+L0150,Berth 29 Area A,Berth,Inactive,8261
+L0151,Berth 26 Area B,Fuel Dock,Under Maintenance,13092
+L0152,Berth 31 Area C,Customs Zone,Under Maintenance,19035
+L0153,Berth 22 Area C,Customs Zone,Inactive,11047
+L0154,Berth 17 Area B,Berth,Under Maintenance,7310
+L0155,Berth 21 Area A,Maintenance Area,Under Maintenance,7066
+L0156,Berth 13 Area B,Customs Zone,Inactive,18191
+L0157,Berth 39 Area C,Berth,Active,10707
+L0158,Berth 15 Area C,Storage Yard,Inactive,1463
+L0159,Berth 46 Area B,Fuel Dock,Active,2786
+L0160,Berth 36 Area C,Storage Yard,Under Maintenance,17085
+L0161,Berth 7 Area A,Maintenance Area,Inactive,16381
+L0162,Berth 31 Area D,Fuel Dock,Active,2683
+L0163,Berth 17 Area D,Berth,Active,14130
+L0164,Berth 32 Area A,Maintenance Area,Under Maintenance,2756
+L0165,Berth 10 Area B,Maintenance Area,Inactive,3791
+L0166,Berth 16 Area A,Maintenance Area,Inactive,8395
+L0167,Berth 50 Area D,Customs Zone,Inactive,10743
+L0168,Berth 38 Area D,Fuel Dock,Under Maintenance,2973
+L0169,Berth 40 Area A,Storage Yard,Under Maintenance,7914
+L0170,Berth 17 Area A,Storage Yard,Active,6695
+L0171,Berth 36 Area A,Storage Yard,Active,14386
+L0172,Berth 29 Area D,Fuel Dock,Active,8585
+L0173,Berth 19 Area C,Customs Zone,Active,8648
+L0174,Berth 17 Area B,Customs Zone,Active,18844
+L0175,Berth 15 Area B,Fuel Dock,Active,3339
+L0176,Berth 4 Area B,Fuel Dock,Under Maintenance,19651
+L0177,Berth 19 Area D,Berth,Inactive,10964
+L0178,Berth 45 Area D,Fuel Dock,Under Maintenance,18694
+L0179,Berth 32 Area D,Berth,Under Maintenance,2306
+L0180,Berth 28 Area C,Maintenance Area,Inactive,1847
+L0181,Berth 6 Area B,Maintenance Area,Under Maintenance,1679
+L0182,Berth 49 Area C,Maintenance Area,Active,6740
+L0183,Berth 31 Area D,Fuel Dock,Active,15283
+L0184,Berth 41 Area D,Berth,Inactive,12401
+L0185,Berth 27 Area C,Fuel Dock,Under Maintenance,4427
+L0186,Berth 11 Area C,Customs Zone,Under Maintenance,17235
+L0187,Berth 19 Area D,Maintenance Area,Active,15903
+L0188,Berth 6 Area C,Fuel Dock,Inactive,4798
+L0189,Berth 50 Area D,Maintenance Area,Active,18779
+L0190,Berth 30 Area D,Berth,Active,17988
+L0191,Berth 24 Area D,Customs Zone,Active,7670
+L0192,Berth 18 Area B,Fuel Dock,Inactive,16883
+L0193,Berth 8 Area A,Maintenance Area,Active,6189
+L0194,Berth 20 Area A,Maintenance Area,Inactive,4054
+L0195,Berth 15 Area A,Customs Zone,Active,6045
+L0196,Berth 32 Area C,Maintenance Area,Under Maintenance,9959
+L0197,Berth 27 Area D,Customs Zone,Active,15967
+L0198,Berth 36 Area B,Customs Zone,Active,17654
+L0199,Berth 48 Area B,Berth,Inactive,14596
+L0200,Berth 22 Area C,Berth,Inactive,10783
+L0201,Berth 38 Area D,Storage Yard,Inactive,18648
+L0202,Berth 31 Area C,Fuel Dock,Under Maintenance,18807
+L0203,Berth 25 Area D,Fuel Dock,Active,8825
+L0204,Berth 37 Area D,Storage Yard,Inactive,2430
+L0205,Berth 21 Area D,Customs Zone,Inactive,5984
+L0206,Berth 32 Area A,Storage Yard,Under Maintenance,11878
+L0207,Berth 7 Area D,Berth,Under Maintenance,15972
+L0208,Berth 1 Area B,Customs Zone,Under Maintenance,6058
+L0209,Berth 5 Area D,Fuel Dock,Inactive,14024
+L0210,Berth 42 Area A,Fuel Dock,Under Maintenance,18485
+L0211,Berth 25 Area C,Customs Zone,Under Maintenance,2176
+L0212,Berth 40 Area A,Storage Yard,Under Maintenance,10416
+L0213,Berth 15 Area A,Customs Zone,Active,4293
+L0214,Berth 29 Area B,Fuel Dock,Active,2507
+L0215,Berth 21 Area A,Fuel Dock,Inactive,13282
+L0216,Berth 28 Area B,Storage Yard,Under Maintenance,14502
+L0217,Berth 37 Area B,Storage Yard,Active,3587
+L0218,Berth 40 Area D,Maintenance Area,Under Maintenance,8891
+L0219,Berth 32 Area B,Storage Yard,Inactive,9322
+L0220,Berth 30 Area C,Berth,Inactive,10425
+L0221,Berth 44 Area B,Berth,Inactive,12323
+L0222,Berth 38 Area C,Customs Zone,Under Maintenance,9195
+L0223,Berth 30 Area C,Storage Yard,Inactive,16833
+L0224,Berth 7 Area B,Customs Zone,Under Maintenance,12762
+L0225,Berth 37 Area C,Fuel Dock,Active,13969
+L0226,Berth 18 Area A,Maintenance Area,Under Maintenance,2607
+L0227,Berth 39 Area D,Fuel Dock,Active,12544
+L0228,Berth 15 Area B,Maintenance Area,Inactive,5481
+L0229,Berth 41 Area A,Berth,Inactive,15444
+L0230,Berth 3 Area C,Storage Yard,Active,10670
+L0231,Berth 21 Area D,Storage Yard,Active,5330
+L0232,Berth 35 Area C,Maintenance Area,Under Maintenance,9930
+L0233,Berth 11 Area C,Customs Zone,Inactive,12099
+L0234,Berth 8 Area D,Berth,Active,8392
+L0235,Berth 44 Area D,Maintenance Area,Inactive,3959
+L0236,Berth 26 Area A,Fuel Dock,Under Maintenance,5049
+L0237,Berth 30 Area C,Fuel Dock,Under Maintenance,13485
+L0238,Berth 41 Area C,Berth,Under Maintenance,8661
+L0239,Berth 31 Area A,Maintenance Area,Under Maintenance,11748
+L0240,Berth 40 Area B,Berth,Under Maintenance,16213
+L0241,Berth 45 Area C,Customs Zone,Active,5580
+L0242,Berth 3 Area A,Fuel Dock,Inactive,4805
+L0243,Berth 7 Area B,Maintenance Area,Active,13735
+L0244,Berth 30 Area C,Maintenance Area,Inactive,6063
+L0245,Berth 27 Area A,Customs Zone,Under Maintenance,14373
+L0246,Berth 18 Area A,Fuel Dock,Active,15528
+L0247,Berth 29 Area B,Fuel Dock,Active,13036
+L0248,Berth 35 Area C,Berth,Inactive,10040
+L0249,Berth 13 Area A,Customs Zone,Active,7950
+L0250,Berth 42 Area A,Berth,Inactive,8981
+L0251,Berth 9 Area B,Berth,Under Maintenance,7788
+L0252,Berth 38 Area B,Storage Yard,Inactive,5835
+L0253,Berth 39 Area A,Fuel Dock,Active,5259
+L0254,Berth 35 Area C,Storage Yard,Active,1844
+L0255,Berth 9 Area A,Fuel Dock,Active,11609
+L0256,Berth 2 Area B,Fuel Dock,Active,5153
+L0257,Berth 48 Area D,Maintenance Area,Active,3082
+L0258,Berth 31 Area D,Fuel Dock,Under Maintenance,4573
+L0259,Berth 29 Area B,Maintenance Area,Active,18086
+L0260,Berth 20 Area D,Berth,Active,16695
+L0261,Berth 26 Area D,Berth,Inactive,15534
+L0262,Berth 5 Area A,Fuel Dock,Under Maintenance,5860
+L0263,Berth 5 Area B,Fuel Dock,Under Maintenance,18968
+L0264,Berth 46 Area C,Customs Zone,Under Maintenance,18385
+L0265,Berth 19 Area D,Maintenance Area,Under Maintenance,15096
+L0266,Berth 7 Area A,Maintenance Area,Under Maintenance,8045
+L0267,Berth 28 Area D,Storage Yard,Inactive,12106
+L0268,Berth 30 Area D,Customs Zone,Under Maintenance,4115
+L0269,Berth 21 Area D,Fuel Dock,Under Maintenance,9352
+L0270,Berth 24 Area B,Customs Zone,Active,3989
+L0271,Berth 6 Area A,Customs Zone,Active,13210
+L0272,Berth 9 Area A,Maintenance Area,Under Maintenance,19405
+L0273,Berth 22 Area A,Customs Zone,Inactive,14858
+L0274,Berth 47 Area A,Fuel Dock,Under Maintenance,11238
+L0275,Berth 23 Area A,Maintenance Area,Under Maintenance,7971
+L0276,Berth 10 Area D,Storage Yard,Active,12472
+L0277,Berth 36 Area C,Berth,Inactive,19812
+L0278,Berth 15 Area D,Maintenance Area,Under Maintenance,19243
+L0279,Berth 2 Area C,Berth,Active,9954
+L0280,Berth 45 Area C,Fuel Dock,Inactive,1200
+L0281,Berth 12 Area B,Maintenance Area,Under Maintenance,14132
+L0282,Berth 5 Area B,Berth,Active,18382
+L0283,Berth 14 Area D,Customs Zone,Inactive,12170
+L0284,Berth 11 Area C,Fuel Dock,Under Maintenance,11629
+L0285,Berth 50 Area A,Berth,Active,6158
+L0286,Berth 49 Area A,Berth,Inactive,15519
+L0287,Berth 43 Area D,Customs Zone,Under Maintenance,15484
+L0288,Berth 27 Area C,Storage Yard,Under Maintenance,4729
+L0289,Berth 23 Area D,Berth,Inactive,16945
+L0290,Berth 34 Area C,Berth,Active,13951
+L0291,Berth 39 Area A,Berth,Active,10876
+L0292,Berth 14 Area B,Fuel Dock,Inactive,11751
+L0293,Berth 8 Area A,Customs Zone,Under Maintenance,15111
+L0294,Berth 12 Area B,Customs Zone,Under Maintenance,8540
+L0295,Berth 33 Area C,Berth,Inactive,2386
+L0296,Berth 28 Area A,Customs Zone,Active,11258
+L0297,Berth 37 Area D,Maintenance Area,Inactive,14686
+L0298,Berth 19 Area A,Customs Zone,Active,11642
+L0299,Berth 11 Area D,Fuel Dock,Active,15310
+L0300,Berth 7 Area B,Customs Zone,Under Maintenance,14121
+L0301,Berth 34 Area A,Customs Zone,Inactive,12125
+L0302,Berth 15 Area C,Storage Yard,Active,17727
+L0303,Berth 41 Area A,Maintenance Area,Under Maintenance,7353
+L0304,Berth 50 Area C,Fuel Dock,Under Maintenance,5839
+L0305,Berth 16 Area A,Storage Yard,Inactive,7464
+L0306,Berth 12 Area B,Berth,Active,17191
+L0307,Berth 30 Area D,Maintenance Area,Under Maintenance,11590
+L0308,Berth 41 Area C,Storage Yard,Inactive,3237
+L0309,Berth 31 Area D,Fuel Dock,Inactive,2840
+L0310,Berth 23 Area A,Fuel Dock,Inactive,15808
+L0311,Berth 3 Area A,Fuel Dock,Inactive,3514
+L0312,Berth 42 Area A,Maintenance Area,Under Maintenance,17615
+L0313,Berth 25 Area D,Maintenance Area,Under Maintenance,2344
+L0314,Berth 29 Area B,Fuel Dock,Under Maintenance,16585
+L0315,Berth 33 Area B,Berth,Inactive,4391
+L0316,Berth 22 Area A,Maintenance Area,Under Maintenance,6654
+L0317,Berth 3 Area B,Customs Zone,Inactive,18172
+L0318,Berth 34 Area B,Fuel Dock,Inactive,10269
+L0319,Berth 25 Area D,Fuel Dock,Under Maintenance,2715
+L0320,Berth 41 Area C,Berth,Inactive,4096
+L0321,Berth 36 Area D,Fuel Dock,Inactive,5927
+L0322,Berth 22 Area A,Maintenance Area,Under Maintenance,5634
+L0323,Berth 23 Area C,Customs Zone,Active,3776
+L0324,Berth 20 Area D,Fuel Dock,Active,18248
+L0325,Berth 6 Area D,Maintenance Area,Inactive,1597
+L0326,Berth 24 Area C,Storage Yard,Active,12197
+L0327,Berth 50 Area D,Storage Yard,Active,5507
+L0328,Berth 10 Area A,Fuel Dock,Active,17635
+L0329,Berth 50 Area A,Fuel Dock,Under Maintenance,5294
+L0330,Berth 39 Area D,Storage Yard,Active,6925
+L0331,Berth 45 Area B,Customs Zone,Active,14463
+L0332,Berth 24 Area B,Customs Zone,Under Maintenance,10336
+L0333,Berth 49 Area D,Storage Yard,Under Maintenance,8837
+L0334,Berth 20 Area D,Storage Yard,Inactive,19691
+L0335,Berth 29 Area D,Fuel Dock,Inactive,17479
+L0336,Berth 34 Area D,Storage Yard,Active,5535
+L0337,Berth 17 Area A,Customs Zone,Inactive,19171
+L0338,Berth 7 Area A,Fuel Dock,Active,6253
+L0339,Berth 18 Area D,Maintenance Area,Active,15335
+L0340,Berth 6 Area B,Customs Zone,Inactive,1873
+L0341,Berth 27 Area A,Customs Zone,Under Maintenance,13253
+L0342,Berth 16 Area D,Berth,Inactive,8357
+L0343,Berth 2 Area C,Berth,Under Maintenance,11986
+L0344,Berth 10 Area B,Berth,Inactive,16481
+L0345,Berth 45 Area B,Customs Zone,Inactive,1172
+L0346,Berth 6 Area A,Fuel Dock,Active,5899
+L0347,Berth 36 Area D,Berth,Inactive,8786
+L0348,Berth 20 Area A,Berth,Active,14756
+L0349,Berth 41 Area D,Berth,Active,17378
+L0350,Berth 39 Area A,Maintenance Area,Under Maintenance,8927
+L0351,Berth 46 Area B,Fuel Dock,Inactive,1051
+L0352,Berth 40 Area C,Storage Yard,Under Maintenance,14650
+L0353,Berth 12 Area A,Maintenance Area,Inactive,3217
+L0354,Berth 34 Area A,Customs Zone,Inactive,2426
+L0355,Berth 41 Area D,Fuel Dock,Inactive,1532
+L0356,Berth 23 Area A,Fuel Dock,Active,4396
+L0357,Berth 50 Area C,Storage Yard,Active,12544
+L0358,Berth 35 Area C,Storage Yard,Under Maintenance,16224
+L0359,Berth 45 Area D,Storage Yard,Active,3067
+L0360,Berth 46 Area D,Berth,Inactive,7605
+L0361,Berth 3 Area B,Berth,Inactive,11160
+L0362,Berth 33 Area D,Maintenance Area,Inactive,9300
+L0363,Berth 3 Area B,Fuel Dock,Inactive,2566
+L0364,Berth 42 Area C,Fuel Dock,Active,13059
+L0365,Berth 28 Area D,Customs Zone,Inactive,12109
+L0366,Berth 12 Area D,Customs Zone,Inactive,18015
+L0367,Berth 18 Area A,Customs Zone,Active,15110
+L0368,Berth 39 Area B,Maintenance Area,Inactive,11525
+L0369,Berth 7 Area A,Fuel Dock,Under Maintenance,10687
+L0370,Berth 20 Area D,Maintenance Area,Under Maintenance,14962
+L0371,Berth 11 Area D,Fuel Dock,Inactive,2387
+L0372,Berth 47 Area C,Maintenance Area,Inactive,9996
+L0373,Berth 41 Area A,Berth,Under Maintenance,14310
+L0374,Berth 24 Area B,Berth,Active,15358
+L0375,Berth 3 Area B,Berth,Active,13003
+L0376,Berth 24 Area D,Maintenance Area,Active,6027
+L0377,Berth 44 Area D,Fuel Dock,Inactive,15547
+L0378,Berth 49 Area A,Maintenance Area,Active,18349
+L0379,Berth 24 Area D,Fuel Dock,Under Maintenance,10132
+L0380,Berth 16 Area A,Berth,Under Maintenance,7096
+L0381,Berth 32 Area D,Maintenance Area,Active,9577
+L0382,Berth 50 Area C,Customs Zone,Active,10357
+L0383,Berth 45 Area D,Storage Yard,Active,5447
+L0384,Berth 5 Area D,Storage Yard,Under Maintenance,15585
+L0385,Berth 6 Area C,Fuel Dock,Under Maintenance,3127
+L0386,Berth 36 Area C,Fuel Dock,Active,6704
+L0387,Berth 24 Area B,Berth,Active,5550
+L0388,Berth 16 Area D,Berth,Inactive,19154
+L0389,Berth 37 Area C,Customs Zone,Under Maintenance,5252
+L0390,Berth 40 Area A,Berth,Inactive,14046
+L0391,Berth 46 Area D,Maintenance Area,Inactive,14416
+L0392,Berth 37 Area A,Storage Yard,Inactive,3430
+L0393,Berth 29 Area D,Maintenance Area,Inactive,5205
+L0394,Berth 50 Area B,Storage Yard,Inactive,17477
+L0395,Berth 4 Area A,Maintenance Area,Active,10965
+L0396,Berth 11 Area B,Fuel Dock,Under Maintenance,8388
+L0397,Berth 23 Area C,Berth,Inactive,7432
+L0398,Berth 41 Area C,Storage Yard,Under Maintenance,10922
+L0399,Berth 40 Area A,Maintenance Area,Under Maintenance,6525
+L0400,Berth 38 Area B,Storage Yard,Under Maintenance,12063
+L0401,Berth 37 Area A,Berth,Active,2489
+L0402,Berth 42 Area C,Storage Yard,Under Maintenance,14650
+L0403,Berth 40 Area A,Customs Zone,Under Maintenance,18877
+L0404,Berth 19 Area C,Customs Zone,Active,14306
+L0405,Berth 20 Area D,Berth,Under Maintenance,2963
+L0406,Berth 11 Area D,Customs Zone,Inactive,16218
+L0407,Berth 14 Area C,Maintenance Area,Active,11242
+L0408,Berth 46 Area C,Fuel Dock,Inactive,5284
+L0409,Berth 49 Area C,Maintenance Area,Under Maintenance,4479
+L0410,Berth 21 Area B,Customs Zone,Active,9764
+L0411,Berth 29 Area B,Storage Yard,Active,2658
+L0412,Berth 19 Area D,Maintenance Area,Inactive,9135
+L0413,Berth 11 Area C,Maintenance Area,Under Maintenance,11247
+L0414,Berth 13 Area B,Customs Zone,Under Maintenance,16296
+L0415,Berth 32 Area C,Customs Zone,Active,3950
+L0416,Berth 26 Area D,Storage Yard,Active,12563
+L0417,Berth 4 Area A,Fuel Dock,Inactive,16420
+L0418,Berth 19 Area A,Berth,Inactive,5388
+L0419,Berth 17 Area C,Customs Zone,Inactive,2482
+L0420,Berth 26 Area A,Maintenance Area,Under Maintenance,7378
+L0421,Berth 24 Area C,Berth,Inactive,17523
+L0422,Berth 29 Area C,Maintenance Area,Under Maintenance,4893
+L0423,Berth 9 Area A,Customs Zone,Inactive,12111
+L0424,Berth 36 Area C,Storage Yard,Active,17682
+L0425,Berth 26 Area A,Berth,Active,5490
+L0426,Berth 46 Area C,Customs Zone,Under Maintenance,15974
+L0427,Berth 10 Area B,Fuel Dock,Under Maintenance,11437
+L0428,Berth 11 Area D,Maintenance Area,Under Maintenance,10805
+L0429,Berth 38 Area C,Maintenance Area,Under Maintenance,18443
+L0430,Berth 32 Area C,Customs Zone,Active,13070
+L0431,Berth 22 Area A,Customs Zone,Under Maintenance,11081
+L0432,Berth 47 Area A,Maintenance Area,Inactive,9700
+L0433,Berth 42 Area B,Berth,Under Maintenance,16743
+L0434,Berth 11 Area D,Storage Yard,Under Maintenance,8936
+L0435,Berth 3 Area A,Storage Yard,Active,15451
+L0436,Berth 21 Area D,Storage Yard,Inactive,7681
+L0437,Berth 27 Area D,Berth,Under Maintenance,5524
+L0438,Berth 34 Area B,Maintenance Area,Inactive,16675
+L0439,Berth 34 Area D,Fuel Dock,Active,16062
+L0440,Berth 35 Area C,Maintenance Area,Inactive,9662
+L0441,Berth 40 Area D,Storage Yard,Active,10142
+L0442,Berth 36 Area C,Storage Yard,Inactive,10470
+L0443,Berth 46 Area B,Customs Zone,Inactive,16722
+L0444,Berth 23 Area C,Fuel Dock,Active,19791
+L0445,Berth 44 Area D,Customs Zone,Inactive,5799
+L0446,Berth 19 Area A,Fuel Dock,Under Maintenance,3589
+L0447,Berth 23 Area D,Fuel Dock,Under Maintenance,16698
+L0448,Berth 14 Area B,Maintenance Area,Inactive,19416
+L0449,Berth 45 Area C,Storage Yard,Active,8840
+L0450,Berth 16 Area A,Maintenance Area,Active,8629
+L0451,Berth 4 Area A,Customs Zone,Inactive,16479
+L0452,Berth 7 Area B,Berth,Under Maintenance,6175
+L0453,Berth 27 Area D,Customs Zone,Under Maintenance,7535
+L0454,Berth 49 Area C,Fuel Dock,Inactive,2938
+L0455,Berth 50 Area A,Maintenance Area,Active,18535
+L0456,Berth 48 Area A,Storage Yard,Inactive,6760
+L0457,Berth 3 Area D,Customs Zone,Active,10485
+L0458,Berth 3 Area A,Fuel Dock,Under Maintenance,4516
+L0459,Berth 22 Area C,Customs Zone,Under Maintenance,18802
+L0460,Berth 34 Area D,Storage Yard,Under Maintenance,16336
+L0461,Berth 18 Area B,Berth,Inactive,6324
+L0462,Berth 47 Area D,Fuel Dock,Under Maintenance,7101
+L0463,Berth 1 Area C,Fuel Dock,Under Maintenance,7329
+L0464,Berth 12 Area D,Customs Zone,Under Maintenance,11745
+L0465,Berth 6 Area D,Berth,Active,5607
+L0466,Berth 31 Area C,Storage Yard,Active,9545
+L0467,Berth 25 Area B,Customs Zone,Inactive,11801
+L0468,Berth 20 Area A,Fuel Dock,Under Maintenance,12781
+L0469,Berth 45 Area B,Berth,Under Maintenance,4873
+L0470,Berth 30 Area C,Storage Yard,Inactive,17466
+L0471,Berth 46 Area C,Berth,Under Maintenance,10667
+L0472,Berth 24 Area B,Storage Yard,Active,16669
+L0473,Berth 10 Area D,Maintenance Area,Inactive,14626
+L0474,Berth 45 Area D,Maintenance Area,Under Maintenance,8156
+L0475,Berth 49 Area B,Maintenance Area,Active,18219
+L0476,Berth 29 Area C,Berth,Under Maintenance,4676
+L0477,Berth 4 Area B,Maintenance Area,Under Maintenance,5910
+L0478,Berth 11 Area C,Maintenance Area,Inactive,4808
+L0479,Berth 44 Area B,Maintenance Area,Inactive,3979
+L0480,Berth 33 Area D,Berth,Inactive,5323
+L0481,Berth 33 Area D,Customs Zone,Under Maintenance,2891
+L0482,Berth 36 Area D,Fuel Dock,Under Maintenance,1713
+L0483,Berth 26 Area C,Berth,Under Maintenance,8140
+L0484,Berth 38 Area A,Berth,Inactive,12289
+L0485,Berth 45 Area A,Maintenance Area,Active,3261
+L0486,Berth 31 Area A,Fuel Dock,Inactive,6897
+L0487,Berth 50 Area B,Customs Zone,Inactive,13533
+L0488,Berth 29 Area D,Customs Zone,Active,18671
+L0489,Berth 9 Area C,Berth,Active,18604
+L0490,Berth 26 Area B,Storage Yard,Active,1744
+L0491,Berth 20 Area D,Maintenance Area,Inactive,18430
+L0492,Berth 25 Area B,Storage Yard,Inactive,12342
+L0493,Berth 10 Area C,Storage Yard,Under Maintenance,4697
+L0494,Berth 3 Area D,Maintenance Area,Active,8886
+L0495,Berth 14 Area A,Berth,Under Maintenance,2100
+L0496,Berth 29 Area A,Storage Yard,Under Maintenance,2449
+L0497,Berth 26 Area D,Storage Yard,Under Maintenance,8119
+L0498,Berth 49 Area A,Storage Yard,Under Maintenance,10478
+L0499,Berth 15 Area C,Maintenance Area,Under Maintenance,11507
+L0500,Berth 16 Area C,Storage Yard,Under Maintenance,18080

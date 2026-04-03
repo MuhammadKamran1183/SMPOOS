@@ -1,0 +1,26 @@
+body {
+    min-height: 100vh;
+}
+
+.card {
+    border: 0;
+    border-radius: 1rem;
+}
+
+.summary-card {
+    color: #fff;
+    background: linear-gradient(135deg, #0d6efd, #0b5ed7);
+}
+
+.summary-card .count {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.table th {
+    white-space: nowrap;
+}
+
+.table td {
+    vertical-align: middle;
+}
