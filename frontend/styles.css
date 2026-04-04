@@ -2,6 +2,10 @@ body {
     min-height: 100vh;
 }
 
+.border.rounded-4 {
+    border-color: #dee2e6 !important;
+}
+
 .card {
     border: 0;
     border-radius: 1rem;
@@ -23,4 +27,19 @@ body {
 
 .table td {
     vertical-align: middle;
+}
+
+.admin-panel .form-control,
+.admin-panel .form-select {
+    font-size: 0.95rem;
+}
+
+.change-results {
+    min-height: 9rem;
+    margin: 0;
+    padding: 1rem;
+    border-radius: 1rem;
+    background: #0f172a;
+    color: #e2e8f0;
+    white-space: pre-wrap;
 }

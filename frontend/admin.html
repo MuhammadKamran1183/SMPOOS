@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMPOOS Admin</title>
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body class="bg-light">
+    <div class="container py-4">
+        <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap mb-4">
+            <div>
+                <h1 class="h4 mb-1">SMPOOS Admin Portal</h1>
+                <p class="text-muted mb-0">Manage zones, routes, notifications, and disruptions.</p>
+            </div>
+            <div class="d-flex align-items-center gap-2">
+                <span id="sessionBadge" class="badge text-bg-secondary">Checking session...</span>
+                <button id="logoutButton" class="btn btn-outline-secondary" type="button">Sign Out</button>
+            </div>
+        </div>
+
+        <div id="statusMessage" class="alert alert-info">Loading admin tools...</div>
+        <div id="authMessage" class="alert alert-secondary">Admin actions are protected by RBAC.</div>
+
+        <div class="row g-4">
+            <div class="col-lg-6">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body">
+                        <h2 class="h6 mb-3">Manage Port Zones And Berths</h2>
+                        <form id="locationForm" class="row g-2">
+                            <div class="col-md-6">
+                                <input class="form-control" id="locationId" placeholder="Location ID e.g. L0001 or 1">
+                            </div>
+                            <div class="col-md-6">
+                                <input class="form-control" id="locationName" placeholder="Name" required>
+                            </div>
+                            <div class="col-md-6">
+                                <input class="form-control" id="locationType" placeholder="Type e.g. Berth" required>
+                            </div>
+                            <div class="col-md-3">
+                                <input class="form-control" id="locationStatus" placeholder="Status" required>
+                            </div>
+                            <div class="col-md-3">
+                                <input class="form-control" id="locationCapacity" placeholder="Capacity" required>
+                            </div>
+                            <div class="col-12 d-flex gap-2">
+                                <button class="btn btn-success" type="submit">Save Location</button>
+                                <button class="btn btn-outline-danger" id="deleteLocationButton" type="button">Delete By ID</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body">
+                        <h2 class="h6 mb-3">Manage Internal Routes</h2>
+                        <form id="routeForm" class="row g-2">
+                            <div class="col-md-6">
+                                <input class="form-control" id="routeId" placeholder="Route ID e.g. R0001 or 1">
+                            </div>
+                            <div class="col-md-6">
+                                <input class="form-control" id="routeType" placeholder="Route Type" required>
+                            </div>
+                            <div class="col-md-4">
+                                <input class="form-control" id="routeStart" placeholder="Start Location e.g. L0001 or 1" required>
+                            </div>
+                            <div class="col-md-4">
+                                <input class="form-control" id="routeEnd" placeholder="End Location e.g. L0002 or 2" required>
+                            </div>
+                            <div class="col-md-4">
+                                <input class="form-control" id="routeDistance" placeholder="Distance KM" required>
+                            </div>
+                            <div class="col-md-6">
+                                <input class="form-control" id="routeStatus" placeholder="Status e.g. Open" required>
+                            </div>
+                            <div class="col-12 d-flex gap-2">
+                                <button class="btn btn-success" type="submit">Save Route</button>
+                                <button class="btn btn-outline-danger" id="deleteRouteButton" type="button">Delete By ID</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body">
+                        <h2 class="h6 mb-3">Manage Notifications</h2>
+                        <form id="notificationForm" class="row g-2">
+                            <div class="col-md-6">
+                                <input class="form-control" id="notificationId" placeholder="Notification ID e.g. N0001 or 1">
+                            </div>
+                            <div class="col-md-6">
+                                <input class="form-control" id="notificationType" placeholder="Alert Type" required>
+                            </div>
+                            <div class="col-md-6">
+                                <input class="form-control" id="notificationLocationId" placeholder="Location ID e.g. L0001 or 1" required>
+                            </div>
+                            <div class="col-md-6">
+                                <input class="form-control" id="notificationSeverity" placeholder="Severity" required>
+                            </div>
+                            <div class="col-12">
+                                <textarea class="form-control" id="notificationMessageText" rows="3" placeholder="Message" required></textarea>
+                            </div>
+                            <div class="col-12 d-flex gap-2">
+                                <button class="btn btn-success" type="submit">Save Notification</button>
+                                <button class="btn btn-outline-danger" id="deleteNotificationButton" type="button">Delete By ID</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body">
+                        <h2 class="h6 mb-3">Operational Reconfiguration</h2>
+                        <form id="changeForm" class="row g-2">
+                            <div class="col-md-4">
+                                <select class="form-select" id="changeTargetType">
+                                    <option value="location">Location</option>
+                                    <option value="route">Route</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <input class="form-control" id="changeTargetId" placeholder="Target ID e.g. L0001 or R0001" required>
+                            </div>
+                            <div class="col-md-4">
+                                <input class="form-control" id="changeStatus" placeholder="New Status" required>
+                            </div>
+                            <div class="col-md-6">
+                                <input class="form-control" id="changeAlertType" placeholder="Alert Type" value="Operational Change">
+                            </div>
+                            <div class="col-md-6">
+                                <input class="form-control" id="changeSeverity" placeholder="Severity" value="High">
+                            </div>
+                            <div class="col-12">
+                                <textarea class="form-control" id="changeMessage" rows="3" placeholder="Describe the disruption or operational change" required></textarea>
+                            </div>
+                            <div class="col-12">
+                                <button class="btn btn-warning" type="submit">Apply Change</button>
+                            </div>
+                        </form>
+                        <pre id="changeResults" class="change-results mt-3">No operational changes applied yet.</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/admin.js"></script>
+</body>
+</html>

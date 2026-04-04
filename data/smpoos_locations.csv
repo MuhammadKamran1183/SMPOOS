@@ -1,5 +1,4 @@
 location_id,name,type,status,capacity_tonnes
-L0001,Berth 41 Area A,Berth,Under Maintenance,10012
 L0002,Berth 16 Area B,Storage Yard,Under Maintenance,4358
 L0003,Berth 44 Area A,Maintenance Area,Inactive,2041
 L0004,Berth 2 Area A,Storage Yard,Active,17559
@@ -9,7 +8,6 @@ L0007,Berth 1 Area B,Customs Zone,Inactive,10105
 L0008,Berth 10 Area B,Fuel Dock,Active,4039
 L0009,Berth 25 Area A,Fuel Dock,Inactive,9667
 L0010,Berth 3 Area D,Maintenance Area,Active,13403
-L0011,Berth 6 Area C,Maintenance Area,Inactive,19918
 L0012,Berth 13 Area A,Berth,Under Maintenance,8467
 L0013,Berth 50 Area C,Berth,Active,4309
 L0014,Berth 25 Area C,Customs Zone,Under Maintenance,12954
@@ -30,7 +28,6 @@ L0028,Berth 8 Area C,Customs Zone,Active,15867
 L0029,Berth 1 Area C,Maintenance Area,Active,17635
 L0030,Berth 7 Area C,Maintenance Area,Under Maintenance,7517
 L0031,Berth 10 Area C,Storage Yard,Under Maintenance,18378
-L0032,Berth 1 Area C,Customs Zone,Active,4665
 L0033,Berth 24 Area C,Storage Yard,Active,8892
 L0034,Berth 37 Area A,Berth,Under Maintenance,16924
 L0035,Berth 5 Area B,Storage Yard,Under Maintenance,16574
@@ -243,7 +240,6 @@ L0241,Berth 45 Area C,Customs Zone,Active,5580
 L0242,Berth 3 Area A,Fuel Dock,Inactive,4805
 L0243,Berth 7 Area B,Maintenance Area,Active,13735
 L0244,Berth 30 Area C,Maintenance Area,Inactive,6063
-L0245,Berth 27 Area A,Customs Zone,Under Maintenance,14373
 L0246,Berth 18 Area A,Fuel Dock,Active,15528
 L0247,Berth 29 Area B,Fuel Dock,Active,13036
 L0248,Berth 35 Area C,Berth,Inactive,10040
@@ -499,3 +495,4 @@ L0497,Berth 26 Area D,Storage Yard,Under Maintenance,8119
 L0498,Berth 49 Area A,Storage Yard,Under Maintenance,10478
 L0499,Berth 15 Area C,Maintenance Area,Under Maintenance,11507
 L0500,Berth 16 Area C,Storage Yard,Under Maintenance,18080
+L0501,Mozila Port,Berth,Delta,50000

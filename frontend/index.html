@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Port Data Dashboard</title>
+    
     <link
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
         rel="stylesheet"
@@ -12,63 +12,152 @@
 </head>
 <body class="bg-light">
     <div class="container py-4">
-        <div class="d-flex justify-content-between align-items-center mb-4">
-            <div>
-                <h1 class="h3 mb-1">Port Data Dashboard</h1>
-                <p class="text-muted mb-0">Frontend layer connected to the Python backend</p>
+
+        <div class="card shadow-sm mb-4">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-start gap-3 flex-wrap">
+                    <div>
+                        <h2 class="h5 mb-1">Admin Interface</h2>
+                    </div>
+                </div>
+
+                <form id="loginForm" class="col-12">
+                    <div class="col-md-5" style="margin-top: 20px;">
+                        <label class="form-label" for="loginEmail">Email</label>
+                        <input class="form-control" id="loginEmail" type="email" placeholder="user6@portauthority.com" required>
+                    </div>
+                    <div class="col-md-4" style="margin-top: 10px;">
+                        <label class="form-label" for="loginPassword">Password</label>
+                        <input class="form-control" id="loginPassword" type="password" placeholder="admin123" required>
+                    </div>
+                    <div style="margin-top: 20px;" class="col-md-3 d-flex align-items-end gap-2">
+                        <button class="btn btn-primary w-100" type="submit">Sign In</button>
+                    </div>
+                </form>
+
+                <div id="adminPanel" class="admin-panel d-none">
+                    <div class="row g-4">
+                        <div class="col-lg-6">
+                            <div class="border rounded-4 p-3 h-100">
+                                <h3 class="h6">Manage Port Zones And Berths</h3>
+                                <form id="locationForm" class="row g-2">
+                                    <div class="col-md-6">
+                                        <input class="form-control" id="locationId" placeholder="Location ID (blank to add)">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input class="form-control" id="locationName" placeholder="Name" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input class="form-control" id="locationType" placeholder="Type e.g. Berth" required>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <input class="form-control" id="locationStatus" placeholder="Status" required>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <input class="form-control" id="locationCapacity" placeholder="Capacity" required>
+                                    </div>
+                                    <div class="col-12 d-flex gap-2">
+                                        <button class="btn btn-success" type="submit">Save Location</button>
+                                        <button class="btn btn-outline-danger" id="deleteLocationButton" type="button">Delete By ID</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="border rounded-4 p-3 h-100">
+                                <h3 class="h6">Manage Internal Routes</h3>
+                                <form id="routeForm" class="row g-2">
+                                    <div class="col-md-6">
+                                        <input class="form-control" id="routeId" placeholder="Route ID (blank to add)">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input class="form-control" id="routeType" placeholder="Route Type" required>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <input class="form-control" id="routeStart" placeholder="Start Location" required>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <input class="form-control" id="routeEnd" placeholder="End Location" required>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <input class="form-control" id="routeDistance" placeholder="Distance KM" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input class="form-control" id="routeStatus" placeholder="Status e.g. Open" required>
+                                    </div>
+                                    <div class="col-12 d-flex gap-2">
+                                        <button class="btn btn-success" type="submit">Save Route</button>
+                                        <button class="btn btn-outline-danger" id="deleteRouteButton" type="button">Delete By ID</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="border rounded-4 p-3 h-100">
+                                <h3 class="h6">Manage Operational Notifications</h3>
+                                <form id="notificationForm" class="row g-2">
+                                    <div class="col-md-6">
+                                        <input class="form-control" id="notificationId" placeholder="Notification ID (blank to add)">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input class="form-control" id="notificationType" placeholder="Alert Type" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input class="form-control" id="notificationLocationId" placeholder="Location ID" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input class="form-control" id="notificationSeverity" placeholder="Severity" required>
+                                    </div>
+                                    <div class="col-12">
+                                        <textarea class="form-control" id="notificationMessageText" rows="3" placeholder="Message" required></textarea>
+                                    </div>
+                                    <div class="col-12 d-flex gap-2">
+                                        <button class="btn btn-success" type="submit">Save Notification</button>
+                                        <button class="btn btn-outline-danger" id="deleteNotificationButton" type="button">Delete By ID</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="border rounded-4 p-3 h-100">
+                                <h3 class="h6">Operational Reconfiguration</h3>
+                                <form id="changeForm" class="row g-2">
+                                    <div class="col-md-4">
+                                        <select class="form-select" id="changeTargetType">
+                                            <option value="location">Location</option>
+                                            <option value="route">Route</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <input class="form-control" id="changeTargetId" placeholder="Target ID" required>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <input class="form-control" id="changeStatus" placeholder="New Status" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input class="form-control" id="changeAlertType" placeholder="Alert Type" value="Operational Change">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input class="form-control" id="changeSeverity" placeholder="Severity" value="High">
+                                    </div>
+                                    <div class="col-12">
+                                        <textarea class="form-control" id="changeMessage" rows="3" placeholder="Describe the disruption or operational change" required></textarea>
+                                    </div>
+                                    <div class="col-12">
+                                        <button class="btn btn-warning" type="submit">Apply Change</button>
+                                    </div>
+                                </form>
+                                <pre id="changeResults" class="change-results mt-3">No operational changes applied yet.</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <button id="refreshButton" class="btn btn-primary">Refresh Data</button>
         </div>
 
-        <div id="statusMessage" class="alert alert-info">Loading dashboard data...</div>
-
-        <div id="summaryCards" class="row g-3 mb-4"></div>
-
-        <div class="row g-4">
-            <div class="col-12">
-                <div class="card shadow-sm">
-                    <div class="card-body">
-                        <h2 class="h5 card-title">Locations</h2>
-                        <div class="table-responsive">
-                            <table class="table table-striped table-hover" id="locationsTable"></table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12">
-                <div class="card shadow-sm">
-                    <div class="card-body">
-                        <h2 class="h5 card-title">Routes</h2>
-                        <div class="table-responsive">
-                            <table class="table table-striped table-hover" id="routesTable"></table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12">
-                <div class="card shadow-sm">
-                    <div class="card-body">
-                        <h2 class="h5 card-title">Notifications</h2>
-                        <div class="table-responsive">
-                            <table class="table table-striped table-hover" id="notificationsTable"></table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12">
-                <div class="card shadow-sm">
-                    <div class="card-body">
-                        <h2 class="h5 card-title">Users</h2>
-                        <div class="table-responsive">
-                            <table class="table table-striped table-hover" id="usersTable"></table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 
     <script src="/static/app.js"></script>

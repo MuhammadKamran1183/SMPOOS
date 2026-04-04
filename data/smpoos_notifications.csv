@@ -499,3 +499,4 @@ N0497,Hazardous Cargo Warning,L0067,Low,Automated alert: Equipment Failure issue
 N0498,Weather Warning,L0464,High,Automated alert: Weather Warning issued.,2026-02-10 00:33:52.260785
 N0499,Berth Closure,L0088,Low,Automated alert: Weather Warning issued.,2026-02-11 01:28:07.260797
 N0500,Security Notice,L0305,Medium,Automated alert: Weather Warning issued.,2026-02-10 19:01:37.260810
+N0501,Destroy,L0501,High,dedede,2026-04-04T15:11:51+00:00

@@ -9,7 +9,7 @@ R0007,L0074,L0413,Tugboat Transit Path,22.88,Closed
 R0008,L0212,L0496,Tugboat Transit Path,13.98,Open
 R0009,L0199,L0125,Automated Guided Vehicle Route,5.16,Closed
 R0010,L0041,L0473,Tugboat Transit Path,21.19,Open
-R0011,L0275,L0371,Truck Path,1.38,Restricted
+R0011,L0275,L0371,Truck Path,1.38,Delta
 R0012,L0345,L0310,Shipping Lane,21.85,Open
 R0013,L0412,L0390,Truck Path,12.04,Restricted
 R0014,L0156,L0490,Shipping Lane,5.37,Open
@@ -110,7 +110,7 @@ R0108,L0201,L0301,Shipping Lane,8.76,Restricted
 R0109,L0317,L0089,Automated Guided Vehicle Route,22.98,Closed
 R0110,L0044,L0345,Truck Path,7.9,Open
 R0111,L0157,L0060,Truck Path,9.4,Open
-R0112,L0262,L0199,Tugboat Transit Path,14.95,Closed
+R0112,L0262,L0199,Tugboat Transit Path,14.95,Delta
 R0113,L0197,L0217,Truck Path,12.22,Closed
 R0114,L0356,L0471,Truck Path,13.92,Restricted
 R0115,L0148,L0072,Truck Path,7.93,Restricted
