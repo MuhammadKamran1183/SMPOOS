@@ -3,6 +3,7 @@ const authMessage = document.getElementById("authMessage");
 const sessionBadge = document.getElementById("sessionBadge");
 const logoutButton = document.getElementById("logoutButton");
 const changeResults = document.getElementById("changeResults");
+const recalculationResults = document.getElementById("recalculationResults");
 const API_TIMEOUT_MS = 10000;
 
 function setStatusMessage(message, type = "info") {
@@ -66,16 +67,26 @@ function getValue(id) {
 
 function normalisePrefixedId(value, prefix) {
     const trimmedValue = String(value || "").trim();
-
     if (!trimmedValue) {
         return "";
     }
-
     if (/^\d+$/.test(trimmedValue)) {
         return `${prefix}${trimmedValue.padStart(4, "0")}`;
     }
-
     return trimmedValue.toUpperCase();
+}
+
+function targetPrefix(targetType) {
+    const prefixes = {
+        location: "L",
+        route: "R",
+        restricted_area: "RA",
+        crane_outage: "CO",
+        vessel_path: "VP",
+        berth_allocation: "BA",
+        notification: "N",
+    };
+    return prefixes[targetType] || "";
 }
 
 function resetForm(formId) {
@@ -87,20 +98,16 @@ async function loadSession() {
 
     try {
         const data = await apiRequest("/api/session", { method: "GET" });
-
         if (!data.user) {
             window.location.href = "/login";
             return;
         }
-
         setSessionBadge(data.user);
         setStatusMessage("Admin portal is ready.", "success");
         setAuthMessage("You can now manage operational data.", "success");
     } catch (error) {
         setStatusMessage(
-            error.name === "AbortError"
-                ? "Session check timed out. Please reload."
-                : error.message,
+            getErrorMessage(error, "Session check timed out. Please reload."),
             "danger",
         );
     }
@@ -117,225 +124,296 @@ async function logout() {
     }
 }
 
-async function saveLocation(event) {
-    event.preventDefault();
-
-    const locationId = normalisePrefixedId(getValue("locationId"), "L");
-    const payload = {
-        location_id: locationId,
-        name: getValue("locationName"),
-        type: getValue("locationType"),
-        status: getValue("locationStatus"),
-        capacity_tonnes: getValue("locationCapacity"),
-    };
-
+async function saveRecord({
+    recordId,
+    collectionPath,
+    payload,
+    formId,
+    singularLabel,
+    timeoutMessage,
+}) {
     try {
-        if (locationId) {
+        if (recordId) {
             try {
-                await apiRequest(`/api/admin/locations/${locationId}`, {
+                await apiRequest(`${collectionPath}/${recordId}`, {
                     method: "PUT",
                     body: JSON.stringify(payload),
                 });
-                setAuthMessage(`Location ${locationId} updated successfully.`, "success");
+                setAuthMessage(`${singularLabel} ${recordId} updated successfully.`, "success");
             } catch (error) {
                 if (!error.message.includes("was not found")) {
                     throw error;
                 }
-                await apiRequest("/api/admin/locations", {
+                await apiRequest(collectionPath, {
                     method: "POST",
                     body: JSON.stringify(payload),
                 });
-                setAuthMessage(`Location ${locationId} created successfully.`, "success");
+                setAuthMessage(`${singularLabel} ${recordId} created successfully.`, "success");
             }
         } else {
-            await apiRequest("/api/admin/locations", {
+            await apiRequest(collectionPath, {
                 method: "POST",
                 body: JSON.stringify(payload),
             });
-            setAuthMessage("Location created successfully.", "success");
+            setAuthMessage(`${singularLabel} created successfully.`, "success");
         }
-
-        resetForm("locationForm");
+        resetForm(formId);
     } catch (error) {
-        setAuthMessage(
-            getErrorMessage(error, "Saving location timed out. Please try again."),
-            "danger",
-        );
+        setAuthMessage(getErrorMessage(error, timeoutMessage), "danger");
     }
 }
 
-async function deleteLocation() {
-    const locationId = normalisePrefixedId(getValue("locationId"), "L");
-
-    if (!locationId) {
-        setAuthMessage("Enter a location ID to delete.", "warning");
+async function deleteRecord({
+    recordId,
+    collectionPath,
+    formId,
+    singularLabel,
+    timeoutMessage,
+}) {
+    if (!recordId) {
+        setAuthMessage(`Enter a ${singularLabel.toLowerCase()} ID to delete.`, "warning");
         return;
     }
 
     try {
-        await apiRequest(`/api/admin/locations/${locationId}`, { method: "DELETE" });
-        setAuthMessage(`Location ${locationId} deleted successfully.`, "success");
-        resetForm("locationForm");
+        await apiRequest(`${collectionPath}/${recordId}`, { method: "DELETE" });
+        setAuthMessage(`${singularLabel} ${recordId} deleted successfully.`, "success");
+        resetForm(formId);
     } catch (error) {
-        setAuthMessage(
-            getErrorMessage(error, "Deleting location timed out. Please try again."),
-            "danger",
-        );
+        setAuthMessage(getErrorMessage(error, timeoutMessage), "danger");
     }
+}
+
+async function saveLocation(event) {
+    event.preventDefault();
+    const recordId = normalisePrefixedId(getValue("locationId"), "L");
+    await saveRecord({
+        recordId,
+        collectionPath: "/api/admin/locations",
+        formId: "locationForm",
+        singularLabel: "Location",
+        timeoutMessage: "Saving location timed out. Please try again.",
+        payload: {
+            location_id: recordId,
+            name: getValue("locationName"),
+            type: getValue("locationType"),
+            status: getValue("locationStatus"),
+            capacity_tonnes: getValue("locationCapacity"),
+        },
+    });
+}
+
+async function deleteLocation() {
+    await deleteRecord({
+        recordId: normalisePrefixedId(getValue("locationId"), "L"),
+        collectionPath: "/api/admin/locations",
+        formId: "locationForm",
+        singularLabel: "Location",
+        timeoutMessage: "Deleting location timed out. Please try again.",
+    });
 }
 
 async function saveRoute(event) {
     event.preventDefault();
-
-    const routeId = normalisePrefixedId(getValue("routeId"), "R");
-    const payload = {
-        route_id: routeId,
-        start_location: normalisePrefixedId(getValue("routeStart"), "L"),
-        end_location: normalisePrefixedId(getValue("routeEnd"), "L"),
-        route_type: getValue("routeType"),
-        distance_km: getValue("routeDistance"),
-        status: getValue("routeStatus"),
-    };
-
-    try {
-        if (routeId) {
-            try {
-                await apiRequest(`/api/admin/routes/${routeId}`, {
-                    method: "PUT",
-                    body: JSON.stringify(payload),
-                });
-                setAuthMessage(`Route ${routeId} updated successfully.`, "success");
-            } catch (error) {
-                if (!error.message.includes("was not found")) {
-                    throw error;
-                }
-                await apiRequest("/api/admin/routes", {
-                    method: "POST",
-                    body: JSON.stringify(payload),
-                });
-                setAuthMessage(`Route ${routeId} created successfully.`, "success");
-            }
-        } else {
-            await apiRequest("/api/admin/routes", {
-                method: "POST",
-                body: JSON.stringify(payload),
-            });
-            setAuthMessage("Route created successfully.", "success");
-        }
-
-        resetForm("routeForm");
-    } catch (error) {
-        setAuthMessage(
-            getErrorMessage(error, "Saving route timed out. Please try again."),
-            "danger",
-        );
-    }
+    const recordId = normalisePrefixedId(getValue("routeId"), "R");
+    await saveRecord({
+        recordId,
+        collectionPath: "/api/admin/routes",
+        formId: "routeForm",
+        singularLabel: "Route",
+        timeoutMessage: "Saving route timed out. Please try again.",
+        payload: {
+            route_id: recordId,
+            start_location: normalisePrefixedId(getValue("routeStart"), "L"),
+            end_location: normalisePrefixedId(getValue("routeEnd"), "L"),
+            route_type: getValue("routeType"),
+            distance_km: getValue("routeDistance"),
+            status: getValue("routeStatus"),
+        },
+    });
 }
 
 async function deleteRoute() {
-    const routeId = normalisePrefixedId(getValue("routeId"), "R");
-
-    if (!routeId) {
-        setAuthMessage("Enter a route ID to delete.", "warning");
-        return;
-    }
-
-    try {
-        await apiRequest(`/api/admin/routes/${routeId}`, { method: "DELETE" });
-        setAuthMessage(`Route ${routeId} deleted successfully.`, "success");
-        resetForm("routeForm");
-    } catch (error) {
-        setAuthMessage(
-            getErrorMessage(error, "Deleting route timed out. Please try again."),
-            "danger",
-        );
-    }
+    await deleteRecord({
+        recordId: normalisePrefixedId(getValue("routeId"), "R"),
+        collectionPath: "/api/admin/routes",
+        formId: "routeForm",
+        singularLabel: "Route",
+        timeoutMessage: "Deleting route timed out. Please try again.",
+    });
 }
 
 async function saveNotification(event) {
     event.preventDefault();
-
-    const notificationId = normalisePrefixedId(getValue("notificationId"), "N");
-    const payload = {
-        notification_id: notificationId,
-        alert_type: getValue("notificationType"),
-        location_id: normalisePrefixedId(getValue("notificationLocationId"), "L"),
-        severity: getValue("notificationSeverity"),
-        message: getValue("notificationMessageText"),
-    };
-
-    try {
-        if (notificationId) {
-            try {
-                await apiRequest(`/api/admin/notifications/${notificationId}`, {
-                    method: "PUT",
-                    body: JSON.stringify(payload),
-                });
-                setAuthMessage(
-                    `Notification ${notificationId} updated successfully.`,
-                    "success",
-                );
-            } catch (error) {
-                if (!error.message.includes("was not found")) {
-                    throw error;
-                }
-                await apiRequest("/api/admin/notifications", {
-                    method: "POST",
-                    body: JSON.stringify(payload),
-                });
-                setAuthMessage(
-                    `Notification ${notificationId} created successfully.`,
-                    "success",
-                );
-            }
-        } else {
-            await apiRequest("/api/admin/notifications", {
-                method: "POST",
-                body: JSON.stringify(payload),
-            });
-            setAuthMessage("Notification created successfully.", "success");
-        }
-
-        resetForm("notificationForm");
-    } catch (error) {
-        setAuthMessage(
-            getErrorMessage(error, "Saving notification timed out. Please try again."),
-            "danger",
-        );
-    }
+    const recordId = normalisePrefixedId(getValue("notificationId"), "N");
+    await saveRecord({
+        recordId,
+        collectionPath: "/api/admin/notifications",
+        formId: "notificationForm",
+        singularLabel: "Notification",
+        timeoutMessage: "Saving notification timed out. Please try again.",
+        payload: {
+            notification_id: recordId,
+            alert_type: getValue("notificationType"),
+            location_id: normalisePrefixedId(getValue("notificationLocationId"), "L"),
+            severity: getValue("notificationSeverity"),
+            message: getValue("notificationMessageText"),
+        },
+    });
 }
 
 async function deleteNotification() {
-    const notificationId = normalisePrefixedId(getValue("notificationId"), "N");
+    await deleteRecord({
+        recordId: normalisePrefixedId(getValue("notificationId"), "N"),
+        collectionPath: "/api/admin/notifications",
+        formId: "notificationForm",
+        singularLabel: "Notification",
+        timeoutMessage: "Deleting notification timed out. Please try again.",
+    });
+}
 
-    if (!notificationId) {
-        setAuthMessage("Enter a notification ID to delete.", "warning");
-        return;
-    }
+async function saveVesselPath(event) {
+    event.preventDefault();
+    const recordId = normalisePrefixedId(getValue("pathId"), "VP");
+    await saveRecord({
+        recordId,
+        collectionPath: "/api/admin/vessel-paths",
+        formId: "vesselPathForm",
+        singularLabel: "Vessel path",
+        timeoutMessage: "Saving vessel path timed out. Please try again.",
+        payload: {
+            path_id: recordId,
+            vessel_name: getValue("vesselName"),
+            vessel_type: getValue("vesselType"),
+            cargo_tonnes: getValue("vesselCargoTonnes"),
+            current_location_id: normalisePrefixedId(getValue("currentLocationId"), "L"),
+            destination_location_id: normalisePrefixedId(getValue("destinationLocationId"), "L"),
+            assigned_route_id: normalisePrefixedId(getValue("assignedRouteId"), "R"),
+            assigned_berth_id: normalisePrefixedId(getValue("assignedBerthId"), "L"),
+            status: getValue("pathStatus"),
+        },
+    });
+}
 
-    try {
-        await apiRequest(`/api/admin/notifications/${notificationId}`, { method: "DELETE" });
-        setAuthMessage(`Notification ${notificationId} deleted successfully.`, "success");
-        resetForm("notificationForm");
-    } catch (error) {
-        setAuthMessage(
-            getErrorMessage(error, "Deleting notification timed out. Please try again."),
-            "danger",
-        );
-    }
+async function deleteVesselPath() {
+    await deleteRecord({
+        recordId: normalisePrefixedId(getValue("pathId"), "VP"),
+        collectionPath: "/api/admin/vessel-paths",
+        formId: "vesselPathForm",
+        singularLabel: "Vessel path",
+        timeoutMessage: "Deleting vessel path timed out. Please try again.",
+    });
+}
+
+async function saveRestrictedArea(event) {
+    event.preventDefault();
+    const recordId = normalisePrefixedId(getValue("areaId"), "RA");
+    await saveRecord({
+        recordId,
+        collectionPath: "/api/admin/restricted-areas",
+        formId: "restrictedAreaForm",
+        singularLabel: "Restricted area",
+        timeoutMessage: "Saving restricted area timed out. Please try again.",
+        payload: {
+            area_id: recordId,
+            name: getValue("areaName"),
+            location_id: normalisePrefixedId(getValue("areaLocationId"), "L"),
+            area_type: getValue("areaType"),
+            status: getValue("areaStatus"),
+            severity: getValue("areaSeverity"),
+            reason: getValue("areaReason"),
+            start_time: getValue("areaStartTime"),
+            end_time: getValue("areaEndTime"),
+        },
+    });
+}
+
+async function deleteRestrictedArea() {
+    await deleteRecord({
+        recordId: normalisePrefixedId(getValue("areaId"), "RA"),
+        collectionPath: "/api/admin/restricted-areas",
+        formId: "restrictedAreaForm",
+        singularLabel: "Restricted area",
+        timeoutMessage: "Deleting restricted area timed out. Please try again.",
+    });
+}
+
+async function saveCraneOutage(event) {
+    event.preventDefault();
+    const recordId = normalisePrefixedId(getValue("outageId"), "CO");
+    await saveRecord({
+        recordId,
+        collectionPath: "/api/admin/crane-outages",
+        formId: "craneOutageForm",
+        singularLabel: "Crane outage",
+        timeoutMessage: "Saving crane outage timed out. Please try again.",
+        payload: {
+            outage_id: recordId,
+            crane_id: getValue("craneId"),
+            location_id: normalisePrefixedId(getValue("outageLocationId"), "L"),
+            status: getValue("outageStatus"),
+            severity: getValue("outageSeverity"),
+            reason: getValue("outageReason"),
+            start_time: getValue("outageStartTime"),
+            end_time: getValue("outageEndTime"),
+        },
+    });
+}
+
+async function deleteCraneOutage() {
+    await deleteRecord({
+        recordId: normalisePrefixedId(getValue("outageId"), "CO"),
+        collectionPath: "/api/admin/crane-outages",
+        formId: "craneOutageForm",
+        singularLabel: "Crane outage",
+        timeoutMessage: "Deleting crane outage timed out. Please try again.",
+    });
+}
+
+async function saveBerthAllocation(event) {
+    event.preventDefault();
+    const recordId = normalisePrefixedId(getValue("allocationId"), "BA");
+    await saveRecord({
+        recordId,
+        collectionPath: "/api/admin/berth-allocations",
+        formId: "berthAllocationForm",
+        singularLabel: "Berth allocation",
+        timeoutMessage: "Saving berth allocation timed out. Please try again.",
+        payload: {
+            allocation_id: recordId,
+            vessel_name: getValue("allocationVesselName"),
+            cargo_tonnes: getValue("allocationCargoTonnes"),
+            berth_id: normalisePrefixedId(getValue("allocationBerthId"), "L"),
+            eta: getValue("allocationEta"),
+            status: getValue("allocationStatus"),
+            priority: getValue("allocationPriority"),
+            notes: getValue("allocationNotes"),
+        },
+    });
+}
+
+async function deleteBerthAllocation() {
+    await deleteRecord({
+        recordId: normalisePrefixedId(getValue("allocationId"), "BA"),
+        collectionPath: "/api/admin/berth-allocations",
+        formId: "berthAllocationForm",
+        singularLabel: "Berth allocation",
+        timeoutMessage: "Deleting berth allocation timed out. Please try again.",
+    });
 }
 
 async function applyOperationalChange(event) {
     event.preventDefault();
 
     try {
+        const targetType = getValue("changeTargetType");
         const result = await apiRequest("/api/admin/operational-change", {
             method: "POST",
             body: JSON.stringify({
-                target_type: getValue("changeTargetType"),
+                target_type: targetType,
                 target_id: normalisePrefixedId(
                     getValue("changeTargetId"),
-                    getValue("changeTargetType") === "route" ? "R" : "L",
+                    targetPrefix(targetType),
                 ),
                 new_status: getValue("changeStatus"),
                 alert_type: getValue("changeAlertType"),
@@ -354,6 +432,22 @@ async function applyOperationalChange(event) {
     }
 }
 
+async function runRecalculation() {
+    try {
+        const result = await apiRequest("/api/admin/recalculate", {
+            method: "POST",
+            body: JSON.stringify({}),
+        });
+        recalculationResults.textContent = JSON.stringify(result, null, 2);
+        setAuthMessage("Operational recalculation completed successfully.", "success");
+    } catch (error) {
+        setAuthMessage(
+            getErrorMessage(error, "Recalculation timed out. Please try again."),
+            "danger",
+        );
+    }
+}
+
 function bindForms() {
     logoutButton.addEventListener("click", logout);
     document.getElementById("locationForm").addEventListener("submit", saveLocation);
@@ -361,10 +455,17 @@ function bindForms() {
     document.getElementById("routeForm").addEventListener("submit", saveRoute);
     document.getElementById("deleteRouteButton").addEventListener("click", deleteRoute);
     document.getElementById("notificationForm").addEventListener("submit", saveNotification);
-    document
-        .getElementById("deleteNotificationButton")
-        .addEventListener("click", deleteNotification);
+    document.getElementById("deleteNotificationButton").addEventListener("click", deleteNotification);
+    document.getElementById("vesselPathForm").addEventListener("submit", saveVesselPath);
+    document.getElementById("deleteVesselPathButton").addEventListener("click", deleteVesselPath);
+    document.getElementById("restrictedAreaForm").addEventListener("submit", saveRestrictedArea);
+    document.getElementById("deleteRestrictedAreaButton").addEventListener("click", deleteRestrictedArea);
+    document.getElementById("craneOutageForm").addEventListener("submit", saveCraneOutage);
+    document.getElementById("deleteCraneOutageButton").addEventListener("click", deleteCraneOutage);
+    document.getElementById("berthAllocationForm").addEventListener("submit", saveBerthAllocation);
+    document.getElementById("deleteBerthAllocationButton").addEventListener("click", deleteBerthAllocation);
     document.getElementById("changeForm").addEventListener("submit", applyOperationalChange);
+    document.getElementById("recalculateButton").addEventListener("click", runRecalculation);
 }
 
 bindForms();

@@ -1,0 +1,4 @@
+allocation_id,vessel_name,cargo_tonnes,berth_id,eta,status,priority,notes
+BA0001,Neptune Star,8500,L0018,2026-04-04T10:00:00+00:00,Scheduled,High,Container unloading
+BA0002,Harbour Wind,12000,L0227,2026-04-04T11:30:00+00:00,Scheduled,Medium,Awaiting berth confirmation
+BA0003,Atlas Carrier,15000,L0088,2026-04-04T13:00:00+00:00,Scheduled,High,Needs safe berth after disruption

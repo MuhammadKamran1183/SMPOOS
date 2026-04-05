@@ -1,0 +1,4 @@
+outage_id,crane_id,location_id,status,severity,reason,start_time,end_time
+CO0001,CR-14,L0004,Active,High,Motor failure,2026-04-04T07:30:00+00:00,2026-04-04T19:00:00+00:00
+CO0002,CR-07,L0012,Unavailable,Medium,Scheduled maintenance,2026-04-04T05:00:00+00:00,2026-04-04T11:00:00+00:00
+CO0003,CR-22,L0008,Resolved,Low,Inspection completed,2026-04-03T06:00:00+00:00,2026-04-03T08:00:00+00:00

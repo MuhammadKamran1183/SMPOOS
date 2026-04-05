@@ -120,12 +120,187 @@
             <div class="col-lg-6">
                 <div class="card shadow-sm h-100">
                     <div class="card-body">
+                        <h2 class="h6 mb-3">Manage Vessel Paths</h2>
+                        <form id="vesselPathForm" class="row g-2">
+                            <div class="col-md-6">
+                                <input class="form-control" id="pathId" placeholder="Path ID e.g. VP0001 or 1">
+                            </div>
+                            <div class="col-md-6">
+                                <input class="form-control" id="vesselName" placeholder="Vessel Name" required>
+                            </div>
+                            <div class="col-md-4">
+                                <input class="form-control" id="vesselType" placeholder="Vessel Type" required>
+                            </div>
+                            <div class="col-md-4">
+                                <input class="form-control" id="vesselCargoTonnes" placeholder="Cargo Tonnes" required>
+                            </div>
+                            <div class="col-md-4">
+                                <input class="form-control" id="pathStatus" placeholder="Status" required>
+                            </div>
+                            <div class="col-md-6">
+                                <input class="form-control" id="currentLocationId" placeholder="Current Location e.g. L0001" required>
+                            </div>
+                            <div class="col-md-6">
+                                <input class="form-control" id="destinationLocationId" placeholder="Destination Location e.g. L0002" required>
+                            </div>
+                            <div class="col-md-6">
+                                <input class="form-control" id="assignedRouteId" placeholder="Assigned Route e.g. R0001">
+                            </div>
+                            <div class="col-md-6">
+                                <input class="form-control" id="assignedBerthId" placeholder="Assigned Berth e.g. L0004">
+                            </div>
+                            <div class="col-12 d-flex gap-2">
+                                <button class="btn btn-success" type="submit">Save Vessel Path</button>
+                                <button class="btn btn-outline-danger" id="deleteVesselPathButton" type="button">Delete By ID</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body">
+                        <h2 class="h6 mb-3">Manage Restricted Areas</h2>
+                        <form id="restrictedAreaForm" class="row g-2">
+                            <div class="col-md-6">
+                                <input class="form-control" id="areaId" placeholder="Area ID e.g. RA0001 or 1">
+                            </div>
+                            <div class="col-md-6">
+                                <input class="form-control" id="areaName" placeholder="Area Name" required>
+                            </div>
+                            <div class="col-md-6">
+                                <input class="form-control" id="areaLocationId" placeholder="Location ID e.g. L0001" required>
+                            </div>
+                            <div class="col-md-6">
+                                <input class="form-control" id="areaType" placeholder="Area Type e.g. Hazardous Area" required>
+                            </div>
+                            <div class="col-md-4">
+                                <input class="form-control" id="areaStatus" placeholder="Status" required>
+                            </div>
+                            <div class="col-md-4">
+                                <input class="form-control" id="areaSeverity" placeholder="Severity" required>
+                            </div>
+                            <div class="col-md-4">
+                                <input class="form-control" id="areaStartTime" placeholder="Start Time">
+                            </div>
+                            <div class="col-md-12">
+                                <input class="form-control" id="areaEndTime" placeholder="End Time">
+                            </div>
+                            <div class="col-12">
+                                <textarea class="form-control" id="areaReason" rows="2" placeholder="Reason" required></textarea>
+                            </div>
+                            <div class="col-12 d-flex gap-2">
+                                <button class="btn btn-success" type="submit">Save Restricted Area</button>
+                                <button class="btn btn-outline-danger" id="deleteRestrictedAreaButton" type="button">Delete By ID</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body">
+                        <h2 class="h6 mb-3">Manage Crane Outages</h2>
+                        <form id="craneOutageForm" class="row g-2">
+                            <div class="col-md-6">
+                                <input class="form-control" id="outageId" placeholder="Outage ID e.g. CO0001 or 1">
+                            </div>
+                            <div class="col-md-6">
+                                <input class="form-control" id="craneId" placeholder="Crane ID" required>
+                            </div>
+                            <div class="col-md-6">
+                                <input class="form-control" id="outageLocationId" placeholder="Location ID e.g. L0001" required>
+                            </div>
+                            <div class="col-md-3">
+                                <input class="form-control" id="outageStatus" placeholder="Status" required>
+                            </div>
+                            <div class="col-md-3">
+                                <input class="form-control" id="outageSeverity" placeholder="Severity" required>
+                            </div>
+                            <div class="col-md-6">
+                                <input class="form-control" id="outageStartTime" placeholder="Start Time">
+                            </div>
+                            <div class="col-md-6">
+                                <input class="form-control" id="outageEndTime" placeholder="End Time">
+                            </div>
+                            <div class="col-12">
+                                <textarea class="form-control" id="outageReason" rows="2" placeholder="Reason" required></textarea>
+                            </div>
+                            <div class="col-12 d-flex gap-2">
+                                <button class="btn btn-success" type="submit">Save Crane Outage</button>
+                                <button class="btn btn-outline-danger" id="deleteCraneOutageButton" type="button">Delete By ID</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body">
+                        <h2 class="h6 mb-3">Manage Berth Allocations</h2>
+                        <form id="berthAllocationForm" class="row g-2">
+                            <div class="col-md-6">
+                                <input class="form-control" id="allocationId" placeholder="Allocation ID e.g. BA0001 or 1">
+                            </div>
+                            <div class="col-md-6">
+                                <input class="form-control" id="allocationVesselName" placeholder="Vessel Name" required>
+                            </div>
+                            <div class="col-md-4">
+                                <input class="form-control" id="allocationCargoTonnes" placeholder="Cargo Tonnes" required>
+                            </div>
+                            <div class="col-md-4">
+                                <input class="form-control" id="allocationBerthId" placeholder="Berth ID e.g. L0004">
+                            </div>
+                            <div class="col-md-4">
+                                <input class="form-control" id="allocationEta" placeholder="ETA" required>
+                            </div>
+                            <div class="col-md-6">
+                                <input class="form-control" id="allocationStatus" placeholder="Status" required>
+                            </div>
+                            <div class="col-md-6">
+                                <input class="form-control" id="allocationPriority" placeholder="Priority" required>
+                            </div>
+                            <div class="col-12">
+                                <textarea class="form-control" id="allocationNotes" rows="2" placeholder="Notes"></textarea>
+                            </div>
+                            <div class="col-12 d-flex gap-2">
+                                <button class="btn btn-success" type="submit">Save Allocation</button>
+                                <button class="btn btn-outline-danger" id="deleteBerthAllocationButton" type="button">Delete By ID</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body">
+                        <h2 class="h6 mb-3">Operations Engine</h2>
+                        <p class="text-muted small">
+                            Recalculate routes, berth assignments, and vessel paths after disruptions.
+                        </p>
+                        <button class="btn btn-primary" id="recalculateButton" type="button">Run Recalculation</button>
+                        <pre id="recalculationResults" class="change-results mt-3">No recalculation run yet.</pre>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body">
                         <h2 class="h6 mb-3">Operational Reconfiguration</h2>
                         <form id="changeForm" class="row g-2">
                             <div class="col-md-4">
                                 <select class="form-select" id="changeTargetType">
                                     <option value="location">Location</option>
                                     <option value="route">Route</option>
+                                    <option value="restricted_area">Restricted Area</option>
+                                    <option value="crane_outage">Crane Outage</option>
+                                    <option value="vessel_path">Vessel Path</option>
+                                    <option value="berth_allocation">Berth Allocation</option>
                                 </select>
                             </div>
                             <div class="col-md-4">

@@ -84,9 +84,50 @@ class WebAppHandler(BaseHTTPRequestHandler):
                 )
                 return
 
+            if path == "/api/admin/vessel-paths":
+                self._send_json(
+                    201,
+                    {"vessel_path": self.service.create_vessel_path(payload), "user": user},
+                )
+                return
+
+            if path == "/api/admin/restricted-areas":
+                self._send_json(
+                    201,
+                    {
+                        "restricted_area": self.service.create_restricted_area(payload),
+                        "user": user,
+                    },
+                )
+                return
+
+            if path == "/api/admin/crane-outages":
+                self._send_json(
+                    201,
+                    {
+                        "crane_outage": self.service.create_crane_outage(payload),
+                        "user": user,
+                    },
+                )
+                return
+
+            if path == "/api/admin/berth-allocations":
+                self._send_json(
+                    201,
+                    {
+                        "berth_allocation": self.service.create_berth_allocation(payload),
+                        "user": user,
+                    },
+                )
+                return
+
             if path == "/api/admin/operational-change":
                 result = self.service.apply_operational_change(payload)
                 self._send_json(200, result)
+                return
+
+            if path == "/api/admin/recalculate":
+                self._send_json(200, self.service.recalculate_operations())
                 return
 
             self.send_error(404, "Not Found")
@@ -121,6 +162,34 @@ class WebAppHandler(BaseHTTPRequestHandler):
                 )
                 return
 
+            if prefix == "/api/admin/vessel-paths":
+                self._send_json(
+                    200,
+                    {"vessel_path": self.service.update_vessel_path(record_id, payload)},
+                )
+                return
+
+            if prefix == "/api/admin/restricted-areas":
+                self._send_json(
+                    200,
+                    {"restricted_area": self.service.update_restricted_area(record_id, payload)},
+                )
+                return
+
+            if prefix == "/api/admin/crane-outages":
+                self._send_json(
+                    200,
+                    {"crane_outage": self.service.update_crane_outage(record_id, payload)},
+                )
+                return
+
+            if prefix == "/api/admin/berth-allocations":
+                self._send_json(
+                    200,
+                    {"berth_allocation": self.service.update_berth_allocation(record_id, payload)},
+                )
+                return
+
             self.send_error(404, "Not Found")
         except PermissionError as error:
             self._send_json(403, {"error": str(error)})
@@ -149,6 +218,26 @@ class WebAppHandler(BaseHTTPRequestHandler):
 
             if prefix == "/api/admin/notifications":
                 self.service.delete_notification(record_id)
+                self._send_json(200, {"deleted": record_id})
+                return
+
+            if prefix == "/api/admin/vessel-paths":
+                self.service.delete_vessel_path(record_id)
+                self._send_json(200, {"deleted": record_id})
+                return
+
+            if prefix == "/api/admin/restricted-areas":
+                self.service.delete_restricted_area(record_id)
+                self._send_json(200, {"deleted": record_id})
+                return
+
+            if prefix == "/api/admin/crane-outages":
+                self.service.delete_crane_outage(record_id)
+                self._send_json(200, {"deleted": record_id})
+                return
+
+            if prefix == "/api/admin/berth-allocations":
+                self.service.delete_berth_allocation(record_id)
                 self._send_json(200, {"deleted": record_id})
                 return
 

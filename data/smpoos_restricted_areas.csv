@@ -1,0 +1,4 @@
+area_id,name,location_id,area_type,status,severity,reason,start_time,end_time
+RA0001,Hazard Zone Alpha,L0008,Hazardous Area,Active,High,Fuel spill containment,2026-04-04T08:00:00+00:00,2026-04-04T18:00:00+00:00
+RA0002,Loading Corridor B,L0012,Loading Route,Restricted,Medium,Heavy crane traffic,2026-04-04T06:00:00+00:00,2026-04-04T14:00:00+00:00
+RA0003,Berth Security Ring,L0004,Restricted Area,Inactive,Low,Security drill,2026-04-05T10:00:00+00:00,2026-04-05T12:00:00+00:00
