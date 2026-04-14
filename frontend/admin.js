@@ -2,23 +2,167 @@ const statusMessage = document.getElementById("statusMessage");
 const authMessage = document.getElementById("authMessage");
 const sessionBadge = document.getElementById("sessionBadge");
 const logoutButton = document.getElementById("logoutButton");
-const changeResults = document.getElementById("changeResults");
-const recalculationResults = document.getElementById("recalculationResults");
+const dashboardLink = document.getElementById("dashboardLink");
+const monitoringLink = document.getElementById("monitoringLink");
+const notificationEngineLink = document.getElementById("notificationEngineLink");
+const analyticsLink = document.getElementById("analyticsLink");
 const API_TIMEOUT_MS = 10000;
+const PERMISSION_LABELS = {
+    view_management_dashboard: "the management dashboard",
+    view_analytics: "analytics dashboards",
+    manage_locations: "port zones and berths",
+    manage_routes: "internal routes",
+    manage_notifications: "notifications",
+    manage_vessel_paths: "vessel paths",
+    manage_restricted_areas: "restricted areas",
+    manage_crane_outages: "crane outages",
+    manage_berth_allocations: "berth allocations",
+    manage_operational_changes: "operational changes",
+    run_recalculation: "operations recalculation",
+};
+const ROLE_PERMISSION_FALLBACKS = {
+    administrator: [
+        "view_monitoring",
+        "view_notification_engine",
+        "view_management_dashboard",
+        "view_analytics",
+        "generate_reports",
+        "view_sensitive_data",
+        "manage_sensitive_data",
+        "manage_locations",
+        "manage_routes",
+        "manage_notifications",
+        "manage_vessel_paths",
+        "manage_restricted_areas",
+        "manage_crane_outages",
+        "manage_berth_allocations",
+        "manage_operational_changes",
+        "run_recalculation",
+        "manage_notification_rules",
+    ],
+    harbourmaster: [
+        "view_monitoring",
+        "view_management_dashboard",
+        "view_analytics",
+        "view_sensitive_data",
+        "generate_reports",
+        "manage_locations",
+        "manage_routes",
+        "manage_notifications",
+        "manage_vessel_paths",
+        "manage_berth_allocations",
+        "manage_operational_changes",
+        "run_recalculation",
+    ],
+    "operations supervisor": [
+        "view_monitoring",
+        "view_management_dashboard",
+        "view_analytics",
+        "generate_reports",
+        "manage_routes",
+        "manage_notifications",
+        "manage_vessel_paths",
+        "manage_berth_allocations",
+        "manage_operational_changes",
+        "run_recalculation",
+    ],
+    "safety officer": [
+        "view_monitoring",
+        "view_management_dashboard",
+        "view_analytics",
+        "manage_notifications",
+        "manage_restricted_areas",
+        "manage_crane_outages",
+        "manage_operational_changes",
+    ],
+    "security officer": [
+        "view_monitoring",
+        "view_analytics",
+        "manage_notifications",
+        "manage_restricted_areas",
+        "manage_crane_outages",
+        "manage_operational_changes",
+    ],
+};
 
 function setStatusMessage(message, type = "info") {
-    statusMessage.className = `alert alert-${type}`;
-    statusMessage.textContent = message;
+    // Disabled to match user request: only show save/delete messages
+    return;
 }
 
 function setAuthMessage(message, type = "secondary") {
-    authMessage.className = `alert alert-${type}`;
+    if (!authMessage) {
+        return;
+    }
+    authMessage.style.display = message ? "block" : "none";
+    authMessage.className = `dashboard-banner ${type === "success" ? "success" : type === "danger" ? "danger" : type === "warning" ? "info" : "subtle"}`;
     authMessage.textContent = message;
+    
+    // Auto-hide success messages after 3 seconds
+    if (type === "success") {
+        setTimeout(() => {
+            authMessage.style.display = "none";
+        }, 3000);
+    }
 }
 
 function setSessionBadge(user) {
-    sessionBadge.className = "badge text-bg-success";
-    sessionBadge.textContent = `${user.role}: ${user.name}`;
+    if (!sessionBadge) {
+        return;
+    }
+    sessionBadge.className = "dashboard-chip admin-topbar-control";
+    sessionBadge.textContent = user.name;
+}
+
+function applyPermissions(user) {
+    const roleKey = String(user.canonical_role || user.role || "").trim().toLowerCase();
+    const permissions = new Set(
+        (user.permissions && user.permissions.length ? user.permissions : ROLE_PERMISSION_FALLBACKS[roleKey]) || [],
+    );
+    document.querySelectorAll("[data-permission]").forEach((section) => {
+        const permission = section.dataset.permission;
+        if (permissions.has(permission)) {
+            return;
+        }
+
+        section.classList.add("opacity-50");
+        section.querySelectorAll("input, textarea, select, button").forEach((element) => {
+            element.disabled = true;
+        });
+
+        const cardBody = section.querySelector(".dashboard-panel-body");
+        if (cardBody && !cardBody.querySelector(".permission-note")) {
+            const note = document.createElement("p");
+            note.className = "permission-note";
+            note.textContent = `Your role cannot manage ${PERMISSION_LABELS[permission] || permission}.`;
+            cardBody.appendChild(note);
+        }
+    });
+
+    if (!permissions.has("view_notification_engine")) {
+        notificationEngineLink.classList.add("disabled");
+        notificationEngineLink.setAttribute("aria-disabled", "true");
+        notificationEngineLink.href = "#";
+    }
+
+    if (!permissions.has("view_management_dashboard")) {
+        dashboardLink.classList.add("disabled");
+        dashboardLink.setAttribute("aria-disabled", "true");
+        dashboardLink.href = "#";
+    }
+
+    if (!permissions.has("view_monitoring")) {
+        monitoringLink.classList.add("disabled");
+        monitoringLink.setAttribute("aria-disabled", "true");
+        monitoringLink.href = "#";
+    }
+
+    if (!permissions.has("view_analytics")) {
+        analyticsLink.classList.add("disabled");
+        analyticsLink.setAttribute("aria-disabled", "true");
+        analyticsLink.href = "#";
+    }
+
 }
 
 function getErrorMessage(error, timeoutMessage) {
@@ -103,8 +247,12 @@ async function loadSession() {
             return;
         }
         setSessionBadge(data.user);
+        applyPermissions(data.user);
         setStatusMessage("Admin portal is ready.", "success");
-        setAuthMessage("You can now manage operational data.", "success");
+        setAuthMessage(
+            `Role permissions loaded for ${data.user.role}. Unavailable sections are disabled.`,
+            "success",
+        );
     } catch (error) {
         setStatusMessage(
             getErrorMessage(error, "Session check timed out. Please reload."),
@@ -243,35 +391,6 @@ async function deleteRoute() {
     });
 }
 
-async function saveNotification(event) {
-    event.preventDefault();
-    const recordId = normalisePrefixedId(getValue("notificationId"), "N");
-    await saveRecord({
-        recordId,
-        collectionPath: "/api/admin/notifications",
-        formId: "notificationForm",
-        singularLabel: "Notification",
-        timeoutMessage: "Saving notification timed out. Please try again.",
-        payload: {
-            notification_id: recordId,
-            alert_type: getValue("notificationType"),
-            location_id: normalisePrefixedId(getValue("notificationLocationId"), "L"),
-            severity: getValue("notificationSeverity"),
-            message: getValue("notificationMessageText"),
-        },
-    });
-}
-
-async function deleteNotification() {
-    await deleteRecord({
-        recordId: normalisePrefixedId(getValue("notificationId"), "N"),
-        collectionPath: "/api/admin/notifications",
-        formId: "notificationForm",
-        singularLabel: "Notification",
-        timeoutMessage: "Deleting notification timed out. Please try again.",
-    });
-}
-
 async function saveVesselPath(event) {
     event.preventDefault();
     const recordId = normalisePrefixedId(getValue("pathId"), "VP");
@@ -402,60 +521,37 @@ async function deleteBerthAllocation() {
     });
 }
 
-async function applyOperationalChange(event) {
-    event.preventDefault();
-
-    try {
-        const targetType = getValue("changeTargetType");
-        const result = await apiRequest("/api/admin/operational-change", {
-            method: "POST",
-            body: JSON.stringify({
-                target_type: targetType,
-                target_id: normalisePrefixedId(
-                    getValue("changeTargetId"),
-                    targetPrefix(targetType),
-                ),
-                new_status: getValue("changeStatus"),
-                alert_type: getValue("changeAlertType"),
-                severity: getValue("changeSeverity"),
-                message: getValue("changeMessage"),
-            }),
-        });
-
-        changeResults.textContent = JSON.stringify(result, null, 2);
-        setAuthMessage("Operational change applied successfully.", "success");
-    } catch (error) {
-        setAuthMessage(
-            getErrorMessage(error, "Applying change timed out. Please try again."),
-            "danger",
-        );
-    }
-}
-
-async function runRecalculation() {
-    try {
-        const result = await apiRequest("/api/admin/recalculate", {
-            method: "POST",
-            body: JSON.stringify({}),
-        });
-        recalculationResults.textContent = JSON.stringify(result, null, 2);
-        setAuthMessage("Operational recalculation completed successfully.", "success");
-    } catch (error) {
-        setAuthMessage(
-            getErrorMessage(error, "Recalculation timed out. Please try again."),
-            "danger",
-        );
-    }
+function bindDateTimePickers() {
+    ["areaStartTime", "areaEndTime", "outageStartTime", "outageEndTime"].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+            // Revert type to text when blurred/empty to show placeholder
+            el.addEventListener("blur", () => {
+                if (!el.value) el.type = "text";
+            });
+            // Switch type to datetime-local on focus/click to show picker
+            const openPicker = () => {
+                el.type = "datetime-local";
+                if (el.showPicker) el.showPicker();
+            };
+            el.addEventListener("focus", openPicker);
+            el.addEventListener("click", openPicker);
+            // Initial state: text if empty
+            if (!el.value) el.type = "text";
+        }
+    });
 }
 
 function bindForms() {
-    logoutButton.addEventListener("click", logout);
+    if (logoutButton) {
+        logoutButton.addEventListener("click", logout);
+    }
+    bindDateTimePickers();
+
     document.getElementById("locationForm").addEventListener("submit", saveLocation);
     document.getElementById("deleteLocationButton").addEventListener("click", deleteLocation);
     document.getElementById("routeForm").addEventListener("submit", saveRoute);
     document.getElementById("deleteRouteButton").addEventListener("click", deleteRoute);
-    document.getElementById("notificationForm").addEventListener("submit", saveNotification);
-    document.getElementById("deleteNotificationButton").addEventListener("click", deleteNotification);
     document.getElementById("vesselPathForm").addEventListener("submit", saveVesselPath);
     document.getElementById("deleteVesselPathButton").addEventListener("click", deleteVesselPath);
     document.getElementById("restrictedAreaForm").addEventListener("submit", saveRestrictedArea);
@@ -464,8 +560,6 @@ function bindForms() {
     document.getElementById("deleteCraneOutageButton").addEventListener("click", deleteCraneOutage);
     document.getElementById("berthAllocationForm").addEventListener("submit", saveBerthAllocation);
     document.getElementById("deleteBerthAllocationButton").addEventListener("click", deleteBerthAllocation);
-    document.getElementById("changeForm").addEventListener("submit", applyOperationalChange);
-    document.getElementById("recalculateButton").addEventListener("click", runRecalculation);
 }
 
 bindForms();

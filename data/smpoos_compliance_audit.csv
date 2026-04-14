@@ -1,0 +1,32 @@
+audit_id,actor_user_id,actor_role,action_type,entity_type,entity_id,outcome,framework_tags,details,created_at
+AU0001,U0006,Administrator,system_access,session,SESSION-BOOTSTRAP,Success,GDPR|IMO|Port Governance,User signed in to the SMPOOS admin platform.,2026-04-05T09:45:00+00:00
+AU0002,U0006,Administrator,create,consent_record,CR0001,Success,GDPR|IMO|Port Governance,Recorded monitoring consent.,2026-04-05T10:00:00+00:00
+AU0003,U0006,Administrator,system_access,session,14612577b4c1713ee92faee191f87d21,Success,GDPR|IMO|Port Governance,User signed in to the SMPOOS admin platform.,2026-04-11T16:27:54+00:00
+AU0004,U0006,Administrator,system_access,session,aa882d58e4644a63436d16802d694c9b,Success,GDPR|IMO|Port Governance,User signed in to the SMPOOS admin platform.,2026-04-11T16:55:27+00:00
+AU0005,U0006,Administrator,system_access,session,6702c0c0a2272e096d946a0465a5e40c,Success,GDPR|IMO|Port Governance,User signed in to the SMPOOS admin platform.,2026-04-11T17:03:08+00:00
+AU0006,U0012,Security Officer,system_access,session,01520600f69440476026458ce9e101f5,Success,GDPR|IMO|Port Governance,User signed in to the SMPOOS admin platform.,2026-04-11T17:03:32+00:00
+AU0007,U0006,Administrator,system_access,session,ef21aaab14a414d3988e34677be45050,Success,GDPR|IMO|Port Governance,User signed in to the SMPOOS admin platform.,2026-04-11T17:03:49+00:00
+AU0008,U0006,Administrator,system_access,session,9e4442f1143747bac44d0e860b7ac230,Success,GDPR|IMO|Port Governance,User signed in to the SMPOOS admin platform.,2026-04-11T17:10:43+00:00
+AU0009,U0012,Security Officer,system_access,session,e919b419993d5a4ed4ee4aefac97efc4,Success,GDPR|IMO|Port Governance,User signed in to the SMPOOS admin platform.,2026-04-11T17:10:49+00:00
+AU0010,U0006,Administrator,system_access,session,8358e00935c66abd459975cb28887a0b,Success,GDPR|IMO|Port Governance,User signed in to the SMPOOS admin platform.,2026-04-11T17:11:14+00:00
+AU0011,U0006,Administrator,system_access,session,d5bba132fd3e3e8315a485b84136d4e6,Success,GDPR|IMO|Port Governance,User signed in to the SMPOOS admin platform.,2026-04-11T17:39:17+00:00
+AU0012,U0019,Harbourmaster,system_access,session,74256dc3e7ecb39f6a7b45c015bea2eb,Success,GDPR|IMO|Port Governance,User signed in to the SMPOOS admin platform.,2026-04-11T17:39:25+00:00
+AU0013,U0019,Harbourmaster,system_access,session,3c4a51e31960011e30cc2e9b8f1c5fe1,Success,GDPR|IMO|Port Governance,User signed in to the SMPOOS admin platform.,2026-04-11T17:39:46+00:00
+AU0014,U0006,Administrator,system_access,session,1f88d678d4640b4500d9a26a768d0423,Success,GDPR|IMO|Port Governance,User signed in to the SMPOOS admin platform.,2026-04-11T18:06:10+00:00
+AU0015,U0006,Administrator,system_access,session,a7c9128a0ee14c605e2f8b3a02acb88e,Success,GDPR|IMO|Port Governance,User signed in to the SMPOOS admin platform.,2026-04-11T18:06:18+00:00
+AU0016,U0006,Administrator,system_access,session,b95ab0610006174a3ccbafd73e92f554,Success,GDPR|IMO|Port Governance,User signed in to the SMPOOS admin platform.,2026-04-12T13:00:40+00:00
+AU0017,U0006,Administrator,system_access,session,c6c9c04a505f7651f32431eff3d021c1,Success,GDPR|IMO|Port Governance,User signed in to the SMPOOS admin platform.,2026-04-12T13:11:17+00:00
+AU0018,U0019,Harbourmaster,system_access,session,021a2b626c531f8c0d794167d6680d32,Success,GDPR|IMO|Port Governance,User signed in to the SMPOOS admin platform.,2026-04-12T13:12:25+00:00
+AU0019,U0012,Security Officer,system_access,session,f9e3453336e722994acfe0db22e0add9,Success,GDPR|IMO|Port Governance,User signed in to the SMPOOS admin platform.,2026-04-12T13:12:34+00:00
+AU0020,U0006,Administrator,system_access,session,d9c8c9541bb389be182a2faea592a134,Success,GDPR|IMO|Port Governance,User signed in to the SMPOOS admin platform.,2026-04-12T13:12:48+00:00
+AU0021,U0006,Administrator,system_access,session,29dc2367a2dc1f904a395fab783f815e,Success,GDPR|IMO|Port Governance,User signed in to the SMPOOS admin platform.,2026-04-12T13:25:14+00:00
+AU0022,U0019,Harbourmaster,system_access,session,e1595c78d91015104026f2acbcfdb8c6,Success,GDPR|IMO|Port Governance,User signed in to the SMPOOS admin platform.,2026-04-12T13:27:08+00:00
+AU0023,U0019,Harbourmaster,system_access,session,37c12ffdc1adae9feac0160eeab2cdce,Success,GDPR|IMO|Port Governance,User signed in to the SMPOOS admin platform.,2026-04-12T13:27:32+00:00
+AU0024,U0006,Administrator,system_access,session,5c56c984522dd89d82b8b96faa754994,Success,GDPR|IMO|Port Governance,User signed in to the SMPOOS admin platform.,2026-04-12T14:00:44+00:00
+AU0025,U0006,Administrator,create,notification_rule,NR0006,Success,GDPR|IMO|Port Governance,Configured notification rule.,2026-04-12T14:11:03+00:00
+AU0026,U0006,Administrator,system_access,session,1cb82d72425edfc2ea949fca8c2449ed,Success,GDPR|IMO|Port Governance,User signed in to the SMPOOS admin platform.,2026-04-12T14:37:51+00:00
+AU0027,U0006,Administrator,update,crane_outage,CO0001,Success,GDPR|IMO|Port Governance,Updated crane outage.,2026-04-12T15:17:20+00:00
+AU0028,U0006,Administrator,delete,crane_outage,CO0001,Success,GDPR|IMO|Port Governance,Deleted crane outage.,2026-04-12T15:17:27+00:00
+AU0029,U0006,Administrator,update,location,L0501,Success,GDPR|IMO|Port Governance,Updated location record.,2026-04-12T15:25:30+00:00
+AU0030,U0006,Administrator,create,location,L0001,Success,GDPR|IMO|Port Governance,Created location record.,2026-04-12T15:25:52+00:00
+AU0031,U0006,Administrator,delete,location,L0501,Success,GDPR|IMO|Port Governance,Deleted location record.,2026-04-12T15:27:51+00:00

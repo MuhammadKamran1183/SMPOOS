@@ -1,0 +1,4 @@
+component_id,component_name,status,metric_name,metric_value,threshold,checked_at
+SH0001,Routing Engine,Healthy,Response Time Ms,84,250,2026-04-05T13:15:00+00:00
+SH0002,CSV Storage,Healthy,Write Queue,1,10,2026-04-05T13:15:00+00:00
+SH0003,Notification Service,Warning,Pending Alerts,7,5,2026-04-05T13:15:00+00:00

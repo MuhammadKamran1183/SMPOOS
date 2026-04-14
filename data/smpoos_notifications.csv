@@ -500,3 +500,18 @@ N0498,Weather Warning,L0464,High,Automated alert: Weather Warning issued.,2026-0
 N0499,Berth Closure,L0088,Low,Automated alert: Weather Warning issued.,2026-02-11 01:28:07.260797
 N0500,Security Notice,L0305,Medium,Automated alert: Weather Warning issued.,2026-02-10 19:01:37.260810
 N0501,Destroy,L0501,High,dedede,2026-04-04T15:11:51+00:00
+N0502,Hazard,L0008,High,Safety alert near L0008: hazardous area active.,2026-04-05T13:59:59+00:00
+N0503,Delay,SYSTEM,Medium,Congestion warning: 328 blocked operational locations detected.,2026-04-05T13:59:59+00:00
+N0504,Weather,SYSTEM,High,Unsafe wind speed detected in Bulk Cargo Berths: 24.0 knots.,2026-04-05T13:59:59+00:00
+N0505,Equipment Faults,L0004,High,Equipment fault detected: 2 active crane outages.,2026-04-05T13:59:59+00:00
+N0506,Workflow Changes,SYSTEM,Medium,Workflow changed: 3 vessels rerouted or holding.,2026-04-05T13:59:59+00:00
+N0507,Hazard,L0008,High,Safety alert near L0008: hazardous area active.,2026-04-05T14:10:21+00:00
+N0508,Delay,SYSTEM,Medium,Congestion warning: 328 blocked operational locations detected.,2026-04-05T14:10:22+00:00
+N0509,Weather,SYSTEM,High,Unsafe wind speed detected in Bulk Cargo Berths: 24.0 knots.,2026-04-05T14:10:22+00:00
+N0510,Equipment Faults,L0004,High,Equipment fault detected: 2 active crane outages.,2026-04-05T14:10:22+00:00
+N0511,Workflow Changes,SYSTEM,Medium,Workflow changed: 3 vessels rerouted or holding.,2026-04-05T14:10:22+00:00
+N0512,Hazard,L0008,High,Safety alert near L0008: hazardous area active.,2026-04-05T14:15:43+00:00
+N0513,Delay,SYSTEM,Medium,Congestion warning: 328 blocked operational locations detected.,2026-04-05T14:15:44+00:00
+N0514,Weather,SYSTEM,High,Unsafe wind speed detected in Bulk Cargo Berths: 24.0 knots.,2026-04-05T14:15:44+00:00
+N0515,Equipment Faults,L0004,High,Equipment fault detected: 2 active crane outages.,2026-04-05T14:15:44+00:00
+N0516,Workflow Changes,SYSTEM,Medium,Workflow changed: 3 vessels rerouted or holding.,2026-04-05T14:15:44+00:00

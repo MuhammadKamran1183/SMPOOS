@@ -1,0 +1,3 @@
+record_id,record_type,reference_id,classification,allowed_role,encryption_status,encrypted_payload,updated_at
+SR0001,vessel_manifest,VP0001,Restricted,Harbourmaster,Encrypted,"U2FsdGVkX18APPeq0hnVfRvpzUAMRaony0OxPNzT6Il550+ZUrT+YG5J9r1hAM91
+wD4p2HSOYWBYwcKilIxVpp83s4voqVfZaShd4FOx440/T1cMcft8WrFyIqAFA02i",2026-04-05T14:59:39+00:00

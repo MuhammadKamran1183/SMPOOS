@@ -1,0 +1,3 @@
+consent_id,user_id,consent_type,purpose,lawful_basis,status,granted_at,withdrawn_at,retention_period_days,notes
+CR0001,U0006,Operational Monitoring,Port operations visibility,Legitimate Interest,Active,2026-04-05T10:00:00+00:00,,365,Administrator consent for monitoring visibility.
+CR0002,U0019,Notification Delivery,Operational alerts delivery,Contract,Active,2026-04-05T10:10:00+00:00,,180,Harbourmaster opted in to operational alerts.

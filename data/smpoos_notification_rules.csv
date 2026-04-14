@@ -1,0 +1,7 @@
+rule_id,name,location_id,target_role,context_type,metric_name,operator,threshold_value,severity,channels,message_template,active
+NR0001,Hazard Near Berth 12,L0012,Stevedore,hazard,active_hazards,>=,1,High,"in_system,email",Safety alert near {location_id}: hazardous area active.,Yes
+NR0002,Harbour Congestion Warning,,Harbourmaster,delay,blocked_locations,>=,2,Medium,"in_system,email",Congestion warning: {metric_value} blocked operational locations detected.,Yes
+NR0003,Unsafe Wind For Crane Ops,,Safety Officer,weather,wind_speed_knots,>=,20,High,"in_system,email",Unsafe wind speed detected in {zone_name}: {metric_value} knots.,Yes
+NR0004,Equipment Fault Alert,,Operations Supervisor,equipment_faults,active_outages,>=,1,High,"in_system,email",Equipment fault detected: {metric_value} active crane outages.,Yes
+NR0005,Workflow Change Notice,,Stevedore,workflow_changes,rerouted_vessels,>=,1,Medium,in_system,Workflow changed: {metric_value} vessels rerouted or holding.,Yes
+NR0006,Hezard Near Berth 12,L0013,Safety Officer,Delay,Active Outage,>=,10,High,email,Need to operate quickly,Yes

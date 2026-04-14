@@ -40,7 +40,7 @@ async function redirectIfLoggedIn() {
     try {
         const data = await apiRequest("/api/session", { method: "GET" });
         if (data.user) {
-            window.location.href = "/admin";
+            window.location.href = "/dashboard";
         }
     } catch (error) {
         setLoginMessage("Enter your admin account details to continue.", "secondary");
@@ -59,7 +59,7 @@ async function handleLogin(event) {
                 password: document.getElementById("loginPassword").value,
             }),
         });
-        window.location.href = "/admin";
+        window.location.href = "/dashboard";
     } catch (error) {
         setLoginMessage(
             error.name === "AbortError" ? "Login timed out. Please try again." : error.message,

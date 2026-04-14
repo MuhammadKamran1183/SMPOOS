@@ -1,0 +1,4 @@
+update_id,zone_name,wind_speed_knots,tide_level_m,visibility_km,condition_status,recorded_at
+EU0001,Outer Harbour,18,3.2,8.4,Watch,2026-04-05T13:00:00+00:00
+EU0002,Container Terminal,11,2.7,10.0,Normal,2026-04-05T13:05:00+00:00
+EU0003,Bulk Cargo Berths,24,3.8,4.1,Restricted Visibility,2026-04-05T13:08:00+00:00

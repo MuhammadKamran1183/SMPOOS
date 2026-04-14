@@ -1,0 +1,4 @@
+activity_id,vessel_name,berth_id,cargo_type,operation_type,tonnes_processed,status,last_updated
+CA0001,Neptune Star,L0018,Containers,Loading,4200,Active,2026-04-05T13:20:00+00:00
+CA0002,Harbour Wind,L0227,Fuel,Unloading,7800,Active,2026-04-05T13:18:00+00:00
+CA0003,Atlas Carrier,L0088,Bulk Ore,Loading,6400,Paused,2026-04-05T13:10:00+00:00

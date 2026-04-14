@@ -1,0 +1,19 @@
+event_id,event_type,entity_type,entity_id,severity,message,created_at
+EV0001,Route Recalculated,route,R0003,Medium,Route R0003 marked for disruption review.,2026-04-05T13:22:00+00:00
+EV0002,Berth Reassigned,berth_allocation,BA0002,High,Berth allocation BA0002 moved to a safe berth.,2026-04-05T13:24:00+00:00
+EV0003,Vessel Holding,vessel_path,VP0001,High,Vessel VP0001 placed in holding pattern pending clearance.,2026-04-05T13:26:00+00:00
+EV0004,Notification Triggered,notification_rule,NR0001,High,Safety alert near L0008: hazardous area active.,2026-04-05T13:59:59+00:00
+EV0005,Notification Triggered,notification_rule,NR0002,Medium,Congestion warning: 328 blocked operational locations detected.,2026-04-05T13:59:59+00:00
+EV0006,Notification Triggered,notification_rule,NR0003,High,Unsafe wind speed detected in Bulk Cargo Berths: 24.0 knots.,2026-04-05T13:59:59+00:00
+EV0007,Notification Triggered,notification_rule,NR0004,High,Equipment fault detected: 2 active crane outages.,2026-04-05T13:59:59+00:00
+EV0008,Notification Triggered,notification_rule,NR0005,Medium,Workflow changed: 3 vessels rerouted or holding.,2026-04-05T13:59:59+00:00
+EV0009,Notification Triggered,notification_rule,NR0001,High,Safety alert near L0008: hazardous area active.,2026-04-05T14:10:22+00:00
+EV0010,Notification Triggered,notification_rule,NR0002,Medium,Congestion warning: 328 blocked operational locations detected.,2026-04-05T14:10:22+00:00
+EV0011,Notification Triggered,notification_rule,NR0003,High,Unsafe wind speed detected in Bulk Cargo Berths: 24.0 knots.,2026-04-05T14:10:22+00:00
+EV0012,Notification Triggered,notification_rule,NR0004,High,Equipment fault detected: 2 active crane outages.,2026-04-05T14:10:22+00:00
+EV0013,Notification Triggered,notification_rule,NR0005,Medium,Workflow changed: 3 vessels rerouted or holding.,2026-04-05T14:10:22+00:00
+EV0014,Notification Triggered,notification_rule,NR0001,High,Safety alert near L0008: hazardous area active.,2026-04-05T14:15:44+00:00
+EV0015,Notification Triggered,notification_rule,NR0002,Medium,Congestion warning: 328 blocked operational locations detected.,2026-04-05T14:15:44+00:00
+EV0016,Notification Triggered,notification_rule,NR0003,High,Unsafe wind speed detected in Bulk Cargo Berths: 24.0 knots.,2026-04-05T14:15:44+00:00
+EV0017,Notification Triggered,notification_rule,NR0004,High,Equipment fault detected: 2 active crane outages.,2026-04-05T14:15:44+00:00
+EV0018,Notification Triggered,notification_rule,NR0005,Medium,Workflow changed: 3 vessels rerouted or holding.,2026-04-05T14:15:45+00:00
