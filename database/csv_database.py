@@ -30,3 +30,4 @@ class CSVDatabase:
             temp_path = Path(temp_file.name)
 
         temp_path.replace(file_path)
+
