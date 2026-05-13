@@ -1,53 +1,48 @@
 # SMPOOS — Smart Maritime Port Operations System
 
-SMPOOS is a lightweight, CSV-backed web application built for the CPS7002 (Software Design and Development) assignment. It provides a secure login, role-based administration tools, a monitoring dashboard, a notification engine, and basic analytics for port operations.
+SMPOOS is a CSV-backed port operations web application built with Python Dash and Flask. It provides role-based access, operational dashboards, an admin workspace, a notification engine, and analytics for port activity.
 
-## Features
+## Current Stack
 
-- Secure login with session handling and role-based access control (RBAC)
-- Admin portal to manage operational data:
-  - Port locations (zones/berths)
-  - Internal routes (transit paths)
-  - Vessel paths
-  - Restricted areas
-  - Crane outages
-  - Berth allocations
-- Real-time style dashboards:
-  - Port monitoring (vessels, berth occupancy, environment, system health)
-  - Analytics overview
-- Notification engine:
-  - Create notification rules and thresholds
-  - View delivery audit trail and event logs
-- CSV persistence (no database) for assignment compatibility
+- UI and routing: Dash + Flask
+- Charts: Plotly, Seaborn, Matplotlib
+- Storage: CSV files in `data/`
+- Entry point: `app.py`
+- Main app module: `dash_app.py`
 
-## Tech Stack
+## What The App Includes
 
-- Backend: Python (standard library HTTP server)
-- Frontend: HTML + CSS + Vanilla JavaScript (served by the Python app)
-- Storage: CSV files in `./data`
+- Secure login with session-based authentication
+- Role-based access control for each page
+- Management dashboard
+- Port monitoring dashboard
+- Admin CRUD tools for operational data
+- Notification engine with live updates
+- Analytics report builder with graphs and tables
 
-## Quick Start (Run Locally)
+## Run Locally
 
-### Prerequisites
+### Requirements
 
-- Python 3 installed (recommended: 3.10+)
-- Optional (for encryption features): `openssl` available on your system
+- Python 3.10+
 
-### Start the server
+### Install
 
-From the repository root:
+```bash
+python3 -m pip install -r requirements.txt
+```
+
+### Start The App
 
 ```bash
 python3 app.py
 ```
 
-Then open:
+Open:
 
-- http://127.0.0.1:8000/ (Login)
+- [http://127.0.0.1:8050/login](http://127.0.0.1:8050/login)
 
-### Demo accounts
-
-The login page includes demo buttons that autofill credentials:
+## Demo Accounts
 
 - Admin: `user6@portauthority.com` / `admin123`
 - Harbourmaster: `user19@portauthority.com` / `harbour123`
@@ -55,30 +50,64 @@ The login page includes demo buttons that autofill credentials:
 
 ## Pages
 
-- `/dashboard` — Management dashboard (widgets and summaries)
-- `/monitoring` — Operational monitoring dashboard
-- `/admin` — Admin operations (CRUD for operational datasets)
-- `/notification-engine` — Configure notification rules and view audit trail
-- `/analytics` — Analytics dashboards
+- `/login` — sign in page
+- `/dashboard` — management dashboard
+- `/monitoring` — operational monitoring
+- `/admin` — CRUD management for port datasets
+- `/notification-engine` — notification rules, deliveries, notifications, and event logs
+- `/analytics` — report builder with filters, summary, graphs, and recommendations
 
-Access to sections is controlled by RBAC; unavailable sections are disabled based on your role.
+Access is permission-based, so available pages depend on the logged-in user role.
 
-## Data (CSV Files)
+## Architecture
 
-SMPOOS stores data in CSV files under [data/](file:///Users/mymacos/Documents/GitHub/SMPOOS/data).
+This project follows a layered architecture:
 
-### Required assignment data sources
+- Presentation layer: `dash_app.py` and `presentation/`
+- Business logic layer: `business_logic/`
+- Data access layer: `data_access/`
+- Storage layer: `database/`
+- Domain models: `model/`
 
-- `smpoos_locations.csv` — port zones/berths
-- `smpoos_routes.csv` — internal routes / shipping lanes
-- `smpoos_notifications.csv` — port notifications/alerts
-- `smpoos_users.csv` — port personnel
+Typical flow:
 
-### Additional app-managed CSVs
+- Dash callbacks and page layouts call the service layer
+- The service layer applies permissions and business rules
+- The repository reads and writes CSV-backed records
+- The CSV database utility lives in `data_access/`
 
-The app also maintains supporting CSVs (for authentication, monitoring, auditing, etc.), including:
+## Project Structure
 
-- `smpoos_credentials.csv` (password hashes)
+- [app.py](file:///Users/mymacos/Documents/GitHub/SMPOOS/app.py) — local startup wrapper
+- [dash_app.py](file:///Users/mymacos/Documents/GitHub/SMPOOS/dash_app.py) — Dash app, callbacks, routing, shared UI helpers, and admin page
+- [presentation](file:///Users/mymacos/Documents/GitHub/SMPOOS/presentation) — presentation layer utilities (theme/components/charts + page layouts)
+- [business_logic](file:///Users/mymacos/Documents/GitHub/SMPOOS/business_logic) — service layer and core application logic
+- [data_access](file:///Users/mymacos/Documents/GitHub/SMPOOS/data_access) — repository layer for records
+- [database](file:///Users/mymacos/Documents/GitHub/SMPOOS/database) — CSV file access utilities
+- [model](file:///Users/mymacos/Documents/GitHub/SMPOOS/model) — domain models
+- [data](file:///Users/mymacos/Documents/GitHub/SMPOOS/data) — CSV datasets used by the app
+
+### `presentation/screens/`
+
+- [login_screen.py](file:///Users/mymacos/Documents/GitHub/SMPOOS/presentation/screens/login_screen.py) — login page layout
+- [dashboard_screen.py](file:///Users/mymacos/Documents/GitHub/SMPOOS/presentation/screens/dashboard_screen.py) — dashboard layout
+- [monitoring_screen.py](file:///Users/mymacos/Documents/GitHub/SMPOOS/presentation/screens/monitoring_screen.py) — monitoring layout
+- [notification_screen.py](file:///Users/mymacos/Documents/GitHub/SMPOOS/presentation/screens/notification_screen.py) — notification engine layout
+- [analytics_screen.py](file:///Users/mymacos/Documents/GitHub/SMPOOS/presentation/screens/analytics_screen.py) — analytics layout and graph builders
+
+### Important Note
+
+- The `Admin` page is still defined directly in [dash_app.py](file:///Users/mymacos/Documents/GitHub/SMPOOS/dash_app.py).
+- Other major pages are rendered through `presentation/screens/`.
+
+## Data Files
+
+Core CSV files include:
+
+- `smpoos_locations.csv`
+- `smpoos_routes.csv`
+- `smpoos_notifications.csv`
+- `smpoos_users.csv`
 - `smpoos_vessel_paths.csv`
 - `smpoos_restricted_areas.csv`
 - `smpoos_crane_outages.csv`
@@ -88,38 +117,27 @@ The app also maintains supporting CSVs (for authentication, monitoring, auditing
 - `smpoos_event_logs.csv`
 - `smpoos_system_health.csv`
 - `smpoos_environmental_updates.csv`
-- `smpoos_compliance_audit.csv`
+- `smpoos_credentials.csv`
 
-## Security Notes
+Additional assignment/supporting CSVs are also present under [data](file:///Users/mymacos/Documents/GitHub/SMPOOS/data).
 
-- Authentication uses hashed passwords (PBKDF2-SHA256) stored in `smpoos_credentials.csv`.
-- RBAC is enforced in the backend and reflected in the frontend UI.
-- Optional HTTPS: provide TLS files via environment variables (see below).
-- Optional encryption at rest for sensitive-record storage uses OpenSSL; set a strong `SMPOOS_SECRET_KEY`.
+## Security And Sessions
 
-## Configuration (Environment Variables)
+- Passwords are stored as PBKDF2-SHA256 hashes in `smpoos_credentials.csv`
+- Access is enforced through backend permission checks
+- Flask session storage is used for login state
 
-- `HOST` (default: `127.0.0.1`)
-- `PORT` (default: `8000`)
-- `SSL_CERT_FILE` / `SSL_KEY_FILE` (optional; enables HTTPS)
-- `SMPOOS_SECRET_KEY` (optional; encryption passphrase; defaults to a dev secret)
-- `OPENSSL_BIN` (optional; path to the `openssl` binary)
+## Environment Variables
 
-## Project Structure
-
-- [app.py](file:///Users/mymacos/Documents/GitHub/SMPOOS/app.py) — app bootstrap (wires services + starts server)
-- [presentation/web_app.py](file:///Users/mymacos/Documents/GitHub/SMPOOS/presentation/web_app.py) — HTTP routing + static file serving
-- [business_logic/port_data_service.py](file:///Users/mymacos/Documents/GitHub/SMPOOS/business_logic/port_data_service.py) — domain logic, RBAC, API actions
-- [data_access/csv_repository.py](file:///Users/mymacos/Documents/GitHub/SMPOOS/data_access/csv_repository.py) — CSV persistence layer
-- [frontend/](file:///Users/mymacos/Documents/GitHub/SMPOOS/frontend) — HTML/CSS/JS UI
-- [data/](file:///Users/mymacos/Documents/GitHub/SMPOOS/data) — CSV datasets
-- [security/secure_storage.py](file:///Users/mymacos/Documents/GitHub/SMPOOS/security/secure_storage.py) — encryption helper (OpenSSL)
+- `HOST` — default `127.0.0.1`
+- `PORT` — default `8050`
+- `SMPOOS_SECRET_KEY` — optional Flask session secret
 
 ## Troubleshooting
 
-- Login redirects back to `/login`:
-  - Confirm you are using an active user account (`active` column in `smpoos_users.csv` must be `Yes`).
-  - Use the built-in demo accounts from the login page.
-- Encryption errors:
-  - Ensure `openssl` is installed and accessible, or set `OPENSSL_BIN`.
-  - Set `SMPOOS_SECRET_KEY` to a non-default value in production-like demos.
+- Login keeps redirecting to `/login`
+  - Check that the user exists and is active in `smpoos_users.csv`
+  - Use one of the built-in demo accounts
+- App does not start
+  - Confirm dependencies are installed from `requirements.txt`
+  - Confirm port `8050` is not already in use

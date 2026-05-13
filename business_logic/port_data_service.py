@@ -22,14 +22,8 @@ class PortDataService:
             "view_admin_portal",
             "view_monitoring",
             "view_notification_engine",
-            "view_security",
-            "manage_security",
-            "view_sensitive_data",
-            "manage_sensitive_data",
-            "manage_compliance",
             "view_analytics",
             "view_management_dashboard",
-            "view_scalability",
             "generate_reports",
             "manage_locations",
             "manage_routes",
@@ -45,11 +39,9 @@ class PortDataService:
         "harbourmaster": {
             "view_admin_portal",
             "view_monitoring",
+            "view_notification_engine",
             "view_management_dashboard",
-            "view_security",
-            "view_sensitive_data",
             "view_analytics",
-            "view_scalability",
             "generate_reports",
             "manage_locations",
             "manage_routes",
@@ -62,9 +54,9 @@ class PortDataService:
         "operations supervisor": {
             "view_admin_portal",
             "view_monitoring",
+            "view_notification_engine",
             "view_management_dashboard",
             "view_analytics",
-            "view_scalability",
             "generate_reports",
             "manage_routes",
             "manage_notifications",
@@ -76,6 +68,7 @@ class PortDataService:
         "safety officer": {
             "view_admin_portal",
             "view_monitoring",
+            "view_notification_engine",
             "view_management_dashboard",
             "view_analytics",
             "manage_notifications",
@@ -88,14 +81,8 @@ class PortDataService:
         "view_admin_portal": "open the admin portal",
         "view_monitoring": "view monitoring data",
         "view_notification_engine": "view the notification engine",
-        "view_security": "view the security centre",
-        "manage_security": "manage security controls, scans, and patch records",
-        "view_sensitive_data": "view protected manifests and schedules",
-        "manage_sensitive_data": "manage protected manifests and schedules",
-        "manage_compliance": "manage compliance records and data requests",
         "view_analytics": "view analytics dashboards",
         "view_management_dashboard": "view the management dashboard",
-        "view_scalability": "view scalability planning and performance metrics",
         "generate_reports": "generate custom reports",
         "manage_locations": "manage port zones and berths",
         "manage_routes": "manage internal transport routes",
@@ -112,9 +99,8 @@ class PortDataService:
     ACTIVE_OUTAGE_STATUSES = {"Active", "Out", "Unavailable"}
     ACTIVE_RESTRICTION_STATUSES = {"Active", "Restricted", "Closed"}
 
-    def __init__(self, repository, secure_storage=None):
+    def __init__(self, repository):
         self.repository = repository
-        self.secure_storage = secure_storage
         self.cache_store = {}
         self.cache_stats = {"hits": 0, "misses": 0}
 
@@ -330,209 +316,6 @@ class PortDataService:
             "event_logs": self._serialize_records(self.repository.get_event_logs())[-30:],
         }
 
-    def create_consent_record(self, payload):
-        self._ensure_required(
-            payload,
-            [
-                "user_id",
-                "consent_type",
-                "purpose",
-                "lawful_basis",
-                "status",
-            ],
-        )
-        if not payload.get("granted_at") and str(payload.get("status", "")).strip().lower() in {
-            "granted",
-            "active",
-            "yes",
-        }:
-            payload["granted_at"] = self._now_iso()
-        return self.repository.create_consent_record(payload)
-
-    def update_consent_record(self, consent_id, payload):
-        status = str(payload.get("status", "")).strip().lower()
-        if status in {"withdrawn", "revoked", "no"} and not payload.get("withdrawn_at"):
-            payload["withdrawn_at"] = self._now_iso()
-        return self.repository.update_consent_record(consent_id, payload)
-
-    def delete_consent_record(self, consent_id):
-        self.repository.delete_consent_record(consent_id)
-
-    def create_data_request(self, payload):
-        self._ensure_required(payload, ["user_id", "request_type", "requester_email"])
-        payload.setdefault("status", "Open")
-        payload.setdefault("requested_at", self._now_iso())
-        if payload["status"].strip().lower() == "completed":
-            payload.setdefault("resolved_at", self._now_iso())
-            payload.setdefault(
-                "export_payload",
-                self._encrypt_sensitive_text(
-                    self._build_user_data_export(payload["user_id"], payload["request_type"])
-                ),
-            )
-        return self.repository.create_data_request(payload)
-
-    def update_data_request(self, request_id, payload):
-        request = next(
-            (request for request in self.repository.get_data_requests() if request.request_id == request_id),
-            None,
-        )
-        if request is None:
-            raise ValueError(f"Data request {request_id} was not found.")
-
-        next_status = str(payload.get("status", request.status)).strip().lower()
-        request_type = str(payload.get("request_type", request.request_type)).strip().lower()
-        if next_status == "completed":
-            payload.setdefault("resolved_at", self._now_iso())
-            if request_type in {"access", "portability"} and not payload.get("export_payload"):
-                payload["export_payload"] = self._encrypt_sensitive_text(
-                    self._build_user_data_export(
-                        payload.get("user_id", request.user_id),
-                        request_type,
-                    )
-                )
-        return self.repository.update_data_request(request_id, payload)
-
-    def delete_data_request(self, request_id):
-        self.repository.delete_data_request(request_id)
-
-    def get_security_snapshot(self, runtime_context=None, user=None):
-        runtime_context = runtime_context or {}
-        cache_key = self._cache_key(
-            "security_snapshot",
-            {
-                "role": (user or {}).get("canonical_role", (user or {}).get("role", "")),
-                "https_enabled": runtime_context.get("https_enabled", False),
-                "session_count": runtime_context.get("session_count", 0),
-            },
-        )
-        return self._get_cached_result(
-            cache_key,
-            lambda: self._build_security_snapshot(runtime_context, user or {}),
-            ttl_seconds=5,
-        )
-
-    def create_sensitive_record(self, payload):
-        self._ensure_required(
-            payload,
-            ["record_type", "reference_id", "classification", "allowed_role", "plaintext_payload"],
-        )
-        return self.repository.create_sensitive_record(
-            {
-                "record_id": payload.get("record_id", ""),
-                "record_type": payload["record_type"],
-                "reference_id": payload["reference_id"],
-                "classification": payload["classification"],
-                "allowed_role": payload["allowed_role"],
-                "encryption_status": "Encrypted",
-                "encrypted_payload": self._encrypt_sensitive_text(payload["plaintext_payload"]),
-                "updated_at": self._now_iso(),
-            }
-        )
-
-    def update_sensitive_record(self, record_id, payload):
-        repository_payload = {
-            key: value
-            for key, value in payload.items()
-            if key in {"record_type", "reference_id", "classification", "allowed_role"}
-        }
-        if "plaintext_payload" in payload:
-            repository_payload["encrypted_payload"] = self._encrypt_sensitive_text(
-                payload["plaintext_payload"]
-            )
-            repository_payload["encryption_status"] = "Encrypted"
-        repository_payload["updated_at"] = self._now_iso()
-        return self.repository.update_sensitive_record(record_id, repository_payload)
-
-    def delete_sensitive_record(self, record_id):
-        self.repository.delete_sensitive_record(record_id)
-
-    def run_vulnerability_scan(self, runtime_context=None):
-        runtime_context = runtime_context or {}
-        findings = []
-        if not runtime_context.get("https_enabled"):
-            findings.append(
-                {
-                    "severity": "High",
-                    "finding": "HTTPS/TLS is not enabled for the web server.",
-                }
-            )
-        if self.secure_storage is None or self.secure_storage.is_default_secret():
-            findings.append(
-                {
-                    "severity": "High",
-                    "finding": "The default encryption secret is still in use for protected data.",
-                }
-            )
-
-        legacy_hash_count = sum(
-            1
-            for credential in self.repository.get_credentials()
-            if not credential["password_hash"].startswith(f"{self.PASSWORD_HASH_SCHEME}$")
-        )
-        if legacy_hash_count:
-            findings.append(
-                {
-                    "severity": "Medium",
-                    "finding": f"{legacy_hash_count} account(s) still use a legacy password hash and should be upgraded by login.",
-                }
-            )
-
-        patch_records = self.repository.get_patch_records()
-        latest_patch_time = max(
-            (
-                self._parse_iso_datetime(record.applied_at or record.patch_window)
-                for record in patch_records
-                if record.applied_at or record.patch_window
-            ),
-            default=None,
-        )
-        if latest_patch_time is None or latest_patch_time < datetime.now(timezone.utc) - timedelta(days=30):
-            findings.append(
-                {
-                    "severity": "Medium",
-                    "finding": "No recent applied patch window is recorded in the last 30 days.",
-                }
-            )
-
-        if runtime_context.get("session_count", 0) > 100:
-            findings.append(
-                {
-                    "severity": "Low",
-                    "finding": "High concurrent session count detected. Review session scaling and expiry settings.",
-                }
-            )
-
-        if findings:
-            status = "Critical" if any(finding["severity"] == "High" for finding in findings) else "Warning"
-        else:
-            status = "Healthy"
-            findings.append({"severity": "Info", "finding": "No immediate security findings were detected."})
-
-        scan = self.repository.create_vulnerability_scan(
-            {
-                "scan_type": "Application Security Review",
-                "status": status,
-                "findings_count": len(findings),
-                "findings_summary": json.dumps(findings, separators=(",", ":")),
-                "scanned_at": self._now_iso(),
-            }
-        )
-        return {"scan": scan, "findings": findings}
-
-    def create_patch_record(self, payload):
-        self._ensure_required(payload, ["component_name", "patch_version", "patch_status"])
-        payload.setdefault("applied_at", self._now_iso() if payload["patch_status"].strip().lower() == "applied" else "")
-        return self.repository.create_patch_record(payload)
-
-    def update_patch_record(self, patch_id, payload):
-        if payload.get("patch_status", "").strip().lower() == "applied" and not payload.get("applied_at"):
-            payload["applied_at"] = self._now_iso()
-        return self.repository.update_patch_record(patch_id, payload)
-
-    def delete_patch_record(self, patch_id):
-        self.repository.delete_patch_record(patch_id)
-
     def get_management_dashboard_snapshot(self, user, filters=None, runtime_context=None):
         filters = filters or {}
         runtime_context = runtime_context or {}
@@ -546,15 +329,6 @@ class PortDataService:
         return self._get_cached_result(
             cache_key,
             lambda: self._build_management_dashboard_snapshot(user, filters, runtime_context),
-            ttl_seconds=5,
-        )
-
-    def get_scalability_snapshot(self, runtime_context=None):
-        runtime_context = runtime_context or {}
-        cache_key = self._cache_key("scalability_snapshot", runtime_context)
-        return self._get_cached_result(
-            cache_key,
-            lambda: self._build_scalability_snapshot(runtime_context),
             ttl_seconds=5,
         )
 
@@ -1100,27 +874,6 @@ class PortDataService:
             }
         )
 
-    def _build_user_data_export(self, user_id, request_type):
-        user = self.repository.get_user_by_id(user_id)
-        consent_records = [
-            vars(record)
-            for record in self.repository.get_consent_records()
-            if record.user_id == user_id
-        ]
-        deliveries = [
-            vars(delivery)
-            for delivery in self.repository.get_notification_deliveries()
-            if delivery.recipient_user_id == user_id
-        ]
-        payload = {
-            "request_type": request_type,
-            "user_profile": vars(user) if user else {"user_id": user_id},
-            "consent_records": consent_records,
-            "notification_deliveries": deliveries[-50:],
-            "exported_at": self._now_iso(),
-        }
-        return json.dumps(payload, separators=(",", ":"))
-
     def _build_berth_usage_rows(self):
         berth_lookup = {
             location.location_id: location.name for location in self.repository.get_locations()
@@ -1313,81 +1066,6 @@ class PortDataService:
             }
         ]
 
-    def _encrypt_sensitive_text(self, plaintext):
-        if not plaintext:
-            return ""
-        if self.secure_storage is None:
-            return plaintext
-        return self.secure_storage.encrypt_text(plaintext)
-
-    def _decrypt_sensitive_text(self, ciphertext):
-        if not ciphertext:
-            return ""
-        if self.secure_storage is None:
-            return ciphertext
-        try:
-            return self.secure_storage.decrypt_text(ciphertext)
-        except Exception:
-            return "[unable to decrypt payload]"
-
-    def _can_view_sensitive_record(self, user, record):
-        role = self._canonical_role(user.get("canonical_role", user.get("role", "")))
-        if role == "administrator":
-            return True
-        return role == self._canonical_role(record.allowed_role)
-
-    def _serialise_sensitive_record(self, record, user):
-        preview = "[protected]"
-        if self._can_view_sensitive_record(user, record):
-            preview = self._decrypt_sensitive_text(record.encrypted_payload)[:240]
-        return {
-            "record_id": record.record_id,
-            "record_type": record.record_type,
-            "reference_id": record.reference_id,
-            "classification": record.classification,
-            "allowed_role": record.allowed_role,
-            "encryption_status": record.encryption_status,
-            "payload_preview": preview,
-            "updated_at": record.updated_at,
-        }
-
-    def _build_security_snapshot(self, runtime_context, user):
-        scans = self.repository.get_vulnerability_scans()
-        sensitive_records = self.repository.get_sensitive_records()
-        patch_records = self.repository.get_patch_records()
-        latest_scan = scans[-1] if scans else None
-        return {
-            "summary": {
-                "secure_authentication": "PBKDF2 session authentication with timeout and lockout protection",
-                "tls_in_transit": "Enabled" if runtime_context.get("https_enabled") else "HTTP only - enable certs",
-                "encrypted_records": len(sensitive_records),
-                "active_sessions": runtime_context.get("session_count", 0),
-                "latest_scan_status": latest_scan.status if latest_scan else "Not Run",
-                "default_secret_in_use": self.secure_storage.is_default_secret() if self.secure_storage else True,
-            },
-            "access_control_policies": [
-                {
-                    "asset": "Vessel manifests",
-                    "policy": "Only administrator and harbourmaster roles can view protected payloads.",
-                },
-                {
-                    "asset": "Logistical schedules",
-                    "policy": "Role-based access is enforced through protected record permissions and API checks.",
-                },
-                {
-                    "asset": "AIS / movement payloads",
-                    "policy": "Sensitive streams are stored encrypted at rest and flagged if TLS is disabled in transit.",
-                },
-            ],
-            "sensitive_records": [
-                self._serialise_sensitive_record(record, user)
-                for record in sensitive_records[-50:]
-            ],
-            "vulnerability_scans": self._serialize_records(scans)[-20:],
-            "patch_records": self._serialize_records(patch_records)[-20:],
-            "security_audits": self._serialize_records(self.repository.get_event_logs())[-30:],
-        }
-
     def _build_management_dashboard_snapshot(self, user, filters, runtime_context):
         canonical_role = self._canonical_role(user.get("canonical_role", user.get("role", "")))
         return {
@@ -1398,7 +1076,6 @@ class PortDataService:
             "analytics_summary": self._build_analytics_snapshot()["summary"],
             "congestion_heatmap": self._build_congestion_heatmap(),
             "map_overlays": self._build_map_overlays(),
-            "playback_frames": self._build_playback_frames(filters),
             "runtime_context": {
                 "https_enabled": runtime_context.get("https_enabled", False),
                 "active_sessions": runtime_context.get("session_count", 0),
@@ -1533,30 +1210,6 @@ class PortDataService:
             ],
         }
 
-    def _build_playback_frames(self, filters):
-        time_window_filter = str(filters.get("time_window", "")).strip().lower()
-        frames = []
-        for path in self.repository.get_vessel_paths():
-            frame_time = path.last_updated or self._now_iso()
-            hour_window = ""
-            parsed_frame = self._parse_iso_datetime(frame_time)
-            if parsed_frame is not None:
-                hour_window = f"{parsed_frame.hour:02d}:00-{parsed_frame.hour:02d}:59"
-            if time_window_filter and hour_window.lower() != time_window_filter:
-                continue
-            frames.append(
-                {
-                    "frame_time": frame_time,
-                    "asset_name": path.vessel_name,
-                    "status": path.status,
-                    "current_location_id": path.current_location_id,
-                    "destination_location_id": path.destination_location_id,
-                    "assigned_route_id": path.assigned_route_id,
-                }
-            )
-        frames.sort(key=lambda frame: frame["frame_time"])
-        return frames[-40:]
-
     def _build_role_dashboard_layout(self, canonical_role):
         layouts = {
             "administrator": [
@@ -1565,111 +1218,27 @@ class PortDataService:
                 "analytics_summary",
                 "congestion_heatmap",
                 "map_overlays",
-                "playback_frames",
             ],
             "harbourmaster": [
                 "port_status_overview",
                 "vessel_vehicle_activity",
                 "alerts_panel",
                 "map_overlays",
-                "playback_frames",
             ],
             "operations supervisor": [
                 "vessel_vehicle_activity",
                 "port_status_overview",
                 "analytics_summary",
                 "congestion_heatmap",
-                "playback_frames",
             ],
             "safety officer": [
                 "port_status_overview",
                 "alerts_panel",
                 "map_overlays",
                 "congestion_heatmap",
-                "playback_frames",
             ],
         }
         return layouts.get(canonical_role, layouts["administrator"])
-
-    def _build_scalability_snapshot(self, runtime_context):
-        vessel_paths = self.repository.get_vessel_paths()
-        sensor_updates = self.repository.get_environmental_updates()
-        analytics_inputs = [*self.repository.get_notifications(), *self.repository.get_event_logs()]
-        return {
-            "summary": {
-                "layered_architecture": "presentation -> business_logic -> data_access -> database",
-                "active_sessions": runtime_context.get("session_count", 0),
-                "cache_hits": self.cache_stats["hits"],
-                "cache_misses": self.cache_stats["misses"],
-            },
-            "data_volume": {
-                "vessel_paths": len(vessel_paths),
-                "sensor_updates": len(sensor_updates),
-                "notifications": len(self.repository.get_notifications()),
-                "event_logs": len(self.repository.get_event_logs()),
-            },
-            "cache_status": [
-                {
-                    "cache_entries": len(self.cache_store),
-                    "hits": self.cache_stats["hits"],
-                    "misses": self.cache_stats["misses"],
-                    "strategy": "Short-lived in-memory snapshot caching for monitoring, analytics, dashboard, and scalability views.",
-                }
-            ],
-            "load_balancing": {
-                "ais_workers": self._assign_to_workers(
-                    [path.path_id for path in vessel_paths],
-                    "AIS-Worker",
-                    3,
-                ),
-                "analytics_workers": self._assign_to_workers(
-                    [
-                        getattr(item, "notification_id", getattr(item, "event_id", ""))
-                        for item in analytics_inputs
-                    ],
-                    "Analytics-Worker",
-                    2,
-                ),
-            },
-            "stream_processing": [
-                {
-                    "pipeline": "AIS ingestion",
-                    "batch_size": 25,
-                    "window_seconds": 5,
-                    "optimisation": "Shard vessel paths across worker buckets before analytics aggregation.",
-                },
-                {
-                    "pipeline": "Environmental sensors",
-                    "batch_size": 20,
-                    "window_seconds": 10,
-                    "optimisation": "Aggregate zone metrics before dashboard rendering and alert evaluation.",
-                },
-            ],
-            "recommendations": [
-                {
-                    "category": "Caching",
-                    "insight": "Keep snapshot cache TTL short to reduce stale operational views while still lowering repeated computation.",
-                },
-                {
-                    "category": "Concurrency",
-                    "insight": "Scale AIS and analytics workers independently as vessel traffic and sensor volume increase.",
-                },
-                {
-                    "category": "Modularity",
-                    "insight": "Preserve the layered repository/service/web separation so additional data pipelines can be added without rewriting the UI.",
-                },
-            ],
-        }
-
-    def _assign_to_workers(self, items, prefix, worker_count):
-        assignments = {f"{prefix}-{index + 1}": [] for index in range(worker_count)}
-        for item in items:
-            worker_index = sum(ord(char) for char in str(item)) % worker_count
-            assignments[f"{prefix}-{worker_index + 1}"].append(item)
-        return [
-            {"worker": worker, "items": assigned_items, "item_count": len(assigned_items)}
-            for worker, assigned_items in assignments.items()
-        ]
 
     def _evaluate_notification_rule(self, rule):
         context = rule.context_type.strip().lower()
