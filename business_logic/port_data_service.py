@@ -237,7 +237,10 @@ class PortDataService:
         if not value:
             return None
         try:
-            return datetime.fromisoformat(str(value).replace("Z", "+00:00"))
+            dt = datetime.fromisoformat(str(value).replace("Z", "+00:00"))
+            if dt.tzinfo is None:
+                return dt.replace(tzinfo=timezone.utc)
+            return dt.astimezone(timezone.utc)
         except ValueError:
             return None
 
@@ -250,11 +253,11 @@ class PortDataService:
     def authenticate_user(self, email, password):
         user = self.repository.get_user_by_email(email)
         if user is None:
-            raise ValueError("Invalid email or password.")
+            raise ValueError("Messsages")
         if not user.is_active():
-            raise PermissionError("Only active users can access the admin interface.")
+            raise PermissionError("Invalid email or password.")
         if self._canonical_role(user.role) not in self.ROLE_PERMISSIONS:
-            raise PermissionError("This user is not authorised for admin changes.")
+            raise PermissionError("Invalid email or password.")
 
         verification = self._verify_password_hash(
             password,
@@ -368,8 +371,16 @@ class PortDataService:
 
     def generate_custom_report(self, filters):
         report_rows = []
-        start_dt = self._parse_iso_datetime(filters.get("start_date"))
-        end_dt = self._parse_iso_datetime(filters.get("end_date"))
+        start_value = filters.get("start_date")
+        end_value = filters.get("end_date")
+        start_dt = self._parse_iso_datetime(start_value)
+        end_dt = self._parse_iso_datetime(end_value)
+        start_text = str(start_value or "")
+        end_text = str(end_value or "")
+        if start_dt and len(start_text) == 10 and "T" not in start_text and " " not in start_text:
+            start_dt = start_dt.replace(hour=0, minute=0, second=0, microsecond=0)
+        if end_dt and len(end_text) == 10 and "T" not in end_text and " " not in end_text:
+            end_dt = (end_dt + timedelta(days=1)) - timedelta(microseconds=1)
         vessel_type_filter = str(filters.get("vessel_type", "")).strip().lower()
         cargo_type_filter = str(filters.get("cargo_type", "")).strip().lower()
         port_area_filter = str(filters.get("port_area", "")).strip().lower()

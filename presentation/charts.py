@@ -86,7 +86,14 @@ def fig_congestion_heatmap(rows):
         for zone_index, zone in enumerate(zones):
             grid[window_index][zone_index] = lookup.get((window, zone), 0)
     fig = go.Figure(go.Heatmap(z=grid, x=zones, y=windows, colorscale="Viridis"))
-    fig.update_layout(template="plotly_dark", height=360, margin=dict(l=10, r=10, t=30, b=30))
+    fig.update_layout(
+        template="plotly_dark",
+        height=360,
+        margin=dict(l=10, r=10, t=45, b=30),
+        title="Congestion Score by Zone & Time Window",
+        xaxis_title="Zone",
+        yaxis_title="Time Window",
+    )
     return fig
 
 

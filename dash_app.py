@@ -7,9 +7,7 @@ import dash
 import dash_bootstrap_components as dbc
 import matplotlib
 matplotlib.use("Agg")
-import plotly.graph_objects as go
 from dash import Input, Output, State, dcc, html
-from dash.dash_table import DataTable
 from dash.exceptions import PreventUpdate
 from flask import Flask, session
 
@@ -46,12 +44,9 @@ from presentation.session import current_user, first_allowed_path, guard_require
 from presentation.charts import (
     fig_congestion_heatmap,
     fig_map_overlay,
-    normalise_congestion_heatmap,
     normalise_management_snapshot,
-    normalise_map_overlays,
-    seaborn_heatmap_png,
 )
-from presentation.ui import admin_datetime_row, admin_form_card, admin_tab, admin_table_card, nav_link, shell, sidebar, topbar
+from presentation.ui import admin_datetime_row, admin_form_card, admin_tab, admin_table_card, shell, sidebar, topbar
 
 class LocationStatus(str, Enum):
     ACTIVE = "Active"
@@ -198,166 +193,244 @@ def admin_layout():
             dbc.Tabs(
                 [
                     admin_tab(
-                        dbc.Row(
+                        html.Div(
                             [
-                                dbc.Col(
-                                    admin_form_card(
-                                        "Locations",
-                                        [
-                                            dbc.Input(id="loc-id", placeholder="Optional custom ID. Leave blank to auto-generate.", className="mb-2", style=INPUT_STYLE),
-                                            dbc.Input(id="loc-name", placeholder="Name", className="mb-2", style=INPUT_STYLE),
-                                            dbc.Input(id="loc-type", placeholder="Type e.g. Berth", className="mb-2", style=INPUT_STYLE),
-                                            dbc.Select(id="loc-status", options=[{"label": s.value, "value": s.value} for s in LocationStatus], value=LocationStatus.ACTIVE.value, className="mb-2", style=INPUT_STYLE),
-                                            dbc.Input(id="loc-capacity", placeholder="Capacity tonnes", className="mb-2", style=INPUT_STYLE),
-                                            dbc.ButtonGroup([dbc.Button("Save", id="loc-save", style=PRIMARY_BUTTON_STYLE), dbc.Button("Delete By ID", id="loc-delete", style=SECONDARY_BUTTON_STYLE)]),
-                                            dbc.Alert(id="loc-alert", is_open=False, duration=None, dismissable=True, color="success", className="mt-3", style={"borderRadius": "14px", "border": "0"}),
-                                        ],
-                                    ),
-                                    md=4,
+                                dbc.Row(
+                                    [
+                                        dbc.Col(
+                                            admin_form_card(
+                                                "Locations",
+                                                [
+                                                    dbc.Input(id="loc-id", placeholder="Optional custom ID. Leave blank to auto-generate.", className="mb-2", style=INPUT_STYLE),
+                                                    dbc.Input(id="loc-name", placeholder="Name", className="mb-2", style=INPUT_STYLE),
+                                                    dbc.Input(id="loc-type", placeholder="Type e.g. Berth", className="mb-2", style=INPUT_STYLE),
+                                                    dbc.Select(id="loc-status", options=[{"label": s.value, "value": s.value} for s in LocationStatus], value=LocationStatus.ACTIVE.value, className="mb-2", style=INPUT_STYLE),
+                                                    dbc.Input(id="loc-capacity", placeholder="Capacity tonnes", className="mb-2", style=INPUT_STYLE),
+                                                    dbc.ButtonGroup([dbc.Button("Save", id="loc-save", style=PRIMARY_BUTTON_STYLE), dbc.Button("Delete By ID", id="loc-delete", style=SECONDARY_BUTTON_STYLE)]),
+                                                    dbc.Alert(id="loc-alert", is_open=False, duration=None, dismissable=True, color="success", className="mt-3", style={"borderRadius": "14px", "border": "0"}),
+                                                ],
+                                            ),
+                                            xs=12,
+                                            md=12,
+                                        ),
+                                    ],
+                                    className="g-3 mb-3",
                                 ),
-                                dbc.Col(admin_table_card("Location Records", locations, ["location_id", "name", "type", "status", "capacity_tonnes"], page_size=10, table_id="admin-locations-table"), md=8),
-                            ],
-                            className="g-3",
+                                dbc.Row(
+                                    [
+                                        dbc.Col(
+                                            admin_table_card("Location Records", locations, ["location_id", "name", "type", "status", "capacity_tonnes"], page_size=10, table_id="admin-locations-table"),
+                                            xs=12,
+                                        ),
+                                    ],
+                                    className="g-3",
+                                ),
+                            ]
                         ),
                         "Locations",
                         disabled="manage_locations" not in perms,
                     ),
                     admin_tab(
-                        dbc.Row(
+                        html.Div(
                             [
-                                dbc.Col(
-                                    admin_form_card(
-                                        "Routes",
-                                        [
-                                            dbc.Input(id="route-id", placeholder="Optional custom ID. Leave blank to auto-generate.", className="mb-2", style=INPUT_STYLE),
-                                            dbc.Input(id="route-type", placeholder="Route type", className="mb-2", style=INPUT_STYLE),
-                                            dbc.Input(id="route-start", placeholder="Start Location e.g. L0001", className="mb-2", style=INPUT_STYLE),
-                                            dbc.Input(id="route-end", placeholder="End Location e.g. L0002", className="mb-2", style=INPUT_STYLE),
-                                            dbc.Input(id="route-distance", placeholder="Distance KM", className="mb-2", style=INPUT_STYLE),
-                                            dbc.Select(id="route-status", options=[{"label": s.value, "value": s.value} for s in RouteStatus], value=RouteStatus.OPEN.value, className="mb-2", style=INPUT_STYLE),
-                                            dbc.ButtonGroup([dbc.Button("Save", id="route-save", style=PRIMARY_BUTTON_STYLE), dbc.Button("Delete By ID", id="route-delete", style=SECONDARY_BUTTON_STYLE)]),
-                                            dbc.Alert(id="route-alert", is_open=False, duration=None, dismissable=True, color="success", className="mt-3", style={"borderRadius": "14px", "border": "0"}),
-                                        ],
-                                    ),
-                                    md=4,
+                                dbc.Row(
+                                    [
+                                        dbc.Col(
+                                            admin_form_card(
+                                                "Routes",
+                                                [
+                                                    dbc.Input(id="route-id", placeholder="Optional custom ID. Leave blank to auto-generate.", className="mb-2", style=INPUT_STYLE),
+                                                    dbc.Input(id="route-type", placeholder="Route type", className="mb-2", style=INPUT_STYLE),
+                                                    dbc.Input(id="route-start", placeholder="Start Location e.g. L0001", className="mb-2", style=INPUT_STYLE),
+                                                    dbc.Input(id="route-end", placeholder="End Location e.g. L0002", className="mb-2", style=INPUT_STYLE),
+                                                    dbc.Input(id="route-distance", placeholder="Distance KM", className="mb-2", style=INPUT_STYLE),
+                                                    dbc.Select(id="route-status", options=[{"label": s.value, "value": s.value} for s in RouteStatus], value=RouteStatus.OPEN.value, className="mb-2", style=INPUT_STYLE),
+                                                    dbc.ButtonGroup([dbc.Button("Save", id="route-save", style=PRIMARY_BUTTON_STYLE), dbc.Button("Delete By ID", id="route-delete", style=SECONDARY_BUTTON_STYLE)]),
+                                                    dbc.Alert(id="route-alert", is_open=False, duration=None, dismissable=True, color="success", className="mt-3", style={"borderRadius": "14px", "border": "0"}),
+                                                ],
+                                            ),
+                                            xs=12,
+                                            md=12,
+                                        ),
+                                    ],
+                                    className="g-3 mb-3",
                                 ),
-                                dbc.Col(admin_table_card("Route Records", routes, ["route_id", "start_location", "end_location", "route_type", "distance_km", "status"], page_size=10, table_id="admin-routes-table"), md=8),
-                            ],
-                            className="g-3",
+                                dbc.Row(
+                                    [
+                                        dbc.Col(
+                                            admin_table_card("Route Records", routes, ["route_id", "start_location", "end_location", "route_type", "distance_km", "status"], page_size=10, table_id="admin-routes-table"),
+                                            xs=12,
+                                        ),
+                                    ],
+                                    className="g-3",
+                                ),
+                            ]
                         ),
                         "Routes",
                         disabled="manage_routes" not in perms,
                     ),
                     admin_tab(
-                        dbc.Row(
+                        html.Div(
                             [
-                                dbc.Col(
-                                    admin_form_card(
-                                        "Vessel Paths",
-                                        [
-                                            dbc.Input(id="vp-id", placeholder="Optional custom ID. Leave blank to auto-generate.", className="mb-2", style=INPUT_STYLE),
-                                            dbc.Input(id="vp-name", placeholder="Vessel Name", className="mb-2", style=INPUT_STYLE),
-                                            dbc.Input(id="vp-type", placeholder="Vessel Type", className="mb-2", style=INPUT_STYLE),
-                                            dbc.Input(id="vp-cargo", placeholder="Cargo Tonnes", className="mb-2", style=INPUT_STYLE),
-                                            dbc.Select(id="vp-status", options=[{"label": s.value, "value": s.value} for s in VesselPathStatus], value=VesselPathStatus.APPROACHING.value, className="mb-2", style=INPUT_STYLE),
-                                            dbc.Input(id="vp-current", placeholder="Current Location ID e.g. L0001", className="mb-2", style=INPUT_STYLE),
-                                            dbc.Input(id="vp-destination", placeholder="Destination Location ID e.g. L0002", className="mb-2", style=INPUT_STYLE),
-                                            dbc.Input(id="vp-route", placeholder="Assigned Route ID e.g. R0001", className="mb-2", style=INPUT_STYLE),
-                                            dbc.Input(id="vp-berth", placeholder="Assigned Berth ID e.g. L0004", className="mb-2", style=INPUT_STYLE),
-                                            dbc.ButtonGroup([dbc.Button("Save", id="vp-save", style=PRIMARY_BUTTON_STYLE), dbc.Button("Delete By ID", id="vp-delete", style=SECONDARY_BUTTON_STYLE)]),
-                                            dbc.Alert(id="vp-alert", is_open=False, duration=None, dismissable=True, color="success", className="mt-3", style={"borderRadius": "14px", "border": "0"}),
-                                        ],
-                                    ),
-                                    md=4,
+                                dbc.Row(
+                                    [
+                                        dbc.Col(
+                                            admin_form_card(
+                                                "Vessel Paths",
+                                                [
+                                                    dbc.Input(id="vp-id", placeholder="Optional custom ID. Leave blank to auto-generate.", className="mb-2", style=INPUT_STYLE),
+                                                    dbc.Input(id="vp-name", placeholder="Vessel Name", className="mb-2", style=INPUT_STYLE),
+                                                    dbc.Input(id="vp-type", placeholder="Vessel Type", className="mb-2", style=INPUT_STYLE),
+                                                    dbc.Input(id="vp-cargo", placeholder="Cargo Tonnes", className="mb-2", style=INPUT_STYLE),
+                                                    dbc.Select(id="vp-status", options=[{"label": s.value, "value": s.value} for s in VesselPathStatus], value=VesselPathStatus.APPROACHING.value, className="mb-2", style=INPUT_STYLE),
+                                                    dbc.Input(id="vp-current", placeholder="Current Location ID e.g. L0001", className="mb-2", style=INPUT_STYLE),
+                                                    dbc.Input(id="vp-destination", placeholder="Destination Location ID e.g. L0002", className="mb-2", style=INPUT_STYLE),
+                                                    dbc.Input(id="vp-route", placeholder="Assigned Route ID e.g. R0001", className="mb-2", style=INPUT_STYLE),
+                                                    dbc.Input(id="vp-berth", placeholder="Assigned Berth ID e.g. L0004", className="mb-2", style=INPUT_STYLE),
+                                                    dbc.ButtonGroup([dbc.Button("Save", id="vp-save", style=PRIMARY_BUTTON_STYLE), dbc.Button("Delete By ID", id="vp-delete", style=SECONDARY_BUTTON_STYLE)]),
+                                                    dbc.Alert(id="vp-alert", is_open=False, duration=None, dismissable=True, color="success", className="mt-3", style={"borderRadius": "14px", "border": "0"}),
+                                                ],
+                                            ),
+                                            xs=12,
+                                            md=12,
+                                        ),
+                                    ],
+                                    className="g-3 mb-3",
                                 ),
-                                dbc.Col(admin_table_card("Vessel Path Records", vessel_paths, ["path_id", "vessel_name", "vessel_type", "cargo_tonnes", "status", "current_location_id", "destination_location_id", "assigned_route_id", "assigned_berth_id", "last_updated"], page_size=10, table_id="admin-vessel-paths-table"), md=8),
-                            ],
-                            className="g-3",
+                                dbc.Row(
+                                    [
+                                        dbc.Col(
+                                            admin_table_card("Vessel Path Records", vessel_paths, ["path_id", "vessel_name", "vessel_type", "cargo_tonnes", "status", "current_location_id", "destination_location_id", "assigned_route_id", "assigned_berth_id", "last_updated"], page_size=10, table_id="admin-vessel-paths-table"),
+                                            xs=12,
+                                        ),
+                                    ],
+                                    className="g-3",
+                                ),
+                            ]
                         ),
                         "Vessel Paths",
                         disabled="manage_vessel_paths" not in perms,
                     ),
                     admin_tab(
-                        dbc.Row(
+                        html.Div(
                             [
-                                dbc.Col(
-                                    admin_form_card(
-                                        "Restricted Areas",
-                                        [
-                                            dbc.Input(id="ra-id", placeholder="Optional custom ID. Leave blank to auto-generate.", className="mb-2", style=INPUT_STYLE),
-                                            dbc.Input(id="ra-name", placeholder="Area Name", className="mb-2", style=INPUT_STYLE),
-                                            dbc.Input(id="ra-location", placeholder="Location ID e.g. L0001", className="mb-2", style=INPUT_STYLE),
-                                            dbc.Input(id="ra-type", placeholder="Area Type e.g. Hazardous Area", className="mb-2", style=INPUT_STYLE),
-                                            dbc.Select(id="ra-status", options=[{"label": s.value, "value": s.value} for s in RestrictedAreaStatus], value=RestrictedAreaStatus.ACTIVE.value, className="mb-2", style=INPUT_STYLE),
-                                            dbc.Select(id="ra-severity", options=[{"label": s.value, "value": s.value} for s in Severity], value=Severity.MEDIUM.value, className="mb-2", style=INPUT_STYLE),
-                                            admin_datetime_row("ra-start-date", "ra-start-time", "Start Date", "Start Time"),
-                                            admin_datetime_row("ra-end-date", "ra-end-time", "End Date", "End Time"),
-                                            dbc.Textarea(id="ra-reason", placeholder="Reason", className="mb-2", style=INPUT_STYLE),
-                                            dbc.ButtonGroup([dbc.Button("Save", id="ra-save", style=PRIMARY_BUTTON_STYLE), dbc.Button("Delete By ID", id="ra-delete", style=SECONDARY_BUTTON_STYLE)]),
-                                            dbc.Alert(id="ra-alert", is_open=False, duration=None, dismissable=True, color="success", className="mt-3", style={"borderRadius": "14px", "border": "0"}),
-                                        ],
-                                    ),
-                                    md=4,
+                                dbc.Row(
+                                    [
+                                        dbc.Col(
+                                            admin_form_card(
+                                                "Restricted Areas",
+                                                [
+                                                    dbc.Input(id="ra-id", placeholder="Optional custom ID. Leave blank to auto-generate.", className="mb-2", style=INPUT_STYLE),
+                                                    dbc.Input(id="ra-name", placeholder="Area Name", className="mb-2", style=INPUT_STYLE),
+                                                    dbc.Input(id="ra-location", placeholder="Location ID e.g. L0001", className="mb-2", style=INPUT_STYLE),
+                                                    dbc.Input(id="ra-type", placeholder="Area Type e.g. Hazardous Area", className="mb-2", style=INPUT_STYLE),
+                                                    dbc.Select(id="ra-status", options=[{"label": s.value, "value": s.value} for s in RestrictedAreaStatus], value=RestrictedAreaStatus.ACTIVE.value, className="mb-2", style=INPUT_STYLE),
+                                                    dbc.Select(id="ra-severity", options=[{"label": s.value, "value": s.value} for s in Severity], value=Severity.MEDIUM.value, className="mb-2", style=INPUT_STYLE),
+                                                    admin_datetime_row("ra-start-date", "ra-start-time", "Start Date", "Start Time"),
+                                                    admin_datetime_row("ra-end-date", "ra-end-time", "End Date", "End Time"),
+                                                    dbc.Textarea(id="ra-reason", placeholder="Reason", className="mb-2", style=INPUT_STYLE),
+                                                    dbc.ButtonGroup([dbc.Button("Save", id="ra-save", style=PRIMARY_BUTTON_STYLE), dbc.Button("Delete By ID", id="ra-delete", style=SECONDARY_BUTTON_STYLE)]),
+                                                    dbc.Alert(id="ra-alert", is_open=False, duration=None, dismissable=True, color="success", className="mt-3", style={"borderRadius": "14px", "border": "0"}),
+                                                ],
+                                            ),
+                                            xs=12,
+                                            md=12,
+                                        ),
+                                    ],
+                                    className="g-3 mb-3",
                                 ),
-                                dbc.Col(admin_table_card("Restricted Area Records", restricted_areas, ["area_id", "name", "location_id", "area_type", "status", "severity", "start_time", "end_time", "reason"], page_size=10, table_id="admin-restricted-areas-table"), md=8),
-                            ],
-                            className="g-3",
+                                dbc.Row(
+                                    [
+                                        dbc.Col(
+                                            admin_table_card("Restricted Area Records", restricted_areas, ["area_id", "name", "location_id", "area_type", "status", "severity", "start_time", "end_time", "reason"], page_size=10, table_id="admin-restricted-areas-table"),
+                                            xs=12,
+                                        ),
+                                    ],
+                                    className="g-3",
+                                ),
+                            ]
                         ),
                         "Restricted Areas",
                         disabled="manage_restricted_areas" not in perms,
                     ),
                     admin_tab(
-                        dbc.Row(
+                        html.Div(
                             [
-                                dbc.Col(
-                                    admin_form_card(
-                                        "Crane Outages",
-                                        [
-                                            dbc.Input(id="co-id", placeholder="Optional custom ID. Leave blank to auto-generate.", className="mb-2", style=INPUT_STYLE),
-                                            dbc.Input(id="co-crane", placeholder="Crane ID", className="mb-2", style=INPUT_STYLE),
-                                            dbc.Input(id="co-location", placeholder="Location ID e.g. L0001", className="mb-2", style=INPUT_STYLE),
-                                            dbc.Select(id="co-status", options=[{"label": s.value, "value": s.value} for s in CraneOutageStatus], value=CraneOutageStatus.ACTIVE.value, className="mb-2", style=INPUT_STYLE),
-                                            dbc.Select(id="co-severity", options=[{"label": s.value, "value": s.value} for s in Severity], value=Severity.MEDIUM.value, className="mb-2", style=INPUT_STYLE),
-                                            admin_datetime_row("co-start-date", "co-start-time", "Start Date", "Start Time"),
-                                            admin_datetime_row("co-end-date", "co-end-time", "End Date", "End Time"),
-                                            dbc.Textarea(id="co-reason", placeholder="Reason", className="mb-2", style=INPUT_STYLE),
-                                            dbc.ButtonGroup([dbc.Button("Save", id="co-save", style=PRIMARY_BUTTON_STYLE), dbc.Button("Delete By ID", id="co-delete", style=SECONDARY_BUTTON_STYLE)]),
-                                            dbc.Alert(id="co-alert", is_open=False, duration=None, dismissable=True, color="success", className="mt-3", style={"borderRadius": "14px", "border": "0"}),
-                                        ],
-                                    ),
-                                    md=4,
+                                dbc.Row(
+                                    [
+                                        dbc.Col(
+                                            admin_form_card(
+                                                "Crane Outages",
+                                                [
+                                                    dbc.Input(id="co-id", placeholder="Optional custom ID. Leave blank to auto-generate.", className="mb-2", style=INPUT_STYLE),
+                                                    dbc.Input(id="co-crane", placeholder="Crane ID", className="mb-2", style=INPUT_STYLE),
+                                                    dbc.Input(id="co-location", placeholder="Location ID e.g. L0001", className="mb-2", style=INPUT_STYLE),
+                                                    dbc.Select(id="co-status", options=[{"label": s.value, "value": s.value} for s in CraneOutageStatus], value=CraneOutageStatus.ACTIVE.value, className="mb-2", style=INPUT_STYLE),
+                                                    dbc.Select(id="co-severity", options=[{"label": s.value, "value": s.value} for s in Severity], value=Severity.MEDIUM.value, className="mb-2", style=INPUT_STYLE),
+                                                    admin_datetime_row("co-start-date", "co-start-time", "Start Date", "Start Time"),
+                                                    admin_datetime_row("co-end-date", "co-end-time", "End Date", "End Time"),
+                                                    dbc.Textarea(id="co-reason", placeholder="Reason", className="mb-2", style=INPUT_STYLE),
+                                                    dbc.ButtonGroup([dbc.Button("Save", id="co-save", style=PRIMARY_BUTTON_STYLE), dbc.Button("Delete By ID", id="co-delete", style=SECONDARY_BUTTON_STYLE)]),
+                                                    dbc.Alert(id="co-alert", is_open=False, duration=None, dismissable=True, color="success", className="mt-3", style={"borderRadius": "14px", "border": "0"}),
+                                                ],
+                                            ),
+                                            xs=12,
+                                            md=12,
+                                        ),
+                                    ],
+                                    className="g-3 mb-3",
                                 ),
-                                dbc.Col(admin_table_card("Crane Outage Records", crane_outages, ["outage_id", "crane_id", "location_id", "status", "severity", "start_time", "end_time", "reason"], page_size=10, table_id="admin-crane-outages-table"), md=8),
-                            ],
-                            className="g-3",
+                                dbc.Row(
+                                    [
+                                        dbc.Col(
+                                            admin_table_card("Crane Outage Records", crane_outages, ["outage_id", "crane_id", "location_id", "status", "severity", "start_time", "end_time", "reason"], page_size=10, table_id="admin-crane-outages-table"),
+                                            xs=12,
+                                        ),
+                                    ],
+                                    className="g-3",
+                                ),
+                            ]
                         ),
                         "Crane Outages",
                         disabled="manage_crane_outages" not in perms,
                     ),
                     admin_tab(
-                        dbc.Row(
+                        html.Div(
                             [
-                                dbc.Col(
-                                    admin_form_card(
-                                        "Berth Allocations",
-                                        [
-                                            dbc.Input(id="ba-id", placeholder="Optional custom ID. Leave blank to auto-generate.", className="mb-2", style=INPUT_STYLE),
-                                            dbc.Input(id="ba-vessel", placeholder="Vessel Name", className="mb-2", style=INPUT_STYLE),
-                                            dbc.Input(id="ba-cargo", placeholder="Cargo Tonnes", className="mb-2", style=INPUT_STYLE),
-                                            dbc.Input(id="ba-berth", placeholder="Berth ID e.g. L0004", className="mb-2", style=INPUT_STYLE),
-                                            admin_datetime_row("ba-eta-date", "ba-eta-time", "Eta Date", "Eta Time"),
-                                            dbc.Select(id="ba-status", options=[{"label": s.value, "value": s.value} for s in BerthAllocationStatus], value=BerthAllocationStatus.SCHEDULED.value, className="mb-2", style=INPUT_STYLE),
-                                            dbc.Select(id="ba-priority", options=[{"label": s.value, "value": s.value} for s in Priority], value=Priority.MEDIUM.value, className="mb-2", style=INPUT_STYLE),
-                                            dbc.Textarea(id="ba-notes", placeholder="Notes", className="mb-2", style=INPUT_STYLE),
-                                            dbc.ButtonGroup([dbc.Button("Save", id="ba-save", style=PRIMARY_BUTTON_STYLE), dbc.Button("Delete By ID", id="ba-delete", style=SECONDARY_BUTTON_STYLE)]),
-                                            dbc.Alert(id="ba-alert", is_open=False, duration=None, dismissable=True, color="success", className="mt-3", style={"borderRadius": "14px", "border": "0"}),
-                                        ],
-                                    ),
-                                    md=4,
+                                dbc.Row(
+                                    [
+                                        dbc.Col(
+                                            admin_form_card(
+                                                "Berth Allocations",
+                                                [
+                                                    dbc.Input(id="ba-id", placeholder="Optional custom ID. Leave blank to auto-generate.", className="mb-2", style=INPUT_STYLE),
+                                                    dbc.Input(id="ba-vessel", placeholder="Vessel Name", className="mb-2", style=INPUT_STYLE),
+                                                    dbc.Input(id="ba-cargo", placeholder="Cargo Tonnes", className="mb-2", style=INPUT_STYLE),
+                                                    dbc.Input(id="ba-berth", placeholder="Berth ID e.g. L0004", className="mb-2", style=INPUT_STYLE),
+                                                    admin_datetime_row("ba-eta-date", "ba-eta-time", "Eta Date", "Eta Time"),
+                                                    dbc.Select(id="ba-status", options=[{"label": s.value, "value": s.value} for s in BerthAllocationStatus], value=BerthAllocationStatus.SCHEDULED.value, className="mb-2", style=INPUT_STYLE),
+                                                    dbc.Select(id="ba-priority", options=[{"label": s.value, "value": s.value} for s in Priority], value=Priority.MEDIUM.value, className="mb-2", style=INPUT_STYLE),
+                                                    dbc.Textarea(id="ba-notes", placeholder="Notes", className="mb-2", style=INPUT_STYLE),
+                                                    dbc.ButtonGroup([dbc.Button("Save", id="ba-save", style=PRIMARY_BUTTON_STYLE), dbc.Button("Delete By ID", id="ba-delete", style=SECONDARY_BUTTON_STYLE)]),
+                                                    dbc.Alert(id="ba-alert", is_open=False, duration=None, dismissable=True, color="success", className="mt-3", style={"borderRadius": "14px", "border": "0"}),
+                                                ],
+                                            ),
+                                            xs=12,
+                                            md=12,
+                                        ),
+                                    ],
+                                    className="g-3 mb-3",
                                 ),
-                                dbc.Col(admin_table_card("Berth Allocation Records", berth_allocations, ["allocation_id", "vessel_name", "cargo_tonnes", "berth_id", "eta", "status", "priority", "notes"], page_size=10, table_id="admin-berth-allocations-table"), md=8),
-                            ],
-                            className="g-3",
+                                dbc.Row(
+                                    [
+                                        dbc.Col(
+                                            admin_table_card("Berth Allocation Records", berth_allocations, ["allocation_id", "vessel_name", "cargo_tonnes", "berth_id", "eta", "status", "priority", "notes"], page_size=10, table_id="admin-berth-allocations-table"),
+                                            xs=12,
+                                        ),
+                                    ],
+                                    className="g-3",
+                                ),
+                            ]
                         ),
                         "Berth Allocations",
                         disabled="manage_berth_allocations" not in perms,
@@ -622,17 +695,15 @@ def update_notification_engine_live(snapshot):
     Output("analytics-end-date", "value"),
     Output("analytics-vessel-type", "value"),
     Output("analytics-cargo-type", "value"),
-    Output("analytics-port-area", "value"),
     Input("analytics-generate", "n_clicks"),
     Input("analytics-reset", "n_clicks"),
     State("analytics-start-date", "value"),
     State("analytics-end-date", "value"),
     State("analytics-vessel-type", "value"),
     State("analytics-cargo-type", "value"),
-    State("analytics-port-area", "value"),
     prevent_initial_call=True,
 )
-def manage_analytics_report(_generate_clicks, _reset_clicks, start_date, end_date, vessel_type, cargo_type, port_area):
+def manage_analytics_report(_generate_clicks, _reset_clicks, start_date, end_date, vessel_type, cargo_type):
     user = current_user() or {}
     try:
         trigger = dash.callback_context.triggered[0]["prop_id"].split(".")[0]
@@ -642,7 +713,7 @@ def manage_analytics_report(_generate_clicks, _reset_clicks, start_date, end_dat
         if trigger == "analytics-reset":
             service.ensure_user_permission(user, "view_analytics")
             report = service.generate_custom_report({})
-            return report, "Filters reset.", "success", True, "", "", "", "", ""
+            return report, "Filters reset.", "success", True, None, None, "", ""
 
         service.ensure_user_permission(user, "generate_reports")
         filters = {
@@ -650,13 +721,12 @@ def manage_analytics_report(_generate_clicks, _reset_clicks, start_date, end_dat
             "end_date": end_date or "",
             "vessel_type": vessel_type or "",
             "cargo_type": cargo_type or "",
-            "port_area": port_area or "",
         }
         report = service.generate_custom_report(filters)
         audit("generate", "analytics_report", "custom", "Generated filtered analytics report.")
-        return report, "Report generated.", "success", True, start_date, end_date, vessel_type, cargo_type, port_area
+        return report, "Report generated.", "success", True, start_date, end_date, vessel_type, cargo_type
     except Exception as exc:
-        return dash.no_update, str(exc) or "Report generation failed.", "danger", True, start_date, end_date, vessel_type, cargo_type, port_area
+        return dash.no_update, str(exc) or "Report generation failed.", "danger", True, start_date, end_date, vessel_type, cargo_type
 
 
 @app.callback(

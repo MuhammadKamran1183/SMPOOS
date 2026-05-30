@@ -191,9 +191,8 @@ def analytics_layout():
                                     ),
                                     dbc.Row(
                                         [
-                                            dbc.Col(dbc.Input(id="analytics-vessel-type", placeholder="Vessel Type", style=INPUT_STYLE), md=4),
-                                            dbc.Col(dbc.Input(id="analytics-cargo-type", placeholder="Cargo Type", style=INPUT_STYLE), md=4),
-                                            dbc.Col(dbc.Input(id="analytics-port-area", placeholder="Port Area", style=INPUT_STYLE), md=4),
+                                            dbc.Col(dbc.Input(id="analytics-vessel-type", placeholder="Vessel Type", style=INPUT_STYLE), md=6),
+                                            dbc.Col(dbc.Input(id="analytics-cargo-type", placeholder="Cargo Type", style=INPUT_STYLE), md=6),
                                         ],
                                         className="g-2 mb-2",
                                     ),
