@@ -166,7 +166,7 @@ def dashboard_layout():
                         dbc.Card(
                             dbc.CardBody(
                                 [
-                                    html.H5("Congestion Heatmap (Plotly)", className="mb-3", style=SECTION_TITLE_STYLE),
+                                    html.H5("Congestion Score by Zone & Time Window", className="mb-3", style=SECTION_TITLE_STYLE),
                                     dcc.Graph(id="mgmt-heatmap", figure=fig_congestion_heatmap(heatmap_rows), config={"displayModeBar": False}),
                                 ]
                             ),
@@ -174,7 +174,7 @@ def dashboard_layout():
                         ),
                         md=6,
                     ),
-                    dbc.Col(dbc.Card(dbc.CardBody([html.H5("Heatmap (Matplotlib/Seaborn)", className="mb-3", style=SECTION_TITLE_STYLE), occupancy_panel]), style=CARD_STYLE), md=6),
+                    dbc.Col(dbc.Card(dbc.CardBody([html.H5("Berth Occupancy Correlation (Seaborn)", className="mb-3", style=SECTION_TITLE_STYLE), occupancy_panel]), style=CARD_STYLE), md=6),
                 ],
                 className="g-3 mb-3",
             ),
